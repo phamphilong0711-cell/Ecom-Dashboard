@@ -271,7 +271,7 @@
         async function fetchData() {
             document.getElementById('lastUpdated').innerText = "Đang tải dữ liệu...";
             try {
-                const response = await fetch('/data_v2.json');
+                const response = await fetch('../data_v2.json');
                 const data = await response.json();
                 rawData = data.pnl_data || [];
                 rawMarketingData = data.marketing_data || [];
