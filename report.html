@@ -9,9 +9,9 @@
         .container { background-color: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
         h1 { color: #1e293b; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; text-align: center; }
         h2 { color: #2563eb; margin-top: 30px; display: flex; align-items: center; }
-        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
         th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #e2e8f0; }
-        th { background-color: #f1f5f9; font-weight: 600; color: #475569; }
+        th { background-color: #f1f5f9; font-weight: 600; color: #475569; position: sticky; top: 0; }
         tr:hover { background-color: #f8fafc; }
         .text-right { text-align: right; }
         .positive { color: #16a34a; font-weight: bold; }
@@ -22,14 +22,17 @@
         .alert-warning { background-color: #fffbeb; border-color: #f59e0b; }
         .alert-danger { background-color: #fef2f2; border-color: #ef4444; }
         .alert-success { background-color: #f0fdf4; border-color: #22c55e; }
-        .badge { display: inline-block; padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: bold; }
+        .badge { display: inline-block; padding: 4px 8px; border-radius: 12px; font-size: 11px; font-weight: bold; margin-right: 4px; }
         .badge-shopee { background-color: #ffede5; color: #ee4d2d; }
         .badge-tiktok { background-color: #e2e8f0; color: #000; }
+        .badge-lazada { background-color: #e0e7ff; color: #4f46e5; }
+        .badge-facebook { background-color: #dbeafe; color: #2563eb; }
+        .badge-webapp { background-color: #f3f4f6; color: #374151; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>📊 Báo Cáo So Sánh Hiệu Quả Mega Sale (7.7 vs 8.8)</h1>
+        <h1>📊 Báo Cáo Phân Tích & So Sánh (Mega Sale 7.7 vs 8.8)</h1>
         
         <h2>1. Tổng Quan Chỉ Số Chốt (KPIs)</h2>
         <table>
@@ -39,7 +42,6 @@
                     <th class="text-right">Ngày 7.7</th>
                     <th class="text-right">Ngày 8.8</th>
                     <th class="text-right">Thay đổi</th>
-                    <th>Đánh giá</th>
                 </tr>
             </thead>
             <tbody>
@@ -48,150 +50,276 @@
                     <td class="text-right">61.921.599 đ</td>
                     <td class="text-right">54.961.618 đ</td>
                     <td class="text-right negative">📉 -11.2%</td>
-                    <td>Doanh thu giảm nhẹ so với tháng trước.</td>
                 </tr>
                 <tr>
                     <td><strong>Số lượng Đơn</strong></td>
                     <td class="text-right">214 đơn</td>
                     <td class="text-right">277 đơn</td>
                     <td class="text-right positive">🚀 +29.4%</td>
-                    <td>Lượng đơn <strong>tăng vọt</strong>!</td>
-                </tr>
-                <tr>
-                    <td><strong>Giá trị đơn (AOV)</strong></td>
-                    <td class="text-right">~289.000 đ</td>
-                    <td class="text-right">~198.000 đ</td>
-                    <td class="text-right negative">📉 -31.4%</td>
-                    <td>Xu hướng mua lẻ thay vì mua Combo.</td>
-                </tr>
-                <tr>
-                    <td><strong>Lợi nhuận (PnL)</strong></td>
-                    <td class="text-right">23.049.010 đ</td>
-                    <td class="text-right">20.303.334 đ</td>
-                    <td class="text-right negative">📉 -11.9%</td>
-                    <td>Biên lợi nhuận được giữ vững tương đối.</td>
                 </tr>
             </tbody>
         </table>
 
+        <h2>2. Phân Tích Cấp Độ Sản Phẩm (Toàn Bộ Danh Sách)</h2>
         <div class="alert-box alert-success">
-            <strong>💡 Điểm sáng:</strong> Số lượng đơn hàng ngày 8.8 tăng gần 30%, cho thấy traffic (lượt truy cập) và tỷ lệ chuyển đổi chốt đơn rất tốt. Tuy nhiên, giá trị trung bình trên mỗi đơn lại giảm mạnh, dẫn đến tổng doanh thu giảm.
+            <strong>Bảng bên dưới hiển thị CHI TIẾT TĂNG GIẢM của toàn bộ sản phẩm bán ra trong 2 ngày Sale.</strong> Sản phẩm tăng mạnh nhất xếp trên cùng, giảm mạnh nhất xếp dưới cùng.
         </div>
-
-        <h2>2. Phân Tích Đóng Góp Theo Kênh</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Nền tảng</th>
-                    <th class="text-right">GMV 7.7</th>
-                    <th class="text-right">GMV 8.8</th>
-                    <th class="text-right">Thay đổi</th>
-                    <th class="text-right">Tỷ trọng (8.8)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Shopee</strong></td>
-                    <td class="text-right">40.406.316 đ</td>
-                    <td class="text-right">40.253.400 đ</td>
-                    <td class="text-right neutral">➖ Đi ngang (-0.4%)</td>
-                    <td class="text-right"><strong>73.2%</strong></td>
-                </tr>
-                <tr>
-                    <td><strong>TikTok</strong></td>
-                    <td class="text-right">16.484.414 đ</td>
-                    <td class="text-right">14.340.575 đ</td>
-                    <td class="text-right negative">📉 -13.0%</td>
-                    <td class="text-right"><strong>26.1%</strong></td>
-                </tr>
-                <tr>
-                    <td><strong>Lazada</strong></td>
-                    <td class="text-right">2.351.869 đ</td>
-                    <td class="text-right">367.643 đ</td>
-                    <td class="text-right negative">📉 -84.4%</td>
-                    <td class="text-right"><strong>0.7%</strong></td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h2>3. Phân Tích Cấp Độ Sản Phẩm (SKU)</h2>
         
-        <h3 style="color: #16a34a;">🟢 TOP 3 Sản Phẩm Tăng Trưởng Mạnh Nhất</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Sản phẩm / SKU</th>
-                    <th class="text-right">Doanh thu 7.7</th>
-                    <th class="text-right">Doanh thu 8.8</th>
-                    <th class="text-right">Mức tăng</th>
-                    <th>Nguồn bán</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Phân loại 100g</strong></td>
-                    <td class="text-right">11.192.262 đ</td>
-                    <td class="text-right">16.725.055 đ</td>
-                    <td class="text-right positive">+5.532.793 đ</td>
-                    <td><span class="badge badge-shopee">Shopee</span> <span class="badge badge-tiktok">TikTok</span></td>
-                </tr>
-                <tr>
-                    <td><strong>Phân loại 30g</strong></td>
-                    <td class="text-right">668.400 đ</td>
-                    <td class="text-right">6.103.000 đ</td>
-                    <td class="text-right positive">+5.434.600 đ</td>
-                    <td><span class="badge badge-shopee">Shopee</span> <span class="badge badge-tiktok">TikTok</span></td>
-                </tr>
-                <tr>
-                    <td><strong>Serum 7in1 Dr.FORSKIN</strong></td>
-                    <td class="text-right">5.115.240 đ</td>
-                    <td class="text-right">6.552.296 đ</td>
-                    <td class="text-right positive">+1.437.056 đ</td>
-                    <td><span class="badge badge-shopee">Shopee</span> <span class="badge badge-tiktok">TikTok</span></td>
-                </tr>
-            </tbody>
-        </table>
+        <div style="max-height: 600px; overflow-y: auto; border: 1px solid #e2e8f0; border-radius: 8px;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tên Sản Phẩm / Mã SKU</th>
+                        <th class="text-right">Doanh thu 7.7</th>
+                        <th class="text-right">Doanh thu 8.8</th>
+                        <th class="text-right">Mức Tăng / Giảm</th>
+                        <th>Nguồn bán</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-        <h3 style="color: #dc2626;">🔴 TOP 4 Sản Phẩm Sụt Giảm Nặng Nhất</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Sản phẩm / SKU</th>
-                    <th class="text-right">Doanh thu 7.7</th>
-                    <th class="text-right">Doanh thu 8.8</th>
-                    <th class="text-right">Mức giảm</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="highlight">
-                    <td><strong>Booster Premium 2025</strong></td>
-                    <td class="text-right">3.481.258 đ</td>
-                    <td class="text-right">0 đ</td>
-                    <td class="text-right negative">-3.481.258 đ</td>
-                </tr>
-                <tr>
-                    <td><strong>SP04455 (Sáp Gôm)</strong></td>
-                    <td class="text-right">7.815.241 đ</td>
-                    <td class="text-right">4.658.920 đ</td>
-                    <td class="text-right negative">-3.156.321 đ</td>
-                </tr>
-                <tr>
-                    <td><strong>SP01318 (Combo)</strong></td>
-                    <td class="text-right">5.768.421 đ</td>
-                    <td class="text-right">3.959.566 đ</td>
-                    <td class="text-right negative">-1.808.855 đ</td>
-                </tr>
-                <tr>
-                    <td><strong>SP04391 (Limited)</strong></td>
-                    <td class="text-right">6.676.283 đ</td>
-                    <td class="text-right">5.051.100 đ</td>
-                    <td class="text-right negative">-1.625.183 đ</td>
-                </tr>
-            </tbody>
-        </table>
+                    <tr>
+                        <td style="font-weight: 500;">100g</td>
+                        <td class="text-right">11.192.262 đ</td>
+                        <td class="text-right">16.725.055 đ</td>
+                        <td class="text-right positive">+5.532.793 đ</td>
+                        <td><span class='badge badge-shopee'>Shopee</span> <span class='badge badge-tiktok'>Tiktok</span></td>
+                    </tr>
 
-        <div class="alert-box alert-danger">
-            <strong>⚠️ Báo động:</strong> Dòng <strong>Booster Premium 2025</strong> vốn bán rất tốt vào tháng 7 nhưng sang tháng 8 lại <strong>trắng tay hoàn toàn</strong>. Cần kiểm tra lại xem sản phẩm này có bị hết hàng (Out of stock) hoặc mất vị trí hiển thị quảng cáo không.
+                    <tr>
+                        <td style="font-weight: 500;">30g</td>
+                        <td class="text-right">668.400 đ</td>
+                        <td class="text-right">6.103.000 đ</td>
+                        <td class="text-right positive">+5.434.600 đ</td>
+                        <td><span class='badge badge-shopee'>Shopee</span> <span class='badge badge-tiktok'>Tiktok</span></td>
+                    </tr>
+
+                    <tr>
+                        <td style="font-weight: 500;">Serum 7in1 Dr.FORSKIN</td>
+                        <td class="text-right">5.115.240 đ</td>
+                        <td class="text-right">6.552.296 đ</td>
+                        <td class="text-right positive">+1.437.056 đ</td>
+                        <td><span class='badge badge-shopee'>Shopee</span> <span class='badge badge-tiktok'>Tiktok</span></td>
+                    </tr>
+
+                    <tr>
+                        <td style="font-weight: 500;">Combo 2 sáp Limited</td>
+                        <td class="text-right">0 đ</td>
+                        <td class="text-right">798.000 đ</td>
+                        <td class="text-right positive">+798.000 đ</td>
+                        <td><span class='badge badge-shopee'>Shopee</span></td>
+                    </tr>
+
+                    <tr>
+                        <td style="font-weight: 500;">SP05214 (Mặc định)</td>
+                        <td class="text-right">0 đ</td>
+                        <td class="text-right">490.000 đ</td>
+                        <td class="text-right positive">+490.000 đ</td>
+                        <td><span class='badge badge-shopee'>Shopee</span></td>
+                    </tr>
+
+                    <tr>
+                        <td style="font-weight: 500;">SP04301 (Mặc định)</td>
+                        <td class="text-right">5.740.724 đ</td>
+                        <td class="text-right">6.209.845 đ</td>
+                        <td class="text-right positive">+469.121 đ</td>
+                        <td><span class='badge badge-shopee'>Shopee</span> <span class='badge badge-tiktok'>Tiktok</span> <span class='badge badge-lazada'>Lazada</span></td>
+                    </tr>
+
+                    <tr>
+                        <td style="font-weight: 500;">volcanic clay</td>
+                        <td class="text-right">338.800 đ</td>
+                        <td class="text-right">678.000 đ</td>
+                        <td class="text-right positive">+339.200 đ</td>
+                        <td><span class='badge badge-shopee'>Shopee</span> <span class='badge badge-tiktok'>Tiktok</span></td>
+                    </tr>
+
+                    <tr>
+                        <td style="font-weight: 500;">150ml</td>
+                        <td class="text-right">0 đ</td>
+                        <td class="text-right">280.000 đ</td>
+                        <td class="text-right positive">+280.000 đ</td>
+                        <td><span class='badge badge-tiktok'>Tiktok</span></td>
+                    </tr>
+
+                    <tr>
+                        <td style="font-weight: 500;">10 Mặt nạ HALP</td>
+                        <td class="text-right">0 đ</td>
+                        <td class="text-right">100.000 đ</td>
+                        <td class="text-right positive">+100.000 đ</td>
+                        <td><span class='badge badge-shopee'>Shopee</span></td>
+                    </tr>
+
+                    <tr>
+                        <td style="font-weight: 500;">80ml</td>
+                        <td class="text-right">0 đ</td>
+                        <td class="text-right">77.220 đ</td>
+                        <td class="text-right positive">+77.220 đ</td>
+                        <td><span class='badge badge-tiktok'>Tiktok</span></td>
+                    </tr>
+
+                    <tr>
+                        <td style="font-weight: 500;">Sáp Sandar Wood + Gôm Đỏ Original</td>
+                        <td class="text-right">468.000 đ</td>
+                        <td class="text-right">468.000 đ</td>
+                        <td class="text-right neutral">0 đ</td>
+                        <td><span class='badge badge-shopee'>Shopee</span></td>
+                    </tr>
+
+                    <tr>
+                        <td style="font-weight: 500;">10ml</td>
+                        <td class="text-right">137.966 đ</td>
+                        <td class="text-right">0 đ</td>
+                        <td class="text-right negative">-137.966 đ</td>
+                        <td><span class='badge badge-tiktok'>Tiktok</span></td>
+                    </tr>
+
+                    <tr>
+                        <td style="font-weight: 500;">500ml</td>
+                        <td class="text-right">250.000 đ</td>
+                        <td class="text-right">0 đ</td>
+                        <td class="text-right negative">-250.000 đ</td>
+                        <td><span class='badge badge-tiktok'>Tiktok</span></td>
+                    </tr>
+
+                    <tr>
+                        <td style="font-weight: 500;">Prime Floral</td>
+                        <td class="text-right">1.310.000 đ</td>
+                        <td class="text-right">1.028.040 đ</td>
+                        <td class="text-right negative">-281.960 đ</td>
+                        <td><span class='badge badge-shopee'>Shopee</span> <span class='badge badge-tiktok'>Tiktok</span></td>
+                    </tr>
+
+                    <tr>
+                        <td style="font-weight: 500;">400ml</td>
+                        <td class="text-right">354.000 đ</td>
+                        <td class="text-right">0 đ</td>
+                        <td class="text-right negative">-354.000 đ</td>
+                        <td><span class='badge badge-shopee'>Shopee</span></td>
+                    </tr>
+
+                    <tr>
+                        <td style="font-weight: 500;">3 MN Recombinant Collagen Repair</td>
+                        <td class="text-right">360.000 đ</td>
+                        <td class="text-right">0 đ</td>
+                        <td class="text-right negative">-360.000 đ</td>
+                        <td><span class='badge badge-tiktok'>Tiktok</span></td>
+                    </tr>
+
+                    <tr>
+                        <td style="font-weight: 500;">Phân loại:Sandar Wood</td>
+                        <td class="text-right">424.908 đ</td>
+                        <td class="text-right">0 đ</td>
+                        <td class="text-right negative">-424.908 đ</td>
+                        <td><span class='badge badge-lazada'>Lazada</span></td>
+                    </tr>
+
+                    <tr>
+                        <td style="font-weight: 500;">SP04444 (Mặc định)</td>
+                        <td class="text-right">446.316 đ</td>
+                        <td class="text-right">0 đ</td>
+                        <td class="text-right negative">-446.316 đ</td>
+                        <td><span class='badge badge-shopee'>Shopee</span></td>
+                    </tr>
+
+                    <tr>
+                        <td style="font-weight: 500;">Combo 2 chai xịt</td>
+                        <td class="text-right">544.000 đ</td>
+                        <td class="text-right">0 đ</td>
+                        <td class="text-right negative">-544.000 đ</td>
+                        <td><span class='badge badge-shopee'>Shopee</span></td>
+                    </tr>
+
+                    <tr>
+                        <td style="font-weight: 500;">Sandar + Booster X2</td>
+                        <td class="text-right">545.000 đ</td>
+                        <td class="text-right">0 đ</td>
+                        <td class="text-right negative">-545.000 đ</td>
+                        <td><span class='badge badge-shopee'>Shopee</span></td>
+                    </tr>
+
+                    <tr>
+                        <td style="font-weight: 500;">Booster X2 + Limited</td>
+                        <td class="text-right">650.000 đ</td>
+                        <td class="text-right">0 đ</td>
+                        <td class="text-right negative">-650.000 đ</td>
+                        <td><span class='badge badge-shopee'>Shopee</span></td>
+                    </tr>
+
+                    <tr>
+                        <td style="font-weight: 500;">SP04458 (Mặc định)</td>
+                        <td class="text-right">1.032.000 đ</td>
+                        <td class="text-right">0 đ</td>
+                        <td class="text-right negative">-1.032.000 đ</td>
+                        <td><span class='badge badge-shopee'>Shopee</span></td>
+                    </tr>
+
+                    <tr>
+                        <td style="font-weight: 500;">SP03462 (Original)</td>
+                        <td class="text-right">2.929.380 đ</td>
+                        <td class="text-right">1.782.576 đ</td>
+                        <td class="text-right negative">-1.146.804 đ</td>
+                        <td><span class='badge badge-shopee'>Shopee</span> <span class='badge badge-tiktok'>Tiktok</span> <span class='badge badge-lazada'>Lazada</span></td>
+                    </tr>
+
+                    <tr>
+                        <td style="font-weight: 500;">SP04456 (Mặc định)</td>
+                        <td class="text-right">1.427.400 đ</td>
+                        <td class="text-right">0 đ</td>
+                        <td class="text-right negative">-1.427.400 đ</td>
+                        <td><span class='badge badge-tiktok'>Tiktok</span></td>
+                    </tr>
+
+                    <tr>
+                        <td style="font-weight: 500;">SP02999 (Mặc định)</td>
+                        <td class="text-right">1.567.000 đ</td>
+                        <td class="text-right">0 đ</td>
+                        <td class="text-right negative">-1.567.000 đ</td>
+                        <td><span class='badge badge-shopee'>Shopee</span></td>
+                    </tr>
+
+                    <tr>
+                        <td style="font-weight: 500;">SP04391 (Limited)</td>
+                        <td class="text-right">6.676.283 đ</td>
+                        <td class="text-right">5.051.100 đ</td>
+                        <td class="text-right negative">-1.625.183 đ</td>
+                        <td><span class='badge badge-shopee'>Shopee</span> <span class='badge badge-tiktok'>Tiktok</span> <span class='badge badge-lazada'>Lazada</span></td>
+                    </tr>
+
+                    <tr>
+                        <td style="font-weight: 500;">SP01318 (Mặc định)</td>
+                        <td class="text-right">5.768.421 đ</td>
+                        <td class="text-right">3.959.566 đ</td>
+                        <td class="text-right negative">-1.808.855 đ</td>
+                        <td><span class='badge badge-shopee'>Shopee</span> <span class='badge badge-tiktok'>Tiktok</span></td>
+                    </tr>
+
+                    <tr>
+                        <td style="font-weight: 500;">Chưa phân bổ (Shopee)</td>
+                        <td class="text-right">2.679.000 đ</td>
+                        <td class="text-right">0 đ</td>
+                        <td class="text-right negative">-2.679.000 đ</td>
+                        <td><span class='badge badge-facebook'>Facebook</span> <span class='badge badge-webapp'>Webapp</span></td>
+                    </tr>
+
+                    <tr>
+                        <td style="font-weight: 500;">SP04455 (Mặc định)</td>
+                        <td class="text-right">7.815.241 đ</td>
+                        <td class="text-right">4.658.920 đ</td>
+                        <td class="text-right negative">-3.156.321 đ</td>
+                        <td><span class='badge badge-shopee'>Shopee</span> <span class='badge badge-tiktok'>Tiktok</span></td>
+                    </tr>
+
+                    <tr>
+                        <td style="font-weight: 500;">Booster Premium 2025</td>
+                        <td class="text-right">3.481.258 đ</td>
+                        <td class="text-right">0 đ</td>
+                        <td class="text-right negative">-3.481.258 đ</td>
+                        <td><span class='badge badge-shopee'>Shopee</span> <span class='badge badge-lazada'>Lazada</span></td>
+                    </tr>
+
+                </tbody>
+            </table>
         </div>
         
         <div style="text-align: center; margin-top: 40px; color: #94a3b8; font-size: 13px;">
