@@ -1,0 +1,1779 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Quảng Cáo Shopee Tự Động - 30Shine E-Commerce</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --shopee: #ee4d2d;
+            --shopee-dark: #d03b1d;
+            --shopee-light: #fff1ef;
+            --primary: #0284c7;
+            --primary-light: #e0f2fe;
+            --success: #10b981;
+            --success-bg: #ecfdf5;
+            --warning: #f59e0b;
+            --warning-bg: #fffbeb;
+            --danger: #ef4444;
+            --danger-bg: #fef2f2;
+            --drforskin: #059669;
+            --glanzen: #6366f1;
+            --bg: #f8fafc;
+            --sidebar-bg: #0f172a;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* TOP NAVIGATION */
+        .navbar {
+            background: #ffffff;
+            border-bottom: 1px solid var(--border);
+            padding: 14px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-logo {
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, #ee4d2d 0%, #ff7337 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 20px;
+            box-shadow: 0 4px 10px rgba(238, 77, 45, 0.3);
+        }
+
+        .brand-text h1 {
+            font-size: 17px;
+            font-weight: 800;
+            color: var(--text-main);
+            line-height: 1.2;
+        }
+
+        .brand-text p {
+            font-size: 11.5px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .api-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--success-bg);
+            color: var(--success);
+            padding: 6px 14px;
+            border-radius: 9999px;
+            font-size: 12px;
+            font-weight: 700;
+            border: 1px solid #bbf7d0;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--success);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+
+        .btn-sync {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #ee4d2d 0%, #ff5722 100%);
+            color: #ffffff;
+            border: none;
+            padding: 9px 18px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(238, 77, 45, 0.25);
+            transition: all 0.2s;
+        }
+
+        .btn-sync:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(238, 77, 45, 0.35);
+        }
+
+        .btn-sync:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* MAIN LAYOUT */
+        .main-container {
+            max-width: 1440px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 24px;
+            flex: 1;
+        }
+
+        /* CONTROL PANEL */
+        .control-panel {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .filter-group {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .filter-label {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .shop-select {
+            padding: 8px 14px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--text-main);
+            background: #ffffff;
+            cursor: pointer;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .shop-select:focus {
+            border-color: var(--shopee);
+        }
+
+        .date-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            background: #f1f5f9;
+            padding: 4px;
+            border-radius: 10px;
+        }
+
+        .date-pill {
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--text-muted);
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .date-pill:hover {
+            color: var(--text-main);
+        }
+
+        .date-pill.active {
+            background: #ffffff;
+            color: var(--shopee);
+            font-weight: 700;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        .date-custom {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .date-input {
+            padding: 6px 10px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            font-size: 12.5px;
+            outline: none;
+            color: var(--text-main);
+        }
+
+        /* KPI METRIC CARDS */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 18px;
+            margin-bottom: 24px;
+        }
+
+        .kpi-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 22px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .kpi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .kpi-card.c-spend::before { background: #ee4d2d; }
+        .kpi-card.c-gmv::before { background: #0284c7; }
+        .kpi-card.c-orders::before { background: #10b981; }
+        .kpi-card.c-roas::before { background: #8b5cf6; }
+
+        .kpi-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .kpi-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .kpi-icon {
+            font-size: 18px;
+        }
+
+        .kpi-value {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--text-main);
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+
+        .kpi-submetrics {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-muted);
+            padding-top: 10px;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .badge-growth {
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 11.5px;
+        }
+
+        .badge-growth.up { background: var(--success-bg); color: var(--success); }
+        .badge-growth.down { background: var(--danger-bg); color: var(--danger); }
+        .badge-growth.neutral { background: #f1f5f9; color: var(--text-muted); }
+
+        /* CHARTS SECTION */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        @media (max-width: 1024px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .chart-card {
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            padding: 22px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+
+        .chart-title {
+            font-size: 15.5px;
+            font-weight: 800;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 320px;
+            width: 100%;
+        }
+
+        /* TABS SECTION */
+        .tabs-card {
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+
+        .tabs-nav {
+            display: flex;
+            border-bottom: 1px solid var(--border);
+            background: #f8fafc;
+            padding: 0 16px;
+        }
+
+        .tab-btn {
+            padding: 14px 20px;
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--text-muted);
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-main);
+        }
+
+        .tab-btn.active {
+            color: var(--shopee);
+            border-bottom-color: var(--shopee);
+            background: #ffffff;
+        }
+
+        .tab-content {
+            padding: 20px;
+        }
+
+        /* DATA TABLE */
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            text-align: left;
+        }
+
+        th {
+            padding: 12px 14px;
+            background: #f8fafc;
+            color: #475569;
+            font-weight: 700;
+            border-bottom: 1px solid var(--border);
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 13px 14px;
+            border-bottom: 1px solid var(--border);
+            color: #1e293b;
+        }
+
+        tr:hover td {
+            background: #f8fafc;
+        }
+
+        .shop-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 11.5px;
+            font-weight: 700;
+        }
+
+        .badge-30shine { background: #fff1ef; color: #ee4d2d; border: 1px solid #fecaca; }
+        .badge-drforskin { background: #ecfdf5; color: #059669; border: 1px solid #a7f3d0; }
+        .badge-glanzen { background: #eef2ff; color: #6366f1; border: 1px solid #c7d2fe; }
+
+        .roas-pill {
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: 800;
+            font-size: 12px;
+        }
+        .roas-high { background: #ecfdf5; color: #059669; }
+        .roas-mid { background: #eff6ff; color: #2563eb; }
+        .roas-low { background: #fef2f2; color: #dc2626; }
+
+        /* DIAGNOSTICS & ACTION SYSTEM */
+        .diag-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #ffffff;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+            border: 1px solid #334155;
+        }
+        .diag-header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .diag-header-title {
+            font-size: 18px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .diag-summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 14px;
+        }
+        .diag-summary-box {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            padding: 12px 16px;
+        }
+        .diag-summary-box .lbl {
+            font-size: 11px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+        .diag-summary-box .val {
+            font-size: 22px;
+            font-weight: 800;
+            margin-top: 3px;
+        }
+        .diag-summary-box .sub {
+            font-size: 11.5px;
+            margin-top: 2px;
+        }
+
+        .shop-diag-card {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 22px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .shop-diag-card:hover {
+            box-shadow: var(--shadow);
+        }
+        .shop-diag-card.alert-danger { border-left: 6px solid #ef4444; }
+        .shop-diag-card.alert-warning { border-left: 6px solid #f59e0b; }
+        .shop-diag-card.alert-primary { border-left: 6px solid #0284c7; }
+        .shop-diag-card.alert-success { border-left: 6px solid #10b981; }
+
+        .diag-card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 14px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .diag-alert-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 12px;
+            border-radius: 9999px;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.02em;
+        }
+        .badge-danger-fill { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
+        .badge-warning-fill { background: #fffbeb; color: #d97706; border: 1px solid #fde68a; }
+        .badge-primary-fill { background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; }
+        .badge-success-fill { background: #ecfdf5; color: #059669; border: 1px solid #a7f3d0; }
+
+        .diag-metrics-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 12px;
+            margin-bottom: 16px;
+            background: #f8fafc;
+            padding: 14px;
+            border-radius: 12px;
+        }
+        .diag-metric-item {
+            display: flex;
+            flex-direction: column;
+        }
+        .diag-metric-item .lbl {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .diag-metric-item .val {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-top: 2px;
+        }
+        .diag-metric-item .sub {
+            font-size: 11px;
+            font-weight: 700;
+            margin-top: 2px;
+        }
+
+        .diag-cause-box {
+            font-size: 13px;
+            color: #334155;
+            line-height: 1.5;
+            margin-bottom: 14px;
+            background: #fff;
+            padding: 10px 14px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .action-prescribe-box {
+            border-radius: 12px;
+            padding: 16px 18px;
+            margin-top: 12px;
+        }
+        .action-prescribe-box.box-danger { background: #fef2f2; border: 1px solid #fecaca; }
+        .action-prescribe-box.box-warning { background: #fffbeb; border: 1px solid #fde68a; }
+        .action-prescribe-box.box-primary { background: #eff6ff; border: 1px solid #bfdbfe; }
+        .action-prescribe-box.box-success { background: #ecfdf5; border: 1px solid #bbf7d0; }
+
+        .action-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        .action-badge-pill {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11.5px;
+            font-weight: 800;
+            color: #ffffff;
+        }
+        .pill-danger { background: #dc2626; }
+        .pill-warning { background: #d97706; }
+        .pill-primary { background: #0284c7; }
+        .pill-success { background: #059669; }
+
+        .action-detail-text {
+            font-size: 13px;
+            font-weight: 600;
+            color: #1e293b;
+            line-height: 1.5;
+        }
+
+        .checkpoints-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 10px;
+            margin-top: 14px;
+        }
+        .cp-card {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 10px 12px;
+            font-size: 12px;
+        }
+        .cp-time {
+            font-weight: 800;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 3px;
+        }
+
+        /* SOP MATRIX STYLES */
+        .sop-card {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        .sop-step-item {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .sop-step-num {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #ee4d2d 0%, #ff7337 100%);
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .sop-step-content h3 {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 6px;
+        }
+        .sop-step-content p {
+            font-size: 13px;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        /* TOAST NOTIFICATION */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #0f172a;
+            color: #ffffff;
+            padding: 14px 22px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 100;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            background: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <div class="brand-logo">S</div>
+            <div class="brand-text">
+                <h1>Shopee Ads Automation</h1>
+                <p>Hệ Thống Phân Tích Quảng Cáo Tự Động • 30Shine E-Commerce</p>
+            </div>
+        </div>
+        <div class="nav-actions">
+            <div class="api-status">
+                <span class="status-dot"></span>
+                <span>Shopee Open API: Connected (3 Shops)</span>
+            </div>
+            <button class="btn-sync" id="btnSync" onclick="triggerSync()">
+                <span id="syncIcon">🔄</span>
+                <span id="syncText">Đồng Bộ API Ngay</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-container">
+
+        <!-- CONTROL PANEL -->
+        <div class="control-panel">
+            <div class="filter-group">
+                <span class="filter-label">Gian Hàng:</span>
+                <select class="shop-select" id="shopSelect" onchange="loadDashboardData()">
+                    <option value="all">🏬 Tất Cả 3 Gian Hàng (Blended)</option>
+                    <option value="21080428">🔴 Shopee 30Shine Store (21080428)</option>
+                    <option value="278080971">🟢 Shopee Dr.FORSKIN Store (278080971)</option>
+                    <option value="945974027">🟣 Shopee Glanzen Vietnam (945974027)</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <span class="filter-label">Thời Gian:</span>
+                <div class="date-pills">
+                    <button class="date-pill" onclick="setDateRange('today', this)">Hôm Nay</button>
+                    <button class="date-pill" onclick="setDateRange('yesterday', this)">Hôm Qua</button>
+                    <button class="date-pill" onclick="setDateRange('7days', this)">7 Ngày Qua</button>
+                    <button class="date-pill active" onclick="setDateRange('month', this)">Tháng 9/2026</button>
+                    <button class="date-pill" onclick="setDateRange('mega99', this)">Mega 9.9</button>
+                    <button class="date-pill" onclick="setDateRange('mega88', this)">Mega 8.8</button>
+                </div>
+                <div class="date-custom">
+                    <input type="date" id="startDate" class="date-input" value="2026-09-01" onchange="loadDashboardData()">
+                    <span style="color: var(--text-muted); font-size: 12px;">đến</span>
+                    <input type="date" id="endDate" class="date-input" value="2026-09-22" onchange="loadDashboardData()">
+                </div>
+            </div>
+        </div>
+
+        <!-- KPI CARDS -->
+        <div class="kpi-grid">
+            <!-- Spend Card -->
+            <div class="kpi-card c-spend">
+                <div class="kpi-header">
+                    <span class="kpi-title">Tổng Chi Phí Ads</span>
+                    <span class="kpi-icon">💰</span>
+                </div>
+                <div class="kpi-value" id="kpiSpend">0 đ</div>
+                <div class="kpi-submetrics">
+                    <span class="badge-growth neutral" id="kpiSpendGrowth">0% vs kỳ trước</span>
+                    <span id="kpiCpc">CPC: 0 đ</span>
+                </div>
+            </div>
+
+            <!-- GMV Card -->
+            <div class="kpi-card c-gmv">
+                <div class="kpi-header">
+                    <span class="kpi-title">Doanh Số Ads (GMV)</span>
+                    <span class="kpi-icon">📈</span>
+                </div>
+                <div class="kpi-value" id="kpiGmv">0 đ</div>
+                <div class="kpi-submetrics">
+                    <span class="badge-growth up" id="kpiGmvGrowth">+0% vs kỳ trước</span>
+                    <span id="kpiAov">AOV: 0 đ</span>
+                </div>
+            </div>
+
+            <!-- Orders Card -->
+            <div class="kpi-card c-orders">
+                <div class="kpi-header">
+                    <span class="kpi-title">Đơn Hàng Chuyển Đổi</span>
+                    <span class="kpi-icon">📦</span>
+                </div>
+                <div class="kpi-value" id="kpiOrders">0 đơn</div>
+                <div class="kpi-submetrics">
+                    <span class="badge-growth up" id="kpiOrdersGrowth">+0% vs kỳ trước</span>
+                    <span id="kpiItems">0 SP đã bán</span>
+                </div>
+            </div>
+
+            <!-- ROAS Card -->
+            <div class="kpi-card c-roas">
+                <div class="kpi-header">
+                    <span class="kpi-title">Hiệu Suất (ROAS)</span>
+                    <span class="kpi-icon">🎯</span>
+                </div>
+                <div class="kpi-value" id="kpiRoas" style="color: #8b5cf6;">0.00</div>
+                <div class="kpi-submetrics">
+                    <span id="kpiAcos">CIR: 0%</span>
+                    <span id="kpiCtr">CTR: 0%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CHARTS -->
+        <div class="charts-grid">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-title">
+                        <span>📊</span> Xu Hướng Chi Phí, Doanh Số & ROAS Theo Ngày
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="trendChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-title">
+                        <span>🏬</span> Phân Bổ Doanh Số Giữa 3 Shop
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="shareChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- TABS & DATA TABLES -->
+        <div class="tabs-card">
+            <div class="tabs-nav">
+                <button class="tab-btn active" onclick="switchTab('diagnostics', this)">
+                    <span>⚡</span> Chẩn Đoán & Cảnh Báo GMV Max
+                </button>
+                <button class="tab-btn" onclick="switchTab('daily', this)">
+                    <span>📅</span> Bảng Chi Tiết Theo Ngày
+                </button>
+                <button class="tab-btn" onclick="switchTab('shops', this)">
+                    <span>🏬</span> So Sánh 3 Gian Hàng
+                </button>
+                <button class="tab-btn" onclick="switchTab('megasale', this)">
+                    <span>🏆</span> Benchmark Mega Sale (9.9 vs 8.8)
+                </button>
+                <button class="tab-btn" onclick="switchTab('sop', this)">
+                    <span>📋</span> Quy Chuẩn Vận Hành 7 Ngày (SOP)
+                </button>
+            </div>
+
+            <!-- Tab 0: AI Diagnostics & Action Triggers (MỚI) -->
+            <div class="tab-content" id="tabDiagnostics" style="display: block;">
+                <!-- Header Summary -->
+                <div class="diag-header">
+                    <div class="diag-header-top">
+                        <div class="diag-header-title">
+                            <span>🤖</span> Trung Tâm Cảnh Báo & Ra Quyết Định GMV Max
+                        </div>
+                        <div style="font-size: 12.5px; color: #cbd5e1; font-weight: 600;">
+                            Đang theo dõi ngày: <strong id="diagTargetDateText" style="color: #38bdf8;">--</strong> (So sánh với ngày trước: <span id="diagPrevDateText">--</span>)
+                        </div>
+                    </div>
+                    <div class="diag-summary-grid">
+                        <div class="diag-summary-box">
+                            <div class="lbl">Tổng Chi Phí Ads</div>
+                            <div class="val" id="diagTotSpend" style="color: #f87171;">0 đ</div>
+                            <div class="sub" id="diagSpendDelta">0% vs hôm trước</div>
+                        </div>
+                        <div class="diag-summary-box">
+                            <div class="lbl">Tổng Doanh Số Ads</div>
+                            <div class="val" id="diagTotGmv" style="color: #38bdf8;">0 đ</div>
+                            <div class="sub" id="diagGmvDelta">0% vs hôm trước</div>
+                        </div>
+                        <div class="diag-summary-box">
+                            <div class="lbl">Blended ROAS</div>
+                            <div class="val" id="diagTotRoas" style="color: #c084fc;">0.00</div>
+                            <div class="sub" id="diagRoasDelta">0.00x vs hôm trước</div>
+                        </div>
+                        <div class="diag-summary-box">
+                            <div class="lbl">Tỷ Lệ Chi Phí / Doanh Thu (CIR)</div>
+                            <div class="val" id="diagTotCir" style="color: #fbbf24;">0%</div>
+                            <div class="sub" style="color: #94a3b8;">Trần đề xuất: &le; 13.0%</div>
+                        </div>
+                        <div class="diag-summary-box">
+                            <div class="lbl">Tổng Lượt Clicks</div>
+                            <div class="val" id="diagTotClicks">0</div>
+                            <div class="sub" id="diagClicksDelta">0% vs hôm trước</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shop Diagnostics Cards Container -->
+                <div id="shopDiagnosticsContainer">
+                    <div style="text-align: center; padding: 30px; color: var(--text-muted);">
+                        Đang phân tích dữ liệu GMV Max và tính toán cảnh báo hành động...
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 1: Daily Table -->
+            <div class="tab-content" id="tabDaily" style="display: none;">
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Ngày</th>
+                                <th style="text-align: right;">Chi Phí Ads</th>
+                                <th style="text-align: right;">Doanh Số (GMV)</th>
+                                <th style="text-align: center;">Đơn Hàng</th>
+                                <th style="text-align: center;">ROAS</th>
+                                <th style="text-align: center;">CIR (% CP/DT)</th>
+                                <th style="text-align: right;">Lượt Clicks</th>
+                                <th style="text-align: center;">CTR</th>
+                                <th style="text-align: right;">CPC</th>
+                                <th style="text-align: center;">Đánh Giá</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dailyTableBody">
+                            <tr><td colspan="10" style="text-align: center; padding: 20px;">Đang tải dữ liệu...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Tab 2: Shop Breakdown Table -->
+            <div class="tab-content" id="tabShops" style="display: none;">
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Gian Hàng</th>
+                                <th>Mã Shop</th>
+                                <th style="text-align: right;">Chi Phí Ads</th>
+                                <th style="text-align: center;">Tỷ Trọng Ngân Sách</th>
+                                <th style="text-align: right;">Doanh Số (GMV)</th>
+                                <th style="text-align: center;">Đơn Hàng</th>
+                                <th style="text-align: center;">ROAS</th>
+                                <th style="text-align: right;">Lượt Clicks</th>
+                                <th style="text-align: center;">CTR</th>
+                                <th style="text-align: right;">CPC</th>
+                            </tr>
+                        </thead>
+                        <tbody id="shopTableBody">
+                            <tr><td colspan="10" style="text-align: center; padding: 20px;">Đang tải dữ liệu...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Tab 3: Mega Sale Benchmark Table -->
+            <div class="tab-content" id="tabMegaSale" style="display: none;">
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Chỉ Số So Sánh</th>
+                                <th style="text-align: right;">Mega Sale 8.8 (08/08)</th>
+                                <th style="text-align: right;">Mega Sale 9.9 (09/09)</th>
+                                <th style="text-align: center;">Biến Động / Tăng Trưởng</th>
+                                <th style="text-align: left;">Đánh Giá Hiệu Quả</th>
+                            </tr>
+                        </thead>
+                        <tbody id="megaSaleTableBody">
+                            <tr><td colspan="5" style="text-align: center; padding: 20px;">Đang tải dữ liệu Benchmark...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Tab 4: 7-Day SOP Action Matrix (MỚI) -->
+            <div class="tab-content" id="tabSOP" style="display: none;">
+                <div class="sop-card">
+                    <h2 style="font-size: 18px; font-weight: 800; margin-bottom: 8px; color: var(--text-main);">
+                        🎯 Bộ Quy Chuẩn & Kế Hoạch 7 Ngày Thử Nghiệm Ổn Định Doanh Thu GMV Max
+                    </h2>
+                    <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 20px;">
+                        Quy trình hành động từng bước dành cho Leader và Nhân sự Vận hành để kiểm tra và tối ưu hiệu suất cho từng chiến dịch của 3 gian hàng Shopee.
+                    </p>
+
+                    <div class="sop-step-item">
+                        <div class="sop-step-num">1</div>
+                        <div class="sop-step-content">
+                            <h3>Ngày 1: Rà Soát Listing & Phân Tầng Target ROAS Ban Đầu Theo Danh Mục SKU</h3>
+                            <p>
+                                • Kiểm tra tiêu đề sản phẩm và ảnh bìa: Đảm bảo có chứa từ khóa nhu cầu cụ thể (trị mụn, kiềm dầu, giữ nếp 24h) để Shopee AI nhận diện đúng độ liên quan.<br>
+                                • Phân loại SKU vào đúng 4 tầng Target ROAS:
+                                <strong style="color: #ee4d2d;">Tầng 1 (Brand Search): 20 - 30</strong> | 
+                                <strong style="color: #059669;">Tầng 2 (Problem/Trị vấn đề): 15 - 25</strong> | 
+                                <strong style="color: #6366f1;">Tầng 3 (Feature/Đặc tính): 10 - 20</strong> | 
+                                <strong style="color: #64748b;">Tầng 4 (Broad): 1 - 10</strong>.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="sop-step-item">
+                        <div class="sop-step-num">2</div>
+                        <div class="sop-step-content">
+                            <h3>Ngày 2 - Ngày 6: Vận Hành Theo 3 Khung Giờ & Nguyên Tắc "1 Lần Đổi Target ROAS/Ngày"</h3>
+                            <p>
+                                • <strong>08:30 Sáng (Khung Duy Nhất Chỉnh Target ROAS):</strong> Đọc cảnh báo từ Dashboard. Nếu hôm qua ROAS thấp &lt;4.5 (Bệnh 1 - tệp rác) &rarr; Tăng Target ROAS thêm +10%. Nếu hôm qua bị nghẽn traffic/clicks giảm sâu &gt;30% (Bệnh 2 - thua thầu) &rarr; Hạ Target ROAS 5% hoặc bật Đẩy nhanh.<br>
+                                • <strong>12:30 Trưa (Trạm Cứu Hộ Ngân Sách):</strong> Chỉ kiểm tra rủi ro. Nếu cắn &gt;70% ngân sách mà 0 đơn &rarr; Hạ trần ngân sách ngày để hãm phanh. TUYỆT ĐỐI không đổi Target ROAS lúc này.<br>
+                                • <strong>19:30 Tối (Trạm Đón Sóng Giờ Vàng):</strong> Nếu ROAS ban ngày đạt &gt;6.5 &rarr; Mở rộng ngân sách (+20-30%) hoặc để Không giới hạn để hứng trọn giỏ hàng khung 20h - 23h.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="sop-step-item" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
+                        <div class="sop-step-num">3</div>
+                        <div class="sop-step-content">
+                            <h3>Ngày 7: Tổng Kết Hiệu Quả & Chuẩn Hóa Điểm Cân Bằng (Equilibrium ROAS)</h3>
+                            <p>
+                                • Đánh giá độ lệch doanh thu giữa các ngày: Mục tiêu là biên độ dao động GMV ngày &le; 15%.<br>
+                                • Cố định mốc Target ROAS tối ưu cho từng Hero SKU đã tìm ra trong tuần.<br>
+                                • Khóa ngân sách hàng ngày theo đúng tỷ trọng phân bổ: 30Shine (65%), Dr.FORSKIN (20%), Glanzen (15%).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div class="toast" id="toast">
+        <span id="toastIcon">✅</span>
+        <span id="toastMsg">Đã đồng bộ Shopee API thành công!</span>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 30Shine E-Commerce Division • Shopee Open API Automated Performance Tracking Engine.</p>
+    </footer>
+
+    <!-- LOGIC SCRIPT -->
+    <script>
+        let trendChartInstance = null;
+        let shareChartInstance = null;
+
+        // Định dạng tiền tệ VNĐ
+        function formatVND(num) {
+            return new Intl.NumberFormat('vi-VN').format(Math.round(num || 0)) + ' đ';
+        }
+
+        function formatNumber(num) {
+            return new Intl.NumberFormat('vi-VN').format(num || 0);
+        }
+
+        function showToast(msg, icon = '✅') {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').innerText = msg;
+            document.getElementById('toastIcon').innerText = icon;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3500);
+        }
+
+        // Khởi tạo ngày động theo thời gian thực
+        function getFormattedDate(d) {
+            const year = d.getFullYear();
+            const month = String(d.getMonth() + 1).padStart(2, '0');
+            const day = String(d.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+
+        function initDatePickers() {
+            const now = new Date();
+            const firstDayOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+            
+            document.getElementById('startDate').value = getFormattedDate(firstDayOfMonth);
+            document.getElementById('endDate').value = getFormattedDate(now);
+        }
+
+        // Đổi Preset Ngày linh hoạt
+        function setDateRange(preset, btn) {
+            document.querySelectorAll('.date-pill').forEach(p => p.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+
+            const now = new Date();
+            let start = getFormattedDate(new Date(now.getFullYear(), now.getMonth(), 1));
+            let end = getFormattedDate(now);
+
+            if (preset === 'today') {
+                start = getFormattedDate(now);
+                end = getFormattedDate(now);
+            } else if (preset === 'yesterday') {
+                const yest = new Date(now);
+                yest.setDate(yest.getDate() - 1);
+                start = getFormattedDate(yest);
+                end = getFormattedDate(yest);
+            } else if (preset === '7days') {
+                const d7 = new Date(now);
+                d7.setDate(d7.getDate() - 6);
+                start = getFormattedDate(d7);
+                end = getFormattedDate(now);
+            } else if (preset === 'month') {
+                const firstDay = new Date(now.getFullYear(), now.getMonth(), 1);
+                start = getFormattedDate(firstDay);
+                end = getFormattedDate(now);
+            } else if (preset === 'mega99') {
+                start = '2026-09-09';
+                end = '2026-09-09';
+            } else if (preset === 'mega88') {
+                start = '2026-08-08';
+                end = '2026-08-08';
+            }
+
+            document.getElementById('startDate').value = start;
+            document.getElementById('endDate').value = end;
+            loadDashboardData();
+        }
+
+        // Chuyển Tab
+        function switchTab(tabId, btn) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
+
+            btn.classList.add('active');
+            if (tabId === 'diagnostics') {
+                document.getElementById('tabDiagnostics').style.display = 'block';
+                loadDiagnosticsData();
+            }
+            if (tabId === 'daily') document.getElementById('tabDaily').style.display = 'block';
+            if (tabId === 'shops') document.getElementById('tabShops').style.display = 'block';
+            if (tabId === 'megasale') {
+                document.getElementById('tabMegaSale').style.display = 'block';
+                loadMegaSaleBenchmark();
+            }
+            if (tabId === 'sop') document.getElementById('tabSOP').style.display = 'block';
+        }
+
+        // Tải dữ liệu Chẩn Đoán & Cảnh Báo GMV Max
+        async function loadDiagnosticsData() {
+            const endDate = document.getElementById('endDate').value;
+            const container = document.getElementById('shopDiagnosticsContainer');
+
+            try {
+                const res = await fetch(`/api/shopee/gmvmax-diagnostics?target_date=${endDate}`);
+                const data = await res.json();
+                if (!data.success) {
+                    container.innerHTML = `<div style="color: red; text-align: center; padding: 20px;">Lỗi: ${data.error}</div>`;
+                    return;
+                }
+
+                const s = data.summary;
+                const g = s.growth;
+
+                document.getElementById('diagTargetDateText').innerText = s.target_date;
+                document.getElementById('diagPrevDateText').innerText = s.prev_date;
+
+                document.getElementById('diagTotSpend').innerText = formatVND(s.total_spend);
+                document.getElementById('diagSpendDelta').innerText = (g.spend_growth >= 0 ? '+' : '') + g.spend_growth + '% vs hôm trước';
+                document.getElementById('diagSpendDelta').style.color = g.spend_growth > 0 ? '#f87171' : '#4ade80';
+
+                document.getElementById('diagTotGmv').innerText = formatVND(s.total_gmv);
+                document.getElementById('diagGmvDelta').innerText = (g.gmv_growth >= 0 ? '+' : '') + g.gmv_growth + '% vs hôm trước';
+                document.getElementById('diagGmvDelta').style.color = g.gmv_growth >= 0 ? '#38bdf8' : '#f87171';
+
+                document.getElementById('diagTotRoas').innerText = s.blended_roas.toFixed(2);
+                document.getElementById('diagRoasDelta').innerText = (g.roas_delta >= 0 ? '+' : '') + g.roas_delta.toFixed(2) + 'x vs hôm trước';
+                document.getElementById('diagRoasDelta').style.color = g.roas_delta >= 0 ? '#4ade80' : '#f87171';
+
+                document.getElementById('diagTotCir').innerText = s.blended_cir + '%';
+                document.getElementById('diagTotClicks').innerText = formatNumber(s.total_clicks);
+                document.getElementById('diagClicksDelta').innerText = (g.clicks_growth >= 0 ? '+' : '') + g.clicks_growth + '% vs hôm trước';
+
+                // Render danh sách thẻ Shop
+                let html = '';
+                data.diagnostics.forEach(d => {
+                    const m = d.metrics;
+                    const c = d.comparison;
+                    const a = d.alert;
+
+                    let badgeClass = 'badge-30shine';
+                    if (d.shop_id === '278080971') badgeClass = 'badge-drforskin';
+                    if (d.shop_id === '945974027') badgeClass = 'badge-glanzen';
+
+                    let cardAlertClass = 'alert-' + a.level;
+                    let fillBadgeClass = 'badge-' + a.level + '-fill';
+                    let pillClass = 'pill-' + a.level;
+                    let boxClass = 'box-' + a.level;
+
+                    html += `
+                        <div class="shop-diag-card ${cardAlertClass}">
+                            <div class="diag-card-top">
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <span class="shop-badge ${badgeClass}" style="font-size: 13px; padding: 4px 10px;">${d.shop_name}</span>
+                                    <span style="color: var(--text-muted); font-size: 12px; font-weight: 600;">ID: ${d.shop_id}</span>
+                                </div>
+                                <div>
+                                    <span class="diag-alert-badge ${fillBadgeClass}">${a.badge}</span>
+                                </div>
+                            </div>
+
+                            <!-- Row Metrics -->
+                            <div class="diag-metrics-row">
+                                <div class="diag-metric-item">
+                                    <span class="lbl">Chi Phí Hôm Nay</span>
+                                    <span class="val" style="color: #ee4d2d;">${formatVND(m.spend)}</span>
+                                    <span class="sub" style="color: ${c.spend_delta_pct >= 0 ? '#dc2626' : '#16a34a'};">
+                                        ${c.spend_delta_pct >= 0 ? '+' : ''}${c.spend_delta_pct}% vs hôm trước
+                                    </span>
+                                </div>
+                                <div class="diag-metric-item">
+                                    <span class="lbl">Doanh Số (GMV)</span>
+                                    <span class="val" style="color: #0284c7;">${formatVND(m.gmv)}</span>
+                                    <span class="sub" style="color: ${c.gmv_delta_pct >= 0 ? '#16a34a' : '#dc2626'};">
+                                        ${c.gmv_delta_pct >= 0 ? '+' : ''}${c.gmv_delta_pct}% vs hôm trước
+                                    </span>
+                                </div>
+                                <div class="diag-metric-item">
+                                    <span class="lbl">ROAS Đạt Được</span>
+                                    <span class="val" style="color: #8b5cf6;">${m.roas.toFixed(2)}</span>
+                                    <span class="sub" style="color: ${c.roas_delta >= 0 ? '#16a34a' : '#dc2626'};">
+                                        ${c.roas_delta >= 0 ? '+' : ''}${c.roas_delta.toFixed(2)}x
+                                    </span>
+                                </div>
+                                <div class="diag-metric-item">
+                                    <span class="lbl">Tỷ Lệ CIR</span>
+                                    <span class="val" style="color: ${m.cir > 15 ? '#dc2626' : '#16a34a'};">${m.cir}%</span>
+                                    <span class="sub" style="color: var(--text-muted);">Trần &le; 13%</span>
+                                </div>
+                                <div class="diag-metric-item">
+                                    <span class="lbl">Lượt Clicks</span>
+                                    <span class="val">${formatNumber(m.clicks)}</span>
+                                    <span class="sub" style="color: ${c.clicks_delta_pct >= 0 ? '#16a34a' : '#dc2626'};">
+                                        ${c.clicks_delta_pct >= 0 ? '+' : ''}${c.clicks_delta_pct}%
+                                    </span>
+                                </div>
+                                <div class="diag-metric-item">
+                                    <span class="lbl">Giá/Click (CPC)</span>
+                                    <span class="val">${formatVND(m.cpc)}</span>
+                                    <span class="sub" style="color: var(--text-muted);">CTR: ${m.ctr.toFixed(2)}%</span>
+                                </div>
+                            </div>
+
+                            <!-- Root Cause Diagnostic -->
+                            <div class="diag-cause-box">
+                                <strong>🔍 Chẩn Đoán Nguyên Nhân:</strong> ${a.root_cause}
+                            </div>
+
+                            <!-- Prescribed Action Box -->
+                            <div class="action-prescribe-box ${boxClass}">
+                                <div class="action-header">
+                                    <span class="action-badge-pill ${pillClass}">👉 HÀNH ĐỘNG CẦN LÀM: ${a.action_badge}</span>
+                                    <span style="font-size: 11.5px; font-weight: 700; color: var(--text-muted);">${a.target_roas_guideline}</span>
+                                </div>
+                                <div class="action-detail-text">
+                                    ${a.action_detail}
+                                </div>
+
+                                <!-- 3 Checkpoints Timeline -->
+                                <div class="checkpoints-grid">
+                                    <div class="cp-card">
+                                        <div class="cp-time"><span>☀️</span> 08:30 Sáng (Khung Lệnh Duy Nhất)</div>
+                                        <div>Ra quyết định điều chỉnh Target ROAS (${a.action_badge}). Sau khi bấm xác nhận, <strong>KHÔNG SỬA LẠI</strong> trong ngày.</div>
+                                    </div>
+                                    <div class="cp-card">
+                                        <div class="cp-time"><span>⛅</span> 12:30 Trưa (Trạm Cứu Hộ)</div>
+                                        <div>Kiểm tra nhịp cắn tiền. Nếu cắn &gt;70% ngân sách mà 0 đơn &rarr; Hạ trần ngân sách ngày để hãm phanh an toàn.</div>
+                                    </div>
+                                    <div class="cp-card">
+                                        <div class="cp-time"><span>🌙</span> 19:30 Tối (Trạm Đón Sóng)</div>
+                                        <div>Nếu ROAS ban ngày &ge;6.5 &rarr; Tăng ngân sách ngày thêm 20-30% hoặc để Không giới hạn đón đỉnh mua sắm đêm.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                container.innerHTML = html;
+
+                // 2. Tải chi tiết từng Campaign và render Bảng Con Số Điều Chỉnh Cụ Thể
+                const resCamp = await fetch(`/api/shopee/campaign-diagnostics?target_date=${endDate}`);
+                const dataCamp = await resCamp.json();
+                if (dataCamp.success && dataCamp.campaigns) {
+                    const prevDateLabel = dataCamp.prev_date ? dataCamp.prev_date.split('-').slice(1).reverse().join('/') : 'Hôm Qua';
+                    const targetDateLabel = dataCamp.target_date ? dataCamp.target_date.split('-').slice(1).reverse().join('/') : 'Hôm Nay';
+                    
+                    let campHtml = `
+                        <div style="margin-top: 30px; background: #ffffff; border-radius: 16px; border: 1px solid var(--border); padding: 22px; box-shadow: var(--shadow-sm);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+                                <div>
+                                    <h3 style="font-size: 16px; font-weight: 800; color: var(--text-main); display: flex; align-items: center; gap: 8px;">
+                                        <span>🎯</span> Bảng Lệnh Điều Chỉnh Con Số Cụ Thể Theo Từng Chiến Dịch (${dataCamp.campaigns.length} Campaigns)
+                                    </h3>
+                                    <p style="font-size: 12.5px; color: var(--text-muted); margin-top: 2px;">
+                                        Nhân sự vận hành chỉ cần copy chính xác các con số bên dưới nhập vào Shopee Ads mà không cần tự tính toán.
+                                    </p>
+                                </div>
+                                <span class="badge-growth up" style="font-size: 12px; padding: 4px 10px;">Cập nhật realtime từ Shopee API</span>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Chiến Dịch & Tên SP</th>
+                                            <th>Gian Hàng</th>
+                                            <th style="text-align: right;">Hôm Qua (${prevDateLabel})</th>
+                                            <th style="text-align: right;">Hôm Nay (${targetDateLabel})</th>
+                                            <th style="text-align: center; background: #eff6ff; color: #1e40af;">TARGET ROAS CẦN NHẬP</th>
+                                            <th style="text-align: center; background: #fef2f2; color: #991b1b;">NGÂN SÁCH CẦN ĐẶT</th>
+                                            <th style="text-align: center;">Chế Độ</th>
+                                            <th>Lệnh Thao Tác Chi Tiết</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                    `;
+
+                    dataCamp.campaigns.forEach(c => {
+                        const y = c.metrics_yesterday;
+                        const t = c.metrics_today;
+                        const r = c.recommendation;
+
+                        let badgeClass = 'badge-30shine';
+                        if (c.shop_id === '278080971') badgeClass = 'badge-drforskin';
+                        if (c.shop_id === '945974027') badgeClass = 'badge-glanzen';
+
+                        let roasBadge = r.new_target_roas !== r.current_target_roas 
+                            ? `<span style="font-size: 13px; font-weight: 800; color: #2563eb; background: #dbeafe; padding: 3px 8px; border-radius: 6px;">${r.new_target_roas}</span> <span style="font-size: 11px; color: var(--text-muted); text-decoration: line-through;">(${r.current_target_roas})</span>`
+                            : `<span style="font-size: 13px; font-weight: 800; color: #059669; background: #d1fae5; padding: 3px 8px; border-radius: 6px;">${r.current_target_roas}</span>`;
+
+                        let budgetBadge = r.new_budget_vnd > 0 
+                            ? `<span style="font-size: 13px; font-weight: 800; color: #dc2626; background: #fee2e2; padding: 3px 8px; border-radius: 6px;">${formatVND(r.new_budget_vnd)}</span>`
+                            : `<span style="font-size: 12px; color: var(--text-muted);">Không giới hạn</span>`;
+
+                        campHtml += `
+                            <tr>
+                                <td style="max-width: 280px;">
+                                    <strong style="font-size: 13px; color: var(--text-main); display: block;">${c.ad_name}</strong>
+                                    <span style="font-size: 11px; color: var(--text-muted);">ID Camp: ${c.campaign_id} • ${c.tier_name}</span>
+                                </td>
+                                <td><span class="shop-badge ${badgeClass}">${c.shop_name}</span></td>
+                                <td style="text-align: right; font-size: 12px;">
+                                    <div>Chi: <strong>${formatVND(y.spend)}</strong></div>
+                                    <div style="color: #0284c7;">GMV: ${formatVND(y.gmv)}</div>
+                                    <div>ROAS: <span class="roas-pill ${y.roas >= 5 ? 'roas-high' : 'roas-low'}">${y.roas.toFixed(2)}</span></div>
+                                </td>
+                                <td style="text-align: right; font-size: 12px;">
+                                    <div>Chi: <strong>${formatVND(t.spend)}</strong></div>
+                                    <div style="color: #0284c7;">GMV: ${formatVND(t.gmv)}</div>
+                                    <div>ROAS: <span class="roas-pill ${t.roas >= 5 ? 'roas-high' : 'roas-low'}">${t.roas.toFixed(2)}</span></div>
+                                </td>
+                                <td style="text-align: center; background: #f8fafc;">${roasBadge}</td>
+                                <td style="text-align: center; background: #f8fafc;">${budgetBadge}</td>
+                                <td style="text-align: center; font-size: 11.5px; font-weight: 700;">${r.status_mode}</td>
+                                <td style="font-size: 12.5px; color: #334155; font-weight: 600;">
+                                    👉 ${r.instruction}
+                                </td>
+                            </tr>
+                        `;
+                    });
+
+                    campHtml += `
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    `;
+                    container.innerHTML += campHtml;
+                }
+            } catch (err) {
+                container.innerHTML = `<div style="color: red; text-align: center; padding: 20px;">Lỗi tải chẩn đoán: ${err.message}</div>`;
+            }
+        }
+
+
+
+        // Kích hoạt đồng bộ API
+        async function triggerSync() {
+            const btn = document.getElementById('btnSync');
+            const icon = document.getElementById('syncIcon');
+            const text = document.getElementById('syncText');
+
+            btn.disabled = true;
+            icon.innerText = '⏳';
+            text.innerText = 'Đang kéo Shopee API...';
+
+            const startDate = document.getElementById('startDate').value;
+            const endDate = document.getElementById('endDate').value;
+
+            try {
+                const res = await fetch('/api/shopee/sync', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ start_date: startDate, end_date: endDate })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    showToast(`Đã đồng bộ thành công ${data.total_records} bản ghi Shopee Ads!`);
+                    loadDashboardData();
+                } else {
+                    showToast('Đồng bộ thất bại: ' + (data.error || 'Lỗi API'), '⚠️');
+                }
+            } catch (err) {
+                showToast('Lỗi kết nối Server: ' + err.message, '⚠️');
+            } finally {
+                btn.disabled = false;
+                icon.innerText = '🔄';
+                text.innerText = 'Đồng Bộ API Ngay';
+            }
+        }
+
+        // Tải toàn bộ dữ liệu Dashboard
+        async function loadDashboardData() {
+            const shopId = document.getElementById('shopSelect').value;
+            const startDate = document.getElementById('startDate').value;
+            const endDate = document.getElementById('endDate').value;
+
+            // 1. Tải KPIs
+            try {
+                const resKpi = await fetch(`/api/shopee/kpis?shop_id=${shopId}&start_date=${startDate}&end_date=${endDate}`);
+                const dataKpi = await resKpi.json();
+                if (dataKpi.success) {
+                    const k = dataKpi.kpis;
+                    const g = dataKpi.growth;
+
+                    document.getElementById('kpiSpend').innerText = formatVND(k.spend);
+                    document.getElementById('kpiGmv').innerText = formatVND(k.broad_gmv);
+                    document.getElementById('kpiOrders').innerText = formatNumber(k.broad_orders) + ' đơn';
+                    document.getElementById('kpiRoas').innerText = (k.broad_roas || 0).toFixed(2);
+
+                    document.getElementById('kpiCpc').innerText = 'CPC: ' + formatVND(k.cpc);
+                    document.getElementById('kpiAov').innerText = 'AOV: ' + formatVND(k.aov);
+                    document.getElementById('kpiItems').innerText = formatNumber(k.broad_items) + ' SP đã bán';
+                    document.getElementById('kpiAcos').innerText = 'CIR: ' + k.acos + '%';
+                    document.getElementById('kpiCtr').innerText = 'CTR: ' + k.ctr + '%';
+
+                    // Growth badges
+                    const setGrowth = (elId, val) => {
+                        const el = document.getElementById(elId);
+                        el.innerText = (val >= 0 ? '+' : '') + val + '% vs kỳ trước';
+                        el.className = 'badge-growth ' + (val > 0 ? 'up' : val < 0 ? 'down' : 'neutral');
+                    };
+                    setGrowth('kpiSpendGrowth', g.spend_growth);
+                    setGrowth('kpiGmvGrowth', g.gmv_growth);
+                    setGrowth('kpiOrdersGrowth', g.orders_growth);
+                }
+            } catch (e) {
+                console.error('Error loading KPIs:', e);
+            }
+
+            // 2. Tải Timeseries cho Chart & Daily Table
+            try {
+                const resTime = await fetch(`/api/shopee/timeseries?shop_id=${shopId}&start_date=${startDate}&end_date=${endDate}`);
+                const dataTime = await resTime.json();
+                if (dataTime.success) {
+                    renderTrendChart(dataTime.timeseries);
+                    renderDailyTable(dataTime.timeseries);
+                }
+            } catch (e) {
+                console.error('Error loading timeseries:', e);
+            }
+
+            // 3. Tải Shop Breakdown
+            try {
+                const resShop = await fetch(`/api/shopee/shop-breakdown?start_date=${startDate}&end_date=${endDate}`);
+                const dataShop = await resShop.json();
+                if (dataShop.success) {
+                    renderShareChart(dataShop.shops);
+                    renderShopTable(dataShop.shops);
+                }
+            } catch (e) {
+                console.error('Error loading shop breakdown:', e);
+            }
+
+            // 4. Tải Chẩn Đoán & Cảnh Báo GMV Max
+            loadDiagnosticsData();
+        }
+
+        // Vẽ biểu đồ Trend Chart
+        function renderTrendChart(series) {
+            const ctx = document.getElementById('trendChart').getContext('2d');
+            const labels = series.map(s => {
+                const parts = s.date.split('-');
+                return `${parts[2]}/${parts[1]}`;
+            });
+            const spends = series.map(s => s.spend);
+            const gmvs = series.map(s => s.gmv);
+            const roases = series.map(s => s.roas);
+
+            if (trendChartInstance) trendChartInstance.destroy();
+
+            trendChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Doanh Số Ads (GMV)',
+                            data: gmvs,
+                            backgroundColor: 'rgba(2, 132, 199, 0.75)',
+                            borderRadius: 6,
+                            yAxisID: 'y'
+                        },
+                        {
+                            label: 'Chi Phí Ads (Spend)',
+                            data: spends,
+                            backgroundColor: 'rgba(238, 77, 45, 0.85)',
+                            borderRadius: 6,
+                            yAxisID: 'y'
+                        },
+                        {
+                            label: 'ROAS',
+                            data: roases,
+                            type: 'line',
+                            borderColor: '#8b5cf6',
+                            borderWidth: 3,
+                            pointBackgroundColor: '#8b5cf6',
+                            pointRadius: 4,
+                            yAxisID: 'y1'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    scales: {
+                        y: {
+                            type: 'linear',
+                            position: 'left',
+                            ticks: {
+                                callback: val => (val / 1000000).toFixed(1) + 'M'
+                            },
+                            grid: { color: '#f1f5f9' }
+                        },
+                        y1: {
+                            type: 'linear',
+                            position: 'right',
+                            min: 0,
+                            ticks: { callback: val => val.toFixed(1) + 'x' },
+                            grid: { drawOnChartArea: false }
+                        },
+                        x: { grid: { display: false } }
+                    },
+                    plugins: {
+                        legend: { position: 'top', labels: { boxWidth: 12, font: { weight: '600' } } }
+                    }
+                }
+            });
+        }
+
+        // Vẽ biểu đồ Share Chart
+        function renderShareChart(shops) {
+            const ctx = document.getElementById('shareChart').getContext('2d');
+            const labels = shops.map(s => s.shop_name);
+            const data = shops.map(s => s.gmv);
+
+            if (shareChartInstance) shareChartInstance.destroy();
+
+            shareChartInstance = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: data,
+                        backgroundColor: ['#ee4d2d', '#059669', '#6366f1'],
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11, weight: '600' } } }
+                    }
+                }
+            });
+        }
+
+        // Điền bảng Daily Table
+        function renderDailyTable(series) {
+            const tbody = document.getElementById('dailyTableBody');
+            if (!series || series.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="10" style="text-align: center; padding: 20px;">Không có dữ liệu trong khoảng thời gian này.</td></tr>';
+                return;
+            }
+
+            let html = '';
+            series.slice().reverse().forEach(s => {
+                const acos = s.gmv > 0 ? (s.spend / s.gmv * 100).toFixed(1) : '0';
+                const cpc = s.clicks > 0 ? formatVND(s.spend / s.clicks) : '0 đ';
+                
+                let roasClass = 'roas-mid';
+                let evalText = '🟢 Tốt';
+                if (s.roas >= 7.0) { roasClass = 'roas-high'; evalText = '🚀 Xuất Sắc'; }
+                else if (s.roas < 4.0) { roasClass = 'roas-low'; evalText = '⚠️ Cần Tối Ưu'; }
+
+                html += `
+                    <tr>
+                        <td><strong>${s.date}</strong></td>
+                        <td style="text-align: right; font-weight: 700; color: #ee4d2d;">${formatVND(s.spend)}</td>
+                        <td style="text-align: right; font-weight: 700; color: #0284c7;">${formatVND(s.gmv)}</td>
+                        <td style="text-align: center; font-weight: 700;">${formatNumber(s.orders)}</td>
+                        <td style="text-align: center;"><span class="roas-pill ${roasClass}">${s.roas.toFixed(2)}</span></td>
+                        <td style="text-align: center; font-weight: 600;">${acos}%</td>
+                        <td style="text-align: right;">${formatNumber(s.clicks)}</td>
+                        <td style="text-align: center;">${s.ctr.toFixed(2)}%</td>
+                        <td style="text-align: right;">${cpc}</td>
+                        <td style="text-align: center; font-weight: 700;">${evalText}</td>
+                    </tr>
+                `;
+            });
+            tbody.innerHTML = html;
+        }
+
+        // Điền bảng Shop Breakdown Table
+        function renderShopTable(shops) {
+            const tbody = document.getElementById('shopTableBody');
+            if (!shops || shops.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="10" style="text-align: center; padding: 20px;">Không có dữ liệu shop.</td></tr>';
+                return;
+            }
+
+            let html = '';
+            shops.forEach(s => {
+                let badgeClass = 'badge-30shine';
+                if (s.shop_id === '278080971') badgeClass = 'badge-drforskin';
+                if (s.shop_id === '945974027') badgeClass = 'badge-glanzen';
+
+                let roasClass = s.roas >= 7 ? 'roas-high' : s.roas >= 5 ? 'roas-mid' : 'roas-low';
+
+                html += `
+                    <tr>
+                        <td><span class="shop-badge ${badgeClass}">${s.shop_name}</span></td>
+                        <td style="color: var(--text-muted); font-size: 12px;">${s.shop_id}</td>
+                        <td style="text-align: right; font-weight: 700; color: #ee4d2d;">${formatVND(s.spend)}</td>
+                        <td style="text-align: center; font-weight: 700;">${s.spend_share}%</td>
+                        <td style="text-align: right; font-weight: 700; color: #0284c7;">${formatVND(s.gmv)}</td>
+                        <td style="text-align: center; font-weight: 700;">${formatNumber(s.orders)}</td>
+                        <td style="text-align: center;"><span class="roas-pill ${roasClass}">${s.roas.toFixed(2)}</span></td>
+                        <td style="text-align: right;">${formatNumber(s.clicks)}</td>
+                        <td style="text-align: center;">${s.ctr.toFixed(2)}%</td>
+                        <td style="text-align: right;">${formatVND(s.cpc)}</td>
+                    </tr>
+                `;
+            });
+            tbody.innerHTML = html;
+        }
+
+        // Tải bảng Mega Sale Benchmark
+        async function loadMegaSaleBenchmark() {
+            const tbody = document.getElementById('megaSaleTableBody');
+            try {
+                const res = await fetch('/api/shopee/mega-sale-benchmark');
+                const data = await res.json();
+                if (data.success) {
+                    const d88 = data.day_88;
+                    const d99 = data.day_99;
+                    const g = data.growth;
+
+                    tbody.innerHTML = `
+                        <tr>
+                            <td><strong>💰 Tổng Chi Phí Ads</strong></td>
+                            <td style="text-align: right;">${formatVND(d88.total_spend)}</td>
+                            <td style="text-align: right; font-weight: 800; color: #ee4d2d;">${formatVND(d99.total_spend)}</td>
+                            <td style="text-align: center;"><span class="badge-growth up">+${g.spend_growth}%</span></td>
+                            <td>Tăng ngân sách đấu thầu giờ vàng</td>
+                        </tr>
+                        <tr>
+                            <td><strong>📈 Doanh Số Ads (GMV)</strong></td>
+                            <td style="text-align: right;">${formatVND(d88.total_gmv)}</td>
+                            <td style="text-align: right; font-weight: 800; color: #0284c7;">${formatVND(d99.total_gmv)}</td>
+                            <td style="text-align: center;"><span class="badge-growth neutral">${g.gmv_growth}%</span></td>
+                            <td>Duy trì ổn định mức ~31 Triệu VNĐ</td>
+                        </tr>
+                        <tr>
+                            <td><strong>📦 Số Đơn Chuyển Đổi Ads</strong></td>
+                            <td style="text-align: right;">${d88.total_orders} đơn</td>
+                            <td style="text-align: right; font-weight: 800; color: #10b981;">${d99.total_orders} đơn</td>
+                            <td style="text-align: center;"><span class="badge-growth up">+${g.orders_growth}% 🚀</span></td>
+                            <td>Số đơn hàng phát sinh từ Ads tăng +13.3%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>🎯 Blended ROAS</strong></td>
+                            <td style="text-align: right;">${d88.blended_roas.toFixed(2)}</td>
+                            <td style="text-align: right; font-weight: 800; color: #8b5cf6;">${d99.blended_roas.toFixed(2)}</td>
+                            <td style="text-align: center;"><span class="badge-growth down">-19.3%</span></td>
+                            <td>ROAS giảm nhẹ do giá thầu D-Day cạnh tranh</td>
+                        </tr>
+                        <tr>
+                            <td><strong>🏆 Shop Bứt Phá Nhất: Glanzen</strong></td>
+                            <td style="text-align: right;">ROAS: 4.51 (Spend 789k)</td>
+                            <td style="text-align: right; font-weight: 800; color: #10b981;">ROAS: 7.81 (Spend 619k)</td>
+                            <td style="text-align: center;"><span class="badge-growth up">+73.2% 🏆</span></td>
+                            <td>Tiết kiệm 21.5% Ads nhưng GMV tăng +36%</td>
+                        </tr>
+                    `;
+                }
+            } catch (e) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: red;">Lỗi tải dữ liệu Benchmark.</td></tr>';
+            }
+        }
+
+        // Khởi động khi tải trang
+        document.addEventListener('DOMContentLoaded', () => {
+            initDatePickers();
+            loadDashboardData();
+        });
+    </script>
+</body>
+</html>
