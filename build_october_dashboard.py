@@ -1,51 +1,8 @@
 import json
 
 with open('/Users/longnd/tiktok-dashboard/october_campaigns.json', 'r', encoding='utf-8') as f:
-    shopee_camps = json.load(f)
+    all_campaigns = json.load(f)
 
-# Add TikTok GMV Max campaigns
-tiktok_camps = [
-    {
-        "shop": "TikTok Shop (GMV Max)",
-        "name": "TikTok GMV Max - Sáp Glanzen & Combo Dưỡng Tóc (Video Shopping Ads)",
-        "type": "Video Ads",
-        "bidding": "GMV Max Auto",
-        "imp": 36500,
-        "clicks": 680,
-        "ctr": 1.86,
-        "cpc": 4550.0,
-        "orders": 64,
-        "sold": 68,
-        "spend": 3094000.0,
-        "gmv": 18920000.0,
-        "aov": 295625.0,
-        "cpa": 48344.0,
-        "roas": 6.11,
-        "cir": 16.35,
-        "status": "safe"
-    },
-    {
-        "shop": "TikTok Shop (GMV Max)",
-        "name": "TikTok Product Card (PSA / Shop Tab) - Hero SKU Glanzen & Dr.FORSKIN",
-        "type": "Product Card",
-        "bidding": "GMV Max Product Card",
-        "imp": 15500,
-        "clicks": 300,
-        "ctr": 1.94,
-        "cpc": 4773.0,
-        "orders": 35,
-        "sold": 37,
-        "spend": 1432000.0,
-        "gmv": 8511924.0,
-        "aov": 243198.0,
-        "cpa": 40914.0,
-        "roas": 5.94,
-        "cir": 16.82,
-        "status": "safe"
-    }
-]
-
-all_campaigns = shopee_camps + tiktok_camps
 json_str = json.dumps(all_campaigns, ensure_ascii=False)
 
 html_content = """<!DOCTYPE html>
@@ -202,8 +159,8 @@ html_content = """<!DOCTYPE html>
 
         /* STRATEGIC ALERT BANNER */
         .alert-banner {
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(37, 99, 235, 0.15) 100%);
-            border: 1px solid rgba(56, 189, 248, 0.3);
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(239, 68, 68, 0.15) 100%);
+            border: 1px solid rgba(245, 158, 11, 0.3);
             border-radius: 16px;
             padding: 18px 24px;
             margin-bottom: 24px;
@@ -401,14 +358,14 @@ html_content = """<!DOCTYPE html>
             <div class="header-left">
                 <h1><i class="fa-solid fa-chart-line" style="color: #ee4d2d;"></i> Báo Cáo Hiệu Suất Quảng Cáo Đa Kênh (01/10 - 04/10/2026)</h1>
                 <p>
-                    <span class="badge-live">Dữ liệu thực tế 4 ngày đầu tháng 10</span>
-                    <span>• Hợp nhất 15 chiến dịch (Shopee 3 Shop + TikTok Shop GMV Max)</span>
+                    <span class="badge-live">Dữ liệu thực tế chuẩn từ Shopee &amp; TikTok Shop Seller Center</span>
+                    <span>• Tổng hợp 15 chiến dịch đa kênh</span>
                 </p>
             </div>
             <div class="scope-switcher">
                 <button class="switch-btn active" data-scope="all" onclick="filterScope('all', this)"><i class="fa-solid fa-globe"></i> Toàn Sàn (Shopee + TikTok)</button>
                 <button class="switch-btn" data-scope="Shopee" onclick="filterScope('Shopee', this)"><i class="fa-solid fa-bag-shopping" style="color: #ee4d2d;"></i> Shopee (3 Shop)</button>
-                <button class="switch-btn" data-scope="TikTok Shop (GMV Max)" onclick="filterScope('TikTok Shop (GMV Max)', this)"><i class="fa-brands fa-tiktok" style="color: #00f2fe;"></i> TikTok Shop</button>
+                <button class="switch-btn" data-scope="TikTok Shop (GMV Max)" onclick="filterScope('TikTok Shop (GMV Max)', this)"><i class="fa-brands fa-tiktok" style="color: #00f2fe;"></i> TikTok Shop GMV Max</button>
                 <button class="switch-btn" data-scope="30Shine Store" onclick="filterScope('30Shine Store', this)">30Shine</button>
                 <button class="switch-btn" data-scope="Dr.FORSKIN" onclick="filterScope('Dr.FORSKIN', this)">Dr.FORSKIN</button>
                 <button class="switch-btn" data-scope="Glanzen Vietnam" onclick="filterScope('Glanzen Vietnam', this)">Glanzen</button>
@@ -418,10 +375,10 @@ html_content = """<!DOCTYPE html>
         <!-- STRATEGIC ALERT BANNER -->
         <div class="alert-banner">
             <div>
-                <strong style="color: #38bdf8; font-size: 15px;"><i class="fa-solid fa-bullseye"></i> Kế Hoạch Đánh Đổi Lợi Nhuận Tuyệt Đối (Tháng 10):</strong>
+                <strong style="color: #fbbf24; font-size: 15px;"><i class="fa-solid fa-triangle-exclamation"></i> CẢNH BÁO VẬN HÀNH TIKTOK ADS (01 - 04/10):</strong>
                 <span style="color: var(--text-muted); font-size: 13px; margin-left: 8px;">
-                    Mục tiêu Gross GMV: <strong>966.3M đ</strong> | Ngân sách Ads: <strong>116.3M đ</strong> (CIR ≤ 12.04%).
-                    Đến ngày <strong>15/10</strong>, nếu luỹ kế GMV &lt; 385M đ (&lt; 80% tiến độ), kích hoạt Plan B: bung ngân sách Ads lên <strong>15% - 16% CIR</strong> để bảo vệ Doanh thu tuyệt đối và <strong>EBITDA ròng ≥ 164M - 184M đ</strong>.
+                    TikTok GMV Max đang chi tiêu <strong>7,201,707 đ</strong> để tạo ra <strong>27,691,140 đ GMV (78 đơn)</strong>.
+                    Hiệu suất ROAS đạt <strong>3.85x</strong> (CIR = <strong>26.01%</strong>, CPA = <strong>92,330 đ</strong>) đang ở mức cao. Cần khẩn trương hạ giá thầu và dồn ngân sách sang Product Card trước Mega 10.10!
                 </span>
             </div>
             <a href="https://github.com/phamphilong0711-cell/Ecom-Dashboard" target="_blank" class="badge-safe" style="text-decoration: none; padding: 6px 14px;">
@@ -434,64 +391,64 @@ html_content = """<!DOCTYPE html>
             <!-- 1. GMV -->
             <div class="kpi-card" style="--card-accent: #10b981;">
                 <div class="kpi-title"><span>Tổng Doanh Thu (GMV)</span><i class="fa-solid fa-sack-dollar" style="color: #10b981;"></i></div>
-                <div class="kpi-val num-font" id="kpi-gmv" style="color: #34d399;">77,381,884 đ</div>
-                <div class="kpi-sub">Bình quân: <strong class="num-font" style="color: #fff;" id="kpi-gmv-day">19,345,471 đ/ngày</strong></div>
+                <div class="kpi-val num-font" id="kpi-gmv" style="color: #34d399;">77,641,100 đ</div>
+                <div class="kpi-sub">Bình quân: <strong class="num-font" style="color: #fff;" id="kpi-gmv-day">19,410,275 đ/ngày</strong></div>
             </div>
 
             <!-- 2. Spend -->
             <div class="kpi-card" style="--card-accent: #ef4444;">
                 <div class="kpi-title"><span>Chi Phí Quảng Cáo (Spend)</span><i class="fa-solid fa-credit-card" style="color: #ef4444;"></i></div>
-                <div class="kpi-val num-font" id="kpi-spend" style="color: #f87171;">12,830,305 đ</div>
-                <div class="kpi-sub">Bình quân: <strong class="num-font" style="color: #fff;" id="kpi-spend-day">3,207,576 đ/ngày</strong></div>
+                <div class="kpi-val num-font" id="kpi-spend" style="color: #f87171;">15,506,012 đ</div>
+                <div class="kpi-sub">Bình quân: <strong class="num-font" style="color: #fff;" id="kpi-spend-day">3,876,503 đ/ngày</strong></div>
             </div>
 
             <!-- 3. ROAS & CIR -->
             <div class="kpi-card" style="--card-accent: #38bdf8;">
                 <div class="kpi-title"><span>Hiệu Suất ROAS & CIR</span><i class="fa-solid fa-gauge-high" style="color: #38bdf8;"></i></div>
-                <div class="kpi-val num-font" id="kpi-roas" style="color: #38bdf8;">6.03x <span style="font-size: 16px; color: #fbbf24;">(16.58%)</span></div>
-                <div class="kpi-sub"><span class="badge-safe">🟢 An toàn trước Mega 10.10</span></div>
+                <div class="kpi-val num-font" id="kpi-roas" style="color: #38bdf8;">5.01x <span style="font-size: 16px; color: #fbbf24;">(19.97%)</span></div>
+                <div class="kpi-sub"><span class="badge-warn">🟡 Cần tối ưu để hạ CIR về &le; 16%</span></div>
             </div>
 
             <!-- 4. Orders & AOV -->
             <div class="kpi-card" style="--card-accent: #a855f7;">
                 <div class="kpi-title"><span>Đơn Hàng & AOV</span><i class="fa-solid fa-bag-shopping" style="color: #a855f7;"></i></div>
-                <div class="kpi-val num-font" id="kpi-orders" style="color: #c084fc;">252 đơn <span style="font-size: 14px; color: var(--text-muted);">/ 264 sp</span></div>
-                <div class="kpi-sub">AOV: <strong class="num-font" style="color: #fff;" id="kpi-aov">307,071 đ</strong> (Chuẩn 305k)</div>
+                <div class="kpi-val num-font" id="kpi-orders" style="color: #c084fc;">231 đơn <span style="font-size: 14px; color: var(--text-muted);">/ 241 sp</span></div>
+                <div class="kpi-sub">AOV: <strong class="num-font" style="color: #fff;" id="kpi-aov">336,109 đ</strong> (Chuẩn 305k)</div>
             </div>
 
             <!-- 5. Impressions -->
             <div class="kpi-card" style="--card-accent: #3b82f6;">
                 <div class="kpi-title"><span>Lượt Hiển Thị (Imp)</span><i class="fa-solid fa-eye" style="color: #3b82f6;"></i></div>
-                <div class="kpi-val num-font" id="kpi-imp">107,867</div>
-                <div class="kpi-sub">Bình quân: <strong class="num-font" style="color: #fff;">26,967 Imp/ngày</strong></div>
+                <div class="kpi-val num-font" id="kpi-imp">134,367</div>
+                <div class="kpi-sub">Bình quân: <strong class="num-font" style="color: #fff;">33,592 Imp/ngày</strong></div>
             </div>
 
             <!-- 6. Clicks & CTR -->
             <div class="kpi-card" style="--card-accent: #f59e0b;">
                 <div class="kpi-title"><span>Lượt Clicks & CTR</span><i class="fa-solid fa-arrow-pointer" style="color: #f59e0b;"></i></div>
-                <div class="kpi-val num-font" id="kpi-clicks" style="color: #fbbf24;">2,173 <span style="font-size: 15px; color: #34d399;">(2.01%)</span></div>
-                <div class="kpi-sub">CTR Đạt chuẩn mục tiêu <strong class="num-font">&gt; 2.0%</strong></div>
+                <div class="kpi-val num-font" id="kpi-clicks" style="color: #fbbf24;">2,673 <span style="font-size: 15px; color: #34d399;">(1.99%)</span></div>
+                <div class="kpi-sub">CTR Đạt chuẩn xấp xỉ <strong class="num-font">&approx; 2.0%</strong></div>
             </div>
 
             <!-- 7. CPC -->
             <div class="kpi-card" style="--card-accent: #64748b;">
                 <div class="kpi-title"><span>Giá Mỗi Click (CPC)</span><i class="fa-solid fa-tag" style="color: #94a3b8;"></i></div>
-                <div class="kpi-val num-font" id="kpi-cpc">5,904 đ</div>
+                <div class="kpi-val num-font" id="kpi-cpc">5,801 đ</div>
                 <div class="kpi-sub">Ngưỡng kiểm soát an toàn &lt; 7.0k đ</div>
             </div>
 
             <!-- 8. Conversion Rates -->
             <div class="kpi-card" style="--card-accent: #10b981;">
                 <div class="kpi-title"><span>Tỷ Lệ Chuyển Đổi (CR)</span><i class="fa-solid fa-filter" style="color: #10b981;"></i></div>
-                <div class="kpi-val num-font" id="kpi-cr" style="color: #34d399;">11.60% <span style="font-size: 13px; color: var(--text-muted);">Click CR</span></div>
-                <div class="kpi-sub">Imp-to-Order CR: <strong class="num-font" style="color: #fff;" id="kpi-imp-cr">0.234%</strong> (Chuẩn 0.20%)</div>
+                <div class="kpi-val num-font" id="kpi-cr" style="color: #34d399;">8.64% <span style="font-size: 13px; color: var(--text-muted);">Click CR</span></div>
+                <div class="kpi-sub">Imp-to-Order CR: <strong class="num-font" style="color: #fff;" id="kpi-imp-cr">0.172%</strong></div>
             </div>
 
             <!-- 9. CPA -->
             <div class="kpi-card" style="--card-accent: #ec4899;">
                 <div class="kpi-title"><span>Chi Phí Mỗi Đơn (CPA)</span><i class="fa-solid fa-receipt" style="color: #ec4899;"></i></div>
-                <div class="kpi-val num-font" id="kpi-cpa" style="color: #f472b6;">50,914 đ</div>
-                <div class="kpi-sub"><span class="badge-safe">🟢 Dưới trần tối đa 60,300 đ</span></div>
+                <div class="kpi-val num-font" id="kpi-cpa" style="color: #f472b6;">67,126 đ</div>
+                <div class="kpi-sub"><span class="badge-warn">🟡 Shopee 54.3k đ vs TikTok 92.3k đ</span></div>
             </div>
 
             <!-- 10. Mega 10.10 Target Tracker -->
@@ -504,8 +461,8 @@ html_content = """<!DOCTYPE html>
             <!-- 11. 15/10 Pacing Status -->
             <div class="kpi-card" style="--card-accent: #06b6d4;">
                 <div class="kpi-title"><span>Tiến Độ Mốc 15/10</span><i class="fa-solid fa-stopwatch" style="color: #06b6d4;"></i></div>
-                <div class="kpi-val num-font" style="color: #22d3ee;">77.38M / 483M</div>
-                <div class="kpi-sub">Đạt 16.0% mục tiêu nửa tháng sau 4 ngày</div>
+                <div class="kpi-val num-font" style="color: #22d3ee;">77.64M / 483M</div>
+                <div class="kpi-sub">Đạt 16.1% mục tiêu nửa tháng sau 4 ngày</div>
             </div>
         </div>
 
@@ -513,7 +470,7 @@ html_content = """<!DOCTYPE html>
         <div class="tab-nav">
             <button class="tab-btn active" onclick="switchTab('tab-channels', this)"><i class="fa-solid fa-diagram-project"></i> Phân Bổ Sàn (Shopee vs TikTok)</button>
             <button class="tab-btn" onclick="switchTab('tab-campaigns', this)"><i class="fa-solid fa-list-check"></i> Chi Tiết Toàn Bộ 15 Chiến Dịch</button>
-            <button class="tab-btn" onclick="switchTab('tab-actions', this)"><i class="fa-solid fa-lightbulb"></i> Cảnh Báo & Hành Động Tối Ưu</button>
+            <button class="tab-btn" onclick="switchTab('tab-actions', this)"><i class="fa-solid fa-lightbulb"></i> Cảnh Báo &amp; Hành Động Cấp Bách</button>
         </div>
 
         <!-- TAB 1: CHANNEL COMPARISON -->
@@ -521,13 +478,13 @@ html_content = """<!DOCTYPE html>
             <div class="chart-grid">
                 <div class="chart-card">
                     <div class="chart-header">
-                        <div class="chart-title"><i class="fa-solid fa-chart-pie" style="color: #ee4d2d;"></i> Tỷ Trọng Doanh Thu & Chi Phí Theo Kênh</div>
+                        <div class="chart-title"><i class="fa-solid fa-chart-pie" style="color: #ee4d2d;"></i> Tỷ Trọng Doanh Thu &amp; Chi Phí Theo Kênh</div>
                     </div>
                     <canvas id="chartChannelGmv" height="240"></canvas>
                 </div>
                 <div class="chart-card">
                     <div class="chart-header">
-                        <div class="chart-title"><i class="fa-solid fa-chart-bar" style="color: #38bdf8;"></i> Hiệu Suất ROAS & CIR Theo Kênh</div>
+                        <div class="chart-title"><i class="fa-solid fa-chart-bar" style="color: #38bdf8;"></i> Hiệu Suất ROAS &amp; CIR Theo Kênh</div>
                     </div>
                     <canvas id="chartChannelRoas" height="240"></canvas>
                 </div>
@@ -535,7 +492,7 @@ html_content = """<!DOCTYPE html>
 
             <!-- CHANNEL SUMMARY TABLE -->
             <div class="table-container">
-                <div class="chart-title" style="margin-bottom: 16px;"><i class="fa-solid fa-table-list" style="color: #38bdf8;"></i> Bảng So Sánh Hiệu Suất Theo Kênh & Gian Hàng (01 - 04/10/2026)</div>
+                <div class="chart-title" style="margin-bottom: 16px;"><i class="fa-solid fa-table-list" style="color: #38bdf8;"></i> Bảng So Sánh Hiệu Suất Theo Kênh &amp; Gian Hàng (01 - 04/10/2026)</div>
                 <div class="table-responsive">
                     <table>
                         <thead>
@@ -622,36 +579,36 @@ html_content = """<!DOCTYPE html>
                                 <td><span class="badge-safe">🟢 SHOPEE AN TOÀN</span></td>
                             </tr>
                             <tr style="background: rgba(0, 242, 254, 0.08); font-weight: 700;">
-                                <td><strong style="color: #00f2fe;"><i class="fa-brands fa-tiktok"></i> TIKTOK SHOP (GMV MAX)</strong></td>
-                                <td class="num-font" style="color: #f87171;">4,526,000 đ</td>
-                                <td class="num-font" style="color: #00f2fe;">27,431,924 đ</td>
-                                <td class="num-font">99</td>
-                                <td class="num-font">52,000</td>
-                                <td class="num-font">980</td>
+                                <td><strong style="color: #00f2fe;"><i class="fa-brands fa-tiktok"></i> TIKTOK SHOP GMV MAX (SELLER CENTER)</strong></td>
+                                <td class="num-font" style="color: #f87171; font-weight: 800;">7,201,707 đ</td>
+                                <td class="num-font" style="color: #00f2fe; font-weight: 800;">27,691,140 đ</td>
+                                <td class="num-font" style="color: #fff; font-weight: 800;">78</td>
+                                <td class="num-font">78,500</td>
+                                <td class="num-font">1,480</td>
                                 <td class="num-font">1.88%</td>
-                                <td class="num-font">4,618 đ</td>
-                                <td class="num-font" style="color: #34d399;">10.10%</td>
-                                <td class="num-font">277,090 đ</td>
-                                <td class="num-font" style="color: #34d399;">45,717 đ</td>
-                                <td class="num-font" style="color: #34d399;">6.06x</td>
-                                <td class="num-font" style="color: #34d399;">16.50%</td>
-                                <td><span class="badge-safe">🟢 TIKTOK AN TOÀN</span></td>
+                                <td class="num-font">4,866 đ</td>
+                                <td class="num-font" style="color: #fbbf24;">5.27%</td>
+                                <td class="num-font" style="color: #34d399;">355,015 đ</td>
+                                <td class="num-font" style="color: #f87171; font-weight: 800;">92,330 đ</td>
+                                <td class="num-font" style="color: #f87171; font-weight: 800;">3.85x</td>
+                                <td class="num-font" style="color: #f87171; font-weight: 800;">26.01%</td>
+                                <td><span class="badge-danger">🔴 VƯỢT TRẦN (CPA 92.3k)</span></td>
                             </tr>
                             <tr style="background: rgba(255, 255, 255, 0.06); font-weight: 800; font-size: 14px;">
-                                <td><strong>TỔNG TOÀN SÀN OMNICHANNEL</strong></td>
-                                <td class="num-font" style="color: #f87171;">12,830,305 đ</td>
-                                <td class="num-font" style="color: #34d399;">77,381,884 đ</td>
-                                <td class="num-font">252</td>
-                                <td class="num-font">107,867</td>
-                                <td class="num-font">2,173</td>
-                                <td class="num-font">2.01%</td>
-                                <td class="num-font">5,904 đ</td>
-                                <td class="num-font" style="color: #34d399;">11.60%</td>
-                                <td class="num-font">307,071 đ</td>
-                                <td class="num-font" style="color: #34d399;">50,914 đ</td>
-                                <td class="num-font" style="color: #34d399;">6.03x</td>
-                                <td class="num-font" style="color: #34d399;">16.58%</td>
-                                <td><span class="badge-safe">🟢 TOÀN SÀN AN TOÀN</span></td>
+                                <td><strong>TỔNG TOÀN SÀN HỢP NHẤT OMNICHANNEL</strong></td>
+                                <td class="num-font" style="color: #f87171;">15,506,012 đ</td>
+                                <td class="num-font" style="color: #34d399;">77,641,100 đ</td>
+                                <td class="num-font">231</td>
+                                <td class="num-font">134,367</td>
+                                <td class="num-font">2,673</td>
+                                <td class="num-font">1.99%</td>
+                                <td class="num-font">5,801 đ</td>
+                                <td class="num-font">8.64%</td>
+                                <td class="num-font">336,109 đ</td>
+                                <td class="num-font">67,126 đ</td>
+                                <td class="num-font" style="color: #fbbf24;">5.01x</td>
+                                <td class="num-font" style="color: #fbbf24;">19.97%</td>
+                                <td><span class="badge-warn">🟡 CẢNH BÁO TOÀN SÀN</span></td>
                             </tr>
                         </tbody>
                     </table>
@@ -701,21 +658,20 @@ html_content = """<!DOCTYPE html>
         <div id="tab-actions" class="tab-pane">
             <div class="chart-grid">
                 <div class="chart-card">
-                    <div class="chart-title" style="margin-bottom: 16px; color: #34d399;"><i class="fa-solid fa-circle-check"></i> 4 Điểm Sáng Nổi Bật (01 - 04/10)</div>
+                    <div class="chart-title" style="margin-bottom: 16px; color: #34d399;"><i class="fa-solid fa-circle-check"></i> Điểm Tích Cực Cần Duy Trì</div>
                     <ul style="color: var(--text-muted); font-size: 14px; line-height: 1.8; padding-left: 20px;">
                         <li><strong>Shopee Auto Bidding (30Shine):</strong> Đạt ROAS <strong style="color: #34d399;">9.18x</strong>, CIR chỉ <strong style="color: #34d399;">10.90%</strong> với 17 đơn hàng. Cỗ máy kéo doanh thu có biên lãi tốt nhất.</li>
-                        <li><strong>TikTok Shop GMV Max:</strong> Đóng góp <strong style="color: #00f2fe;">27.43M GMV</strong> (99 đơn) với ROAS <strong style="color: #34d399;">6.06x</strong>, CIR <strong style="color: #34d399;">16.50%</strong>.</li>
-                        <li><strong>TikTok Product Card (PSA):</strong> Chi phí CPC chỉ <strong style="color: #34d399;">4,773 đ</strong>, CPA chỉ <strong style="color: #34d399;">40,914 đ</strong> (rẻ hơn 25% so với Video ads).</li>
+                        <li><strong>AOV Toàn Sàn Vượt Chuẩn:</strong> Đạt <strong style="color: #34d399;">336,109 đ</strong> (cao hơn mục tiêu chuẩn 305k đ), chứng tỏ khách hàng đang mua các combo giá trị cao.</li>
                         <li><strong>Shopee Serum 7IN1 Dr.FORSKIN:</strong> Đạt ROAS <strong style="color: #34d399;">7.58x</strong>, AOV cao nhất sàn <strong style="color: #fff;">657,167 đ</strong>.</li>
                     </ul>
                 </div>
 
                 <div class="chart-card">
-                    <div class="chart-title" style="margin-bottom: 16px; color: #f87171;"><i class="fa-solid fa-triangle-exclamation"></i> 3 Hành Động Cần Tối Ưu Ngay Trước Thềm Mega 10.10</div>
+                    <div class="chart-title" style="margin-bottom: 16px; color: #f87171;"><i class="fa-solid fa-triangle-exclamation"></i> 3 Hành Động Cấp Bách Cho TikTok Ads Trước 10.10</div>
                     <ul style="color: var(--text-muted); font-size: 14px; line-height: 1.8; padding-left: 20px;">
-                        <li><strong>Gôm xịt Glanzen (Glanzen Vietnam):</strong> CIR bị vọt lên <strong style="color: #f87171;">29.33%</strong> (ROAS 3.41x, CPA 72.9k đ). <em>Hành động:</em> Tăng Target ROAS từ 4.0x lên <strong>≥ 5.5x</strong> để hạ giá thầu click.</li>
-                        <li><strong>Mở rộng Product Card TikTok (PSA / Shop Tab):</strong> Nâng tỷ trọng hiển thị của Product Card từ 30% lên <strong>≥ 40%</strong> trên TikTok để tận dụng CPA rẻ 40k đ kéo CIR toàn sàn về mức 12-14%.</li>
-                        <li><strong>Chuẩn bị cổng Mega 10.10 (Mục tiêu 75M đ):</strong> Điều chỉnh tăng 30% ngân sách cho 2 Hero SKU (Sáp 60g & Serum 7IN1) bắt đầu từ 08/10.</li>
+                        <li><strong>Hạ CPA TikTok Ads từ 92.3k đ về &le; 55k đ:</strong> Đặt Target ROAS trong GMV Max lên <strong>&ge; 5.5x - 6.0x</strong> để chặn thuật toán đấu thầu đẩy giá hiển thị CPM quá cao trong những ngày trũng.</li>
+                        <li><strong>Thay mới 5 Video Creative Hook 3s:</strong> Tỷ lệ chuyển đổi của Video Ads TikTok hiện chỉ đạt 5.27% (quá thấp). Cần thay video đánh trực diện vào ưu đãi tặng kèm quà 10.10.</li>
+                        <li><strong>Dồn ngân sách sang Product Card (PSA):</strong> Thẻ sản phẩm có CPA rẻ hơn 25%, giúp hạ nhiệt CIR của toàn bộ TikTok Shop về mức an toàn &le; 16.5%.</li>
                     </ul>
                 </div>
             </div>
@@ -840,7 +796,7 @@ html_content = """<!DOCTYPE html>
                     datasets: [
                         {
                             label: 'Doanh Thu (GMV)',
-                            data: [49949960, 27431924],
+                            data: [49949960, 27691140],
                             backgroundColor: ['rgba(238, 77, 45, 0.8)', 'rgba(0, 242, 254, 0.8)'],
                             borderColor: ['#ee4d2d', '#00f2fe'],
                             borderWidth: 1,
@@ -848,7 +804,7 @@ html_content = """<!DOCTYPE html>
                         },
                         {
                             label: 'Chi Phí Ads (Spend)',
-                            data: [8304305, 4526000],
+                            data: [8304305, 7201707],
                             backgroundColor: 'rgba(239, 68, 68, 0.75)',
                             borderColor: '#ef4444',
                             borderWidth: 1,
@@ -876,19 +832,19 @@ html_content = """<!DOCTYPE html>
                     datasets: [
                         {
                             label: 'ROAS (x)',
-                            data: [6.01, 6.06, 6.03],
-                            backgroundColor: 'rgba(56, 189, 248, 0.8)',
-                            borderColor: '#38bdf8',
+                            data: [6.01, 3.85, 5.01],
+                            backgroundColor: ['rgba(56, 189, 248, 0.8)', 'rgba(239, 68, 68, 0.8)', 'rgba(245, 158, 11, 0.8)'],
+                            borderColor: ['#38bdf8', '#ef4444', '#fbbf24'],
                             borderWidth: 1,
                             borderRadius: 8,
                             yAxisID: 'y'
                         },
                         {
                             label: 'CIR (%)',
-                            data: [16.63, 16.50, 16.58],
+                            data: [16.63, 26.01, 19.97],
                             type: 'line',
-                            borderColor: '#fbbf24',
-                            backgroundColor: '#fbbf24',
+                            borderColor: '#f87171',
+                            backgroundColor: '#f87171',
                             borderWidth: 3,
                             pointRadius: 6,
                             yAxisID: 'y1'
@@ -903,7 +859,7 @@ html_content = """<!DOCTYPE html>
                     scales: {
                         x: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(255,255,255,0.05)' } },
                         y: { position: 'left', ticks: { color: '#38bdf8' }, grid: { color: 'rgba(255,255,255,0.05)' }, title: { display: true, text: 'ROAS (x)', color: '#38bdf8' } },
-                        y1: { position: 'right', ticks: { color: '#fbbf24' }, grid: { drawOnChartArea: false }, title: { display: true, text: 'CIR (%)', color: '#fbbf24' } }
+                        y1: { position: 'right', ticks: { color: '#f87171' }, grid: { drawOnChartArea: false }, title: { display: true, text: 'CIR (%)', color: '#f87171' } }
                     }
                 }
             });
@@ -921,4 +877,4 @@ with open('/Users/longnd/tiktok-dashboard/index.html', 'w', encoding='utf-8') as
 with open('/Users/longnd/tiktok-dashboard/omnichannel_performance_dashboard.html', 'w', encoding='utf-8') as f:
     f.write(html_content)
 
-print('SUCCESSFULLY GENERATED OMNICHANNEL DASHBOARD!')
+print('SUCCESSFULLY GENERATED DASHBOARD WITH EXACT TIKTOK SELLER CENTER DATA!')

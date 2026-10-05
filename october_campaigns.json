@@ -245,5 +245,43 @@
     "roas": 3.92,
     "cir": 25.48,
     "status": "danger"
+  },
+  {
+    "shop": "TikTok Shop (GMV Max)",
+    "name": "TikTok GMV Max - Chiến dịch Video Shopping Ads (FYP Feed)",
+    "type": "Video Ads",
+    "bidding": "GMV Max Auto",
+    "imp": 55000,
+    "clicks": 1050,
+    "ctr": 1.91,
+    "cpc": 4688.0,
+    "orders": 51,
+    "sold": 53,
+    "spend": 4922000.0,
+    "gmv": 18691140.0,
+    "aov": 366493.0,
+    "cpa": 96510.0,
+    "roas": 3.8,
+    "cir": 26.33,
+    "status": "danger"
+  },
+  {
+    "shop": "TikTok Shop (GMV Max)",
+    "name": "TikTok Product Card (PSA / Shop Tab) - Thẻ Sản Phẩm Tự Động",
+    "type": "Product Card",
+    "bidding": "GMV Max Product Card",
+    "imp": 23500,
+    "clicks": 430,
+    "ctr": 1.83,
+    "cpc": 5302.0,
+    "orders": 27,
+    "sold": 29,
+    "spend": 2279707.0,
+    "gmv": 9000000.0,
+    "aov": 333333.0,
+    "cpa": 84434.0,
+    "roas": 3.95,
+    "cir": 25.33,
+    "status": "danger"
   }
 ]
