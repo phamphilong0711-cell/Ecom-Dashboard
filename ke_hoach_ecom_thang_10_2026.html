@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kế Hoạch Team Ecom — Tháng 10/2026 | Bản Đồ Tác Chiến Vận Hành</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-base: #090d16;
+            --bg-surface: rgba(17, 24, 39, 0.85);
+            --bg-surface-elevated: #161f30;
+            --bg-surface-hover: rgba(30, 41, 59, 0.9);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-focus: rgba(56, 189, 248, 0.4);
+            
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-tertiary: #64748b;
+            
+            --accent-primary: #38bdf8;
+            --accent-success: #10b981;
+            --accent-warn: #f59e0b;
+            --accent-danger: #ef4444;
+            --accent-purple: #a855f7;
+            --accent-blue: #3b82f6;
+            
+            --shopee: #ee4d2d;
+            --tiktok: #00f2fe;
+            --fb: #1877f2;
+            
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            
+            --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.35);
+        }
+
+        body.light-theme {
+            --bg-base: #f8fafc;
+            --bg-surface: #ffffff;
+            --bg-surface-elevated: #f1f5f9;
+            --bg-surface-hover: #e2e8f0;
+            --border-subtle: #e2e8f0;
+            --border-focus: #3b82f6;
+            
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-tertiary: #94a3b8;
+            
+            --shadow-subtle: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-base);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.08) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(238, 77, 45, 0.06) 0px, transparent 50%),
+                radial-gradient(at 50% 100%, rgba(168, 85, 247, 0.05) 0px, transparent 50%);
+            background-attachment: fixed;
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 24px;
+            line-height: 1.55;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container { max-width: 1440px; margin: 0 auto; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        /* HEADER */
+        .header {
+            background: var(--bg-surface);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-xl);
+            padding: 26px 32px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-subtle);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .header-title-box h1 {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        body.light-theme .header-title-box h1 {
+            background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-title-box p {
+            color: var(--text-secondary);
+            font-size: 13.5px;
+            margin-top: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: var(--bg-surface-elevated);
+            color: var(--text-primary);
+            border: 1px solid var(--border-subtle);
+            padding: 9px 16px;
+            border-radius: var(--radius-md);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+        .btn:hover {
+            background: var(--bg-surface-hover);
+            border-color: var(--border-focus);
+            transform: translateY(-1px);
+        }
+        .btn-primary {
+            background: #2563eb;
+            color: #ffffff;
+            border-color: #3b82f6;
+        }
+        .btn-primary:hover {
+            background: #1d4ed8;
+        }
+
+        /* MANIFESTO BANNER */
+        .manifesto-box {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.9) 100%);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: var(--radius-lg);
+            padding: 16px 22px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 13.5px;
+            color: var(--text-primary);
+            position: relative;
+            overflow: hidden;
+        }
+        body.light-theme .manifesto-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-color: #bae6fd;
+            color: #0369a1;
+        }
+        .manifesto-box::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--accent-primary);
+        }
+        .manifesto-box i { font-size: 20px; color: var(--accent-primary); flex-shrink: 0; }
+
+        /* KPI STATS CARDS */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 24px;
+        }
+        @media (max-width: 1024px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 640px) { .stats-grid { grid-template-columns: 1fr; } }
+
+        .stat-card {
+            background: var(--bg-surface);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 20px 22px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.25s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-focus);
+            box-shadow: var(--shadow-subtle);
+        }
+        .stat-label {
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .stat-value {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--text-primary);
+            line-height: 1.2;
+            margin-bottom: 4px;
+        }
+        .stat-sub {
+            font-size: 12px;
+            color: var(--text-tertiary);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* NAVIGATION TABS */
+        .tab-nav {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .tab-btn {
+            background: transparent;
+            color: var(--text-secondary);
+            border: none;
+            padding: 10px 18px;
+            border-radius: var(--radius-md);
+            font-size: 13.5px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        .tab-btn:hover {
+            color: var(--text-primary);
+            background: var(--bg-surface-elevated);
+        }
+        .tab-btn.active {
+            color: var(--accent-primary);
+            background: rgba(56, 189, 248, 0.12);
+            border-bottom: 2px solid var(--accent-primary);
+            border-radius: var(--radius-md) var(--radius-md) 0 0;
+        }
+
+        /* SECTION CARD */
+        .section-card {
+            background: var(--bg-surface);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-xl);
+            padding: 28px;
+            margin-bottom: 28px;
+            box-shadow: var(--shadow-subtle);
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 12px;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 16px;
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-primary);
+        }
+        .section-badge {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-primary);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        /* TABLES */
+        .table-responsive {
+            overflow-x: auto;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-subtle);
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 13px;
+        }
+        th {
+            background: var(--bg-surface-elevated);
+            color: var(--text-secondary);
+            font-weight: 700;
+            padding: 12px 16px;
+            text-transform: uppercase;
+            font-size: 11.5px;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border-subtle);
+            white-space: nowrap;
+        }
+        td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            vertical-align: middle;
+        }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: var(--bg-surface-hover); }
+
+        /* BADGES */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11.5px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+        .badge-shopee { background: rgba(238, 77, 45, 0.12); color: #f97316; border: 1px solid rgba(238, 77, 45, 0.25); }
+        .badge-tiktok { background: rgba(0, 242, 254, 0.12); color: #06b6d4; border: 1px solid rgba(0, 242, 254, 0.25); }
+        .badge-fb { background: rgba(24, 119, 242, 0.12); color: #3b82f6; border: 1px solid rgba(24, 119, 242, 0.25); }
+        .badge-success { background: rgba(16, 185, 129, 0.12); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.25); }
+        .badge-warn { background: rgba(245, 158, 11, 0.12); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.25); }
+        .badge-purple { background: rgba(168, 85, 247, 0.12); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.25); }
+
+        /* TIMELINE MILESTONES */
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+        .milestone-item {
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 16px 18px;
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+        .milestone-item:hover {
+            border-color: var(--border-focus);
+            transform: translateY(-2px);
+        }
+        .milestone-date {
+            background: rgba(56, 189, 248, 0.12);
+            color: var(--accent-primary);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 6px 10px;
+            border-radius: var(--radius-sm);
+            font-size: 12px;
+            font-weight: 800;
+            white-space: nowrap;
+            text-align: center;
+        }
+        .milestone-date.highlight {
+            background: rgba(238, 77, 45, 0.15);
+            color: #ff5722;
+            border-color: rgba(238, 77, 45, 0.4);
+        }
+        .milestone-content h4 {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+        .milestone-content p {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* TASKS CARDS */
+        .task-card {
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            margin-bottom: 16px;
+            transition: all 0.2s ease;
+        }
+        .task-card:hover {
+            border-color: var(--border-focus);
+        }
+        .task-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+        .task-num-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .task-badge-num {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--accent-primary);
+            font-weight: 800;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .task-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .task-deadline {
+            font-size: 12px;
+            color: var(--accent-warn);
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.25);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .task-body {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            background: rgba(0, 0, 0, 0.15);
+            padding: 14px 16px;
+            border-radius: var(--radius-md);
+            border-left: 3px solid var(--accent-primary);
+        }
+        body.light-theme .task-body {
+            background: rgba(0, 0, 0, 0.02);
+        }
+
+        /* PROFILE BANNER */
+        .profile-banner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(0, 0, 0, 0.18);
+            padding: 16px 20px;
+            border-radius: var(--radius-md);
+            margin-bottom: 20px;
+            border: 1px solid var(--border-subtle);
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        body.light-theme .profile-banner {
+            background: #f1f5f9;
+        }
+        .profile-info {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .avatar-circle {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #38bdf8 0%, #2563eb 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 800;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+        }
+        .profile-name { font-size: 16px; font-weight: 800; color: var(--text-primary); }
+        .profile-role { font-size: 12.5px; color: var(--text-secondary); }
+
+        /* SLA GRID */
+        .sla-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 900px) { .sla-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 500px) { .sla-grid { grid-template-columns: 1fr; } }
+        .sla-item {
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 14px;
+            text-align: center;
+        }
+        .sla-val {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--accent-success);
+            margin-bottom: 4px;
+        }
+        .sla-desc {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-tertiary);
+            font-size: 13px;
+            font-style: italic;
+        }
+
+        /* PRINT STYLES */
+        @media print {
+            body { background: #ffffff !important; color: #000000 !important; padding: 0 !important; }
+            .header-actions, .tab-nav { display: none !important; }
+            .section-card { box-shadow: none !important; border: 1px solid #ccc !important; page-break-inside: avoid; }
+            .stat-card { border: 1px solid #ddd !important; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- HEADER -->
+    <div class="header">
+        <div class="header-title-box">
+            <h1><i class="fa-solid fa-map-location-dot" style="color: #38bdf8;"></i> KẾ HOẠCH TEAM ECOM — THÁNG 10/2026</h1>
+            <p>
+                <span><i class="fa-solid fa-users"></i> Khối Thương Mại Sản Phẩm & Sale Online</span>
+                <span>•</span>
+                <span><i class="fa-solid fa-calendar-check"></i> Cập nhật: 07/10/2026</span>
+                <span>•</span>
+                <span class="badge badge-success"><i class="fa-solid fa-circle-check"></i> Đang Thực Thi</span>
+            </p>
+        </div>
+        <div class="header-actions">
+            <button class="btn" onclick="toggleTheme()" id="themeBtn"><i class="fa-solid fa-sun"></i> Giao Diện Sáng</button>
+            <button class="btn btn-primary" onclick="window.print()"><i class="fa-solid fa-print"></i> In / Xuất PDF</button>
+        </div>
+    </div>
+
+    <!-- MANIFESTO BANNER -->
+    <div class="manifesto-box">
+        <i class="fa-solid fa-compass"></i>
+        <div>
+            <b>Bản đồ hành động thống nhất:</b> Đây là tấm bản đồ công việc trong tháng của cả team Ecom. Mỗi người có kế hoạch riêng theo cùng một cấu trúc mục tiêu; các mốc chung bên dưới là kim chỉ nam để cả team cùng chạy chung một nhịp.
+        </div>
+    </div>
+
+    <!-- KPI STATS OVERVIEW -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-label">Tổng Doanh Thu Ecom <i class="fa-solid fa-coins" style="color: var(--accent-warn);"></i></div>
+            <div class="stat-value mono">966,3 Tr</div>
+            <div class="stat-sub"><i class="fa-solid fa-circle-info"></i> Gồm VAT (Trừ VAT: <b>894,8 Tr</b>)</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Lợi Nhuận EBITDA <i class="fa-solid fa-chart-line" style="color: var(--accent-success);"></i></div>
+            <div class="stat-value mono" style="color: var(--accent-success);">184,0 Tr</div>
+            <div class="stat-sub"><i class="fa-solid fa-shield-check"></i> Biên lợi nhuận: <b>19.0%</b></div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Tổng Ngân Sách MKT <i class="fa-solid fa-bullhorn" style="color: var(--accent-primary);"></i></div>
+            <div class="stat-value mono">164,5 Tr</div>
+            <div class="stat-sub">Ads: <b>154,5 Tr</b> (16.0%) + Quà: <b>10 Tr</b></div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Target ROAS Toàn Sàn <i class="fa-solid fa-bullseye" style="color: var(--accent-purple);"></i></div>
+            <div class="stat-value mono" style="color: var(--accent-purple);">≥ 6,25x</div>
+            <div class="stat-sub">Trần CIR Ads kiểm soát: <b>≤ 16.0%</b></div>
+        </div>
+    </div>
+
+    <!-- NAVIGATION TABS -->
+    <div class="tab-nav">
+        <button class="tab-btn active" onclick="switchTab('all', this)"><i class="fa-solid fa-table-cells"></i> Tất Cả (Toàn Cảnh)</button>
+        <button class="tab-btn" onclick="switchTab('sec-overview', this)"><i class="fa-solid fa-users-viewfinder"></i> 0. Tổng Quan Toàn Team</button>
+        <button class="tab-btn" onclick="switchTab('sec-quy', this)"><i class="fa-solid fa-user-tie"></i> 1. Đỗ Xuân Quý (O2O)</button>
+        <button class="tab-btn" onclick="switchTab('sec-ha', this)"><i class="fa-solid fa-user-pen"></i> 2. Vũ Thị Mỹ Hà (Sale Online)</button>
+        <button class="tab-btn" onclick="switchTab('sec-long', this)"><i class="fa-solid fa-user-gear"></i> 3. Phạm Phi Long (Shopee & TikTok)</button>
+    </div>
+
+    <!-- 0. TỔNG QUAN TEAM -->
+    <div id="sec-overview" class="section-card tab-content">
+        <div class="section-header">
+            <div class="section-title">
+                <i class="fa-solid fa-users-gear" style="color: var(--accent-primary);"></i>
+                0. TỔNG QUAN TEAM & PHÂN CÔNG VẬN HÀNH
+            </div>
+            <span class="section-badge">Mục Tiêu Doanh Số 966.3 Triệu</span>
+        </div>
+
+        <h3 style="font-size: 14px; margin-bottom: 12px; color: var(--text-secondary); text-transform: uppercase;">1. Danh Sách Phụ Trách & Vai Trò Cốt Lõi</h3>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 180px;">Thành viên</th>
+                        <th style="width: 260px;">Vị trí</th>
+                        <th>Phụ trách chính tháng 10</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>Đỗ Xuân Quý</b></td>
+                        <td>Trưởng nhóm Thương Mại sản phẩm (O2O)</td>
+                        <td>Kênh Facebook/Web/App nội bộ: kế hoạch test nội dung + ngân sách ads, combo mới + kịch bản tư vấn, giá sản phẩm Web/App theo chiến lược giá T9.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Vũ Thị Mỹ Hà</b></td>
+                        <td>Sale Online</td>
+                        <td>Facebook Insight Hunting (Dr.Forskin), nội dung TikTok always-on, KOC Glanzen & Dr.Forskin, nội dung Double Day 10.10 và Seasonal 20/10.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Phạm Phi Long</b></td>
+                        <td>Sale Online / E-commerce Specialist</td>
+                        <td>3 gian hàng Shopee + TikTok Shop + Lazada: Mega 10.10, phễu Ads & CIR, PDP revamp, Livestream, CRM khách cũ Q3.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3 style="font-size: 14px; margin-top: 24px; margin-bottom: 12px; color: var(--text-secondary); text-transform: uppercase;">2. Mục Tiêu Theo Kênh & Chi Phí (Doanh thu có thuế, Triệu đồng)</h3>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Kênh Bán Hàng</th>
+                        <th style="text-align: right;">Doanh thu tháng</th>
+                        <th style="text-align: right;">Ngân sách ads</th>
+                        <th style="text-align: center;">Trần ads/DT</th>
+                        <th style="text-align: center;">ROAS cần</th>
+                        <th>Nhân sự chịu trách nhiệm</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="badge badge-shopee"><i class="fa-solid fa-bag-shopping"></i> Shopee (3 Gian)</span></td>
+                        <td style="text-align: right;" class="mono"><b>485,3 Tr</b></td>
+                        <td style="text-align: right;" class="mono">60,4 Tr</td>
+                        <td style="text-align: center;" class="mono">12,4%</td>
+                        <td style="text-align: center;" class="mono" style="color: var(--accent-success);"><b>≥ 8,04x</b></td>
+                        <td><b>Phạm Phi Long</b></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-tiktok"><i class="fa-brands fa-tiktok"></i> TikTok Shop</span></td>
+                        <td style="text-align: right;" class="mono"><b>321,0 Tr</b></td>
+                        <td style="text-align: right;" class="mono">46,1 Tr</td>
+                        <td style="text-align: center;" class="mono">14,4%</td>
+                        <td style="text-align: center;" class="mono" style="color: var(--accent-success);"><b>≥ 6,96x</b></td>
+                        <td><b>Long</b> · <b>Hà</b> (nội dung)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-fb"><i class="fa-brands fa-facebook"></i> Facebook / App / Web</span></td>
+                        <td style="text-align: right;" class="mono"><b>160,0 Tr</b></td>
+                        <td style="text-align: right;" class="mono">48,0 Tr</td>
+                        <td style="text-align: center;" class="mono">30,0%</td>
+                        <td style="text-align: center;" class="mono">≥ 3,33x</td>
+                        <td><b>Quý</b> · <b>Hà</b> (creative)</td>
+                    </tr>
+                    <tr style="background: rgba(56, 189, 248, 0.05); font-weight: 700;">
+                        <td><b>TOÀN BỘ ECOM</b></td>
+                        <td style="text-align: right; color: var(--accent-primary);" class="mono">966,3 Tr</td>
+                        <td style="text-align: right;" class="mono">154,5 Tr</td>
+                        <td style="text-align: center;" class="mono">16,0%</td>
+                        <td style="text-align: center; color: var(--accent-success);" class="mono">≥ 6,25x</td>
+                        <td><b>Cả Team</b></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-purple"><i class="fa-solid fa-gift"></i> Quà Tặng (Chi phí chung)</span></td>
+                        <td style="text-align: right;" class="mono">—</td>
+                        <td style="text-align: right;" class="mono">10,0 Tr</td>
+                        <td style="text-align: center;" class="mono">—</td>
+                        <td style="text-align: center;" class="mono">—</td>
+                        <td>Cả Team</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p style="font-size: 12.5px; color: var(--text-tertiary); margin-bottom: 20px;">
+            * Ngân sách Shopee theo gian: <b>30Shine: 41,0 tr</b> · <b>Dr.FORSKIN: 13,3 tr</b> · <b>Glanzen Mall: 6,0 tr</b> · <b>Laborie: 0đ</b>. (Chưa gồm booking KOC, lương và phòng live).
+        </p>
+
+        <h3 style="font-size: 14px; margin-top: 24px; margin-bottom: 12px; color: var(--text-secondary); text-transform: uppercase;">3. Tiến Độ Vận Hành Theo Tuần (Doanh thu / Ngân sách ads, Triệu đồng)</h3>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Kênh Bán Hàng</th>
+                        <th style="text-align: center;">Tuần 1 (01–07/10)</th>
+                        <th style="text-align: center;">Tuần 2 (08–14/10 · Có 10.10)</th>
+                        <th style="text-align: center;">Tuần 3 (15–21/10 · Có 20.10)</th>
+                        <th style="text-align: center;">Tuần 4 (22–31/10)</th>
+                        <th style="text-align: right;">Cả Tháng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>Shopee</b></td>
+                        <td style="text-align: center;" class="mono">100,9 / 12,6</td>
+                        <td style="text-align: center;" class="mono">140,0 / 17,4</td>
+                        <td style="text-align: center;" class="mono">103,6 / 12,9</td>
+                        <td style="text-align: center;" class="mono">140,7 / 17,5</td>
+                        <td style="text-align: right;" class="mono"><b>485,3 / 60,4</b></td>
+                    </tr>
+                    <tr>
+                        <td><b>TikTok</b></td>
+                        <td style="text-align: center;" class="mono">84,0 / 12,1</td>
+                        <td style="text-align: center;" class="mono">83,8 / 12,0</td>
+                        <td style="text-align: center;" class="mono">62,4 / 9,0</td>
+                        <td style="text-align: center;" class="mono">90,8 / 13,1</td>
+                        <td style="text-align: right;" class="mono"><b>321,0 / 46,1</b></td>
+                    </tr>
+                    <tr>
+                        <td><b>Facebook/App/Web</b></td>
+                        <td style="text-align: center;" class="mono">23,6 / 7,1</td>
+                        <td style="text-align: center;" class="mono">37,1 / 11,1</td>
+                        <td style="text-align: center;" class="mono">31,8 / 9,6</td>
+                        <td style="text-align: center;" class="mono">67,4 / 20,2</td>
+                        <td style="text-align: right;" class="mono"><b>160,0 / 48,0</b></td>
+                    </tr>
+                    <tr style="background: rgba(56, 189, 248, 0.05); font-weight: 700;">
+                        <td><b>TOÀN ECOM</b></td>
+                        <td style="text-align: center; color: var(--accent-primary);" class="mono">208,7 / 31,7</td>
+                        <td style="text-align: center; color: var(--accent-primary);" class="mono">260,8 / 40,6</td>
+                        <td style="text-align: center; color: var(--accent-primary);" class="mono">197,8 / 31,4</td>
+                        <td style="text-align: center; color: var(--accent-primary);" class="mono">299,0 / 50,8</td>
+                        <td style="text-align: right; color: var(--accent-primary);" class="mono">966,3 / 154,5</td>
+                    </tr>
+                    <tr style="background: rgba(16, 185, 129, 0.08);">
+                        <td><b>LŨY KẾ DOANH THU</b></td>
+                        <td style="text-align: center;" class="mono"><b>208,7 Tr</b></td>
+                        <td style="text-align: center;" class="mono"><b>469,5 Tr</b></td>
+                        <td style="text-align: center;" class="mono"><b>667,3 Tr</b> *(Mốc 21/10)*</td>
+                        <td style="text-align: center;" class="mono"><b>966,3 Tr</b></td>
+                        <td style="text-align: right;" class="mono"><b>100.0%</b></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3 style="font-size: 14px; margin-top: 24px; margin-bottom: 12px; color: var(--text-secondary); text-transform: uppercase;">4. Lộ Trình Mốc Chung (Milestone Roadmap)</h3>
+        <div class="timeline-grid">
+            <div class="milestone-item">
+                <div class="milestone-date">01/10</div>
+                <div class="milestone-content">
+                    <h4>Khởi Động Chu Trình</h4>
+                    <p>Bắt đầu chu trình test nội dung Facebook hàng tuần, TikTok always-on.</p>
+                </div>
+            </div>
+            <div class="milestone-item">
+                <div class="milestone-date">05/10</div>
+                <div class="milestone-content">
+                    <h4>Chốt Duyệt Kế Hoạch</h4>
+                    <p>Duyệt plan T10, chốt ngân sách ads Facebook T10 · KOC bắt đầu air clip.</p>
+                </div>
+            </div>
+            <div class="milestone-item">
+                <div class="milestone-date">08/10</div>
+                <div class="milestone-content">
+                    <h4>PDP Revamp Sàn</h4>
+                    <p>Hoàn thành chuẩn hóa hình ảnh & video Top 10 SKU Shopee & TikTok.</p>
+                </div>
+            </div>
+            <div class="milestone-item">
+                <div class="milestone-date highlight">10/10</div>
+                <div class="milestone-content">
+                    <h4>Double Day 10.10</h4>
+                    <p><b>Target 75 triệu GMV</b> đa sàn. Tối ưu thầu giờ vàng & đẩy giỏ hàng.</p>
+                </div>
+            </div>
+            <div class="milestone-item">
+                <div class="milestone-date">13/10</div>
+                <div class="milestone-content">
+                    <h4>Tổng Kết 10.10 & Chốt 20/10</h4>
+                    <p>Đánh giá hiệu quả 10.10 · chốt concept, mục tiêu doanh số & cơ chế quà 20/10.</p>
+                </div>
+            </div>
+            <div class="milestone-item">
+                <div class="milestone-date highlight">15/10</div>
+                <div class="milestone-content">
+                    <h4>Cổng Pacing Giữa Tháng</h4>
+                    <p>Full asset 20/10 sẵn sàng · duyệt pacing Ads giữa tháng, kích hoạt Plan B nếu hụt.</p>
+                </div>
+            </div>
+            <div class="milestone-item">
+                <div class="milestone-date highlight">20/10</div>
+                <div class="milestone-content">
+                    <h4>Seasonal Campaign 20/10</h4>
+                    <p>Chiến dịch mùa quà tặng 20/10 trên Shopee, TikTok Shop & Zalo/FB CRM.</p>
+                </div>
+            </div>
+            <div class="milestone-item">
+                <div class="milestone-date">21/10</div>
+                <div class="milestone-content">
+                    <h4>Mốc Vùng Đệm</h4>
+                    <p>Chạm ngưỡng doanh thu lũy kế <b>667,3 triệu</b> để bảo toàn kế hoạch tháng.</p>
+                </div>
+            </div>
+            <div class="milestone-item">
+                <div class="milestone-date">31/10</div>
+                <div class="milestone-content">
+                    <h4>Chốt Sổ Kết Quả Tháng</h4>
+                    <p>Nghiệm thu doanh thu, lợi nhuận EBITDA, CIR ads, giá Web/App và combo.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 1. ĐỖ XUÂN QUÝ -->
+    <div id="sec-quy" class="section-card tab-content">
+        <div class="section-header">
+            <div class="section-title">
+                <i class="fa-solid fa-user-tie" style="color: #3b82f6;"></i>
+                1. KẾ HOẠCH CÁ NHÂN — ĐỖ XUÂN QUÝ
+            </div>
+            <span class="section-badge" style="background: rgba(59, 130, 246, 0.1); color: #60a5fa; border-color: rgba(59, 130, 246, 0.3);">Trưởng Nhóm O2O</span>
+        </div>
+
+        <div class="profile-banner">
+            <div class="profile-info">
+                <div class="avatar-circle">Q</div>
+                <div>
+                    <div class="profile-name">Đỗ Xuân Quý</div>
+                    <div class="profile-role">Trưởng nhóm Thương Mại sản phẩm (O2O) — Khối Sale & Marketing</div>
+                </div>
+            </div>
+            <div style="font-size: 13px; color: var(--text-secondary);">
+                <span>Cùng review: <b>Nguyễn Kiều Oanh</b> (GĐBP Sale & Marketing)</span>
+                <span style="margin: 0 8px;">•</span>
+                <span>Ngày lập: 05/10/2026</span>
+            </div>
+        </div>
+
+        <h3 style="font-size: 14px; margin-bottom: 12px; color: var(--text-secondary); text-transform: uppercase;">Mục Tiêu / KPI Tháng 10</h3>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Chỉ tiêu KPI</th>
+                        <th style="text-align: right;">Mục tiêu Cả Năm 2026</th>
+                        <th style="text-align: right;">Mục tiêu Tháng 10/2026</th>
+                        <th style="text-align: center;">Mức độ hoàn thành</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>Doanh thu Ecom (trừ VAT)</b></td>
+                        <td style="text-align: right;" class="mono">18.409.476.910 đ</td>
+                        <td style="text-align: right;" class="mono"><b>894.753.825 đ</b></td>
+                        <td style="text-align: center;"><span class="badge badge-success">Chỉ tiêu trọng tâm</span></td>
+                    </tr>
+                    <tr>
+                        <td><b>Lợi nhuận Ecom (EBITDA)</b></td>
+                        <td style="text-align: right;" class="mono">1.686.019.923 đ</td>
+                        <td style="text-align: right;" class="mono"><b>184.023.087 đ</b></td>
+                        <td style="text-align: center;"><span class="badge badge-success">Biên an toàn ≥ 15%</span></td>
+                    </tr>
+                    <tr>
+                        <td><b>Đầu việc trọng tâm</b></td>
+                        <td style="text-align: right;" class="mono">100%</td>
+                        <td style="text-align: right;" class="mono"><b>100%</b></td>
+                        <td style="text-align: center;"><span class="badge badge-purple">3/3 Nhiệm vụ</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3 style="font-size: 14px; margin-top: 24px; margin-bottom: 12px; color: var(--text-secondary); text-transform: uppercase;">Dự Án & Nhiệm Vụ Trọng Tâm (3 Nhiệm Vụ)</h3>
+        
+        <div class="task-card">
+            <div class="task-header">
+                <div class="task-num-title">
+                    <div class="task-badge-num">1</div>
+                    <div class="task-title">Kiểm thử nội dung Facebook & Tối ưu ngân sách Ads Tháng 10</div>
+                </div>
+                <div class="task-deadline"><i class="fa-regular fa-clock"></i> Deadline: 31/10/2026</div>
+            </div>
+            <div class="task-body">
+                • <b>Kết quả cần đạt:</b> Học hỏi, điều chỉnh rule tăng giảm ngân sách tháng 10.<br>
+                • Test <b>30 nội dung quảng cáo</b>; tối thiểu <b>≥ 1 nội dung</b> chi được ở bậc <b>600k/ngày</b> để scale.<br>
+                • Đảm bảo doanh thu kênh đạt <b>160 triệu đ</b>, kiểm soát chi phí ads/DT ở mức <b>≤ 30%</b>.
+            </div>
+        </div>
+
+        <div class="task-card">
+            <div class="task-header">
+                <div class="task-num-title">
+                    <div class="task-badge-num">2</div>
+                    <div class="task-title">Set Combo Mới + Kịch Bản Tư Vấn Bán Hàng Trên Facebook/Web/App</div>
+                </div>
+                <div class="task-deadline"><i class="fa-regular fa-clock"></i> Deadline: 31/10/2026</div>
+            </div>
+            <div class="task-body">
+                • <b>Kết quả cần đạt:</b> Hoàn thành kiểm thử set combo và kịch bản tư vấn bán hàng chuyên sâu.<br>
+                • Chạy thử nghiệm với <b>100 data khách hàng Facebook</b>, ghi nhận chuyển đổi thành công gói combo mới với <b>CR ≥ 10%</b>.
+            </div>
+        </div>
+
+        <div class="task-card">
+            <div class="task-header">
+                <div class="task-num-title">
+                    <div class="task-badge-num">3</div>
+                    <div class="task-title">Đồng Bộ Chuẩn Hóa Giá Sản Phẩm Trên Web/App Theo Chiến Lược Tháng 9</div>
+                </div>
+                <div class="task-deadline"><i class="fa-regular fa-clock"></i> Deadline: 31/10/2026</div>
+            </div>
+            <div class="task-body">
+                • <b>Kết quả cần đạt:</b> <b>100% sản phẩm</b> trên Web/App hiển thị chính xác theo bảng giá chốt theo chiến lược giá đã duyệt tháng 9, không phát sinh sai lệch giá niêm yết và giá khuyến mại.
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. VŨ THỊ MỸ HÀ -->
+    <div id="sec-ha" class="section-card tab-content">
+        <div class="section-header">
+            <div class="section-title">
+                <i class="fa-solid fa-user-pen" style="color: var(--accent-purple);"></i>
+                2. KẾ HOẠCH CÁ NHÂN — VŨ THỊ MỸ HÀ
+            </div>
+            <span class="section-badge" style="background: rgba(168, 85, 247, 0.1); color: #c084fc; border-color: rgba(168, 85, 247, 0.3);">Sale Online / Creative</span>
+        </div>
+
+        <div class="profile-banner">
+            <div class="profile-info">
+                <div class="avatar-circle" style="background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);">H</div>
+                <div>
+                    <div class="profile-name">Vũ Thị Mỹ Hà</div>
+                    <div class="profile-role">Sale Online — Khối Sale & Marketing</div>
+                </div>
+            </div>
+            <div style="font-size: 13px; color: var(--text-secondary);">
+                <span>Cùng review: <b>Nguyễn Kiều Oanh</b> (GĐBP Sale & Marketing)</span>
+                <span style="margin: 0 8px;">•</span>
+                <span>Ngày lập: 05/10/2026</span>
+            </div>
+        </div>
+
+        <h3 style="font-size: 14px; margin-bottom: 12px; color: var(--text-secondary); text-transform: uppercase;">Mục Tiêu / KPI Tháng 10</h3>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Chỉ tiêu KPI</th>
+                        <th style="text-align: right;">Mục tiêu Cả Năm 2026</th>
+                        <th style="text-align: right;">Mục tiêu Tháng 10/2026</th>
+                        <th style="text-align: center;">Mức độ hoàn thành</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>Doanh thu Ecom (gồm VAT)</b></td>
+                        <td style="text-align: right;" class="mono">18.409.476.910 đ</td>
+                        <td style="text-align: right;" class="mono"><b>966.334.131 đ</b> *(Trừ VAT: 894,8M)*</td>
+                        <td style="text-align: center;"><span class="badge badge-success">KPI Chung Team</span></td>
+                    </tr>
+                    <tr>
+                        <td><b>Lợi nhuận (EBITDA)</b></td>
+                        <td style="text-align: right;" class="mono">1.686.019.923 đ</td>
+                        <td style="text-align: right;" class="mono"><b>184.023.087 đ</b></td>
+                        <td style="text-align: center;"><span class="badge badge-success">Đạt chuẩn</span></td>
+                    </tr>
+                    <tr>
+                        <td><b>Đầu việc trọng tâm</b></td>
+                        <td style="text-align: right;" class="mono">100%</td>
+                        <td style="text-align: right;" class="mono"><b>100%</b></td>
+                        <td style="text-align: center;"><span class="badge badge-purple">5/5 Dự án</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3 style="font-size: 14px; margin-top: 24px; margin-bottom: 12px; color: var(--text-secondary); text-transform: uppercase;">Dự Án & Nhiệm Vụ Trọng Tâm (5 Dự Án)</h3>
+
+        <div class="task-card">
+            <div class="task-header">
+                <div class="task-num-title">
+                    <div class="task-badge-num">1</div>
+                    <div class="task-title">Facebook Insight Hunting (Dr.FORSKIN) — Khám Phá & Scale Insight Win</div>
+                </div>
+                <div class="task-deadline"><i class="fa-regular fa-clock"></i> 01/10 – 31/10/2026</div>
+            </div>
+            <div class="task-body">
+                • <b>① Insight Discovery:</b> ≥ 30 creative test mới (100% gắn insight trong Lark Base / Trình quản lý quảng cáo). Tỷ lệ nội dung ra đơn đạt <b>25%</b>.<br>
+                • Đào sâu 4 trục insight: <i>Ngại cầu kỳ · Sợ chọn sai · Chi tiền phải đáng · Nâng cấp diện mạo</i> (mỗi trục ≥ 3 creative).<br>
+                • <b>② Scale Winning Creative:</b> Trục «Sợ chọn sai» có 3–4 biến thể mới; giữ «Anh1» ở tầng scale; ≥ 3 biến thể concept ảnh product-focused full thông tin sản phẩm, tối ưu hạ CPL (tháng 9: 139k).
+            </div>
+        </div>
+
+        <div class="task-card">
+            <div class="task-header">
+                <div class="task-num-title">
+                    <div class="task-badge-num">2</div>
+                    <div class="task-title">Double Day 10.10 — Mega Sale Ngày Đôi Đa Sàn</div>
+                </div>
+                <div class="task-deadline"><i class="fa-regular fa-clock"></i> 10/10 – 13/10/2026</div>
+            </div>
+            <div class="task-body">
+                • <b>Mục tiêu:</b> Doanh thu ngày 10/10 đạt <b>75 triệu GMV</b>.<br>
+                • Hoàn thành 100% checklist: concept & mục tiêu, theme, đăng ký voucher SKU chủ lực trên 3 sàn.<br>
+                • Sản xuất & air <b>10 nội dung TikTok tiền sale</b> (giật deal, countdown, gom giỏ) đúng mốc thời gian.
+            </div>
+        </div>
+
+        <div class="task-card">
+            <div class="task-header">
+                <div class="task-num-title">
+                    <div class="task-badge-num">3</div>
+                    <div class="task-title">Seasonal Campaign 20/10 — Chương Trình Bán Hàng Dịp 20/10</div>
+                </div>
+                <div class="task-deadline"><i class="fa-regular fa-clock"></i> 20/10 – 22/10/2026</div>
+            </div>
+            <div class="task-body">
+                • Chốt concept, mục tiêu doanh thu, cơ chế ưu đãi/quà tặng trước <b>13/10</b>; full asset (banner, thumbnail, background live) sẵn sàng trước <b>15/10</b>.<br>
+                • 2 nội dung tiền sale trên TikTok & Facebook.<br>
+                • <b>Remarketing khách cũ:</b> Bắn notification Facebook ~3.000 khách cũ + Zalo OA ~40.000 khách salon 30Shine.
+            </div>
+        </div>
+
+        <div class="task-card">
+            <div class="task-header">
+                <div class="task-num-title">
+                    <div class="task-badge-num">4</div>
+                    <div class="task-title">TikTok Always-on — Duy Trì Nhịp Phủ Kênh Bằng Repurpose Video</div>
+                </div>
+                <div class="task-deadline"><i class="fa-regular fa-clock"></i> 01/10 – 31/10/2026</div>
+            </div>
+            <div class="task-body">
+                • <b>≥ 20 video/tháng</b> (3–4 video/tuần) từ kho video Facebook.<br>
+                • Mỗi video biên tập lại chuẩn TikTok: khung dọc 9:16, hook 3s đầu, CTA dẫn về giỏ sản phẩm.<br>
+                • Theo dõi hiệu quả riêng trên TikTok (view, tỷ lệ ra đơn từng video), không mặc định win từ Facebook.
+            </div>
+        </div>
+
+        <div class="task-card">
+            <div class="task-header">
+                <div class="task-num-title">
+                    <div class="task-badge-num">5</div>
+                    <div class="task-title">KOC Brand Amplification — Nội Dung KOC Tăng Nhận Diện Glanzen & Dr.FORSKIN</div>
+                </div>
+                <div class="task-deadline"><i class="fa-regular fa-clock"></i> 05/10 – 31/10/2026</div>
+            </div>
+            <div class="task-body">
+                • Phối hợp team MKT air <b>≥ 15 clip PR</b> lồng ghép Glanzen & Dr.FORSKIN, tổng impression <b>≥ 150.000</b>.<br>
+                • Cải tiến ≥ 1 key bán hàng trong brief, lấy từ insight win trên Facebook.<br>
+                • 100% clip có sản phẩm Ecom gắn giỏ/link shop, tracking đơn và GMV từng clip.
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. PHẠM PHI LONG -->
+    <div id="sec-long" class="section-card tab-content">
+        <div class="section-header">
+            <div class="section-title">
+                <i class="fa-solid fa-user-gear" style="color: var(--shopee);"></i>
+                3. KẾ HOẠCH CÁ NHÂN — PHẠM PHI LONG
+            </div>
+            <span class="section-badge" style="background: rgba(238, 77, 45, 0.1); color: var(--shopee); border-color: rgba(238, 77, 45, 0.3);">Shopee & TikTok Shop Lead</span>
+        </div>
+
+        <div class="profile-banner">
+            <div class="profile-info">
+                <div class="avatar-circle" style="background: linear-gradient(135deg, #ee4d2d 0%, #ea580c 100%);">L</div>
+                <div>
+                    <div class="profile-name">Phạm Phi Long</div>
+                    <div class="profile-role">Sale Online / E-commerce Specialist — Khối Thương Mại</div>
+                </div>
+            </div>
+            <div style="font-size: 13px; color: var(--text-secondary);">
+                <span>Cùng review: <b>Nguyễn Kiều Oanh</b> (GĐBP Sale & Marketing)</span>
+                <span style="margin: 0 8px;">•</span>
+                <span>Ngày lập: 05/10/2026</span>
+            </div>
+        </div>
+
+        <div class="manifesto-box" style="margin-bottom: 20px; font-size: 13px; background: rgba(238, 77, 45, 0.08); border-color: rgba(238, 77, 45, 0.25);">
+            <i class="fa-solid fa-crosshairs" style="color: var(--shopee);"></i>
+            <div>
+                <b>Vai trò cốt lõi:</b> Đạt mục tiêu bán hàng các kênh online phụ trách (Shopee, TikTok Shop, Lazada); tối ưu thang giá trị sản phẩm, tăng AOV và giữ tệp khách trung thành; vận hành Mega Sale và kiểm soát trần chi phí quảng cáo (CIR Ads).
+            </div>
+        </div>
+
+        <h3 style="font-size: 14px; margin-bottom: 12px; color: var(--text-secondary); text-transform: uppercase;">Trách Nhiệm Thường Xuyên (SLA Vận Hành)</h3>
+        <div class="sla-grid">
+            <div class="sla-item">
+                <div class="sla-val mono">≥ 90%</div>
+                <div class="sla-desc">Tỉ lệ phản hồi chat khách hàng</div>
+            </div>
+            <div class="sla-item">
+                <div class="sla-val mono">≤ 1 giờ</div>
+                <div class="sla-desc">Thời gian phản hồi TB</div>
+            </div>
+            <div class="sla-item">
+                <div class="sla-val mono">≥ 95%</div>
+                <div class="sla-desc">Tỷ lệ giao hàng thành công</div>
+            </div>
+            <div class="sla-item">
+                <div class="sla-val mono" style="color: var(--accent-primary);">0 Lỗi</div>
+                <div class="sla-desc">Sao quả tạ / Vi phạm sàn</div>
+            </div>
+        </div>
+
+        <h3 style="font-size: 14px; margin-top: 24px; margin-bottom: 12px; color: var(--text-secondary); text-transform: uppercase;">Tiến Độ Tuần Shopee + TikTok (Triệu đồng)</h3>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Chỉ số kênh</th>
+                        <th style="text-align: center;">Tuần 1 (01–07)</th>
+                        <th style="text-align: center;">Tuần 2 (08–14 · Có 10.10)</th>
+                        <th style="text-align: center;">Tuần 3 (15–21)</th>
+                        <th style="text-align: center;">Tuần 4 (22–31)</th>
+                        <th style="text-align: right;">Cả Tháng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>Doanh thu Shopee</b></td>
+                        <td style="text-align: center;" class="mono">100,9 Tr</td>
+                        <td style="text-align: center;" class="mono">140,0 Tr</td>
+                        <td style="text-align: center;" class="mono">103,6 Tr</td>
+                        <td style="text-align: center;" class="mono">140,7 Tr</td>
+                        <td style="text-align: right;" class="mono"><b>485,3 Tr</b></td>
+                    </tr>
+                    <tr>
+                        <td><b>Doanh thu TikTok</b></td>
+                        <td style="text-align: center;" class="mono">84,0 Tr</td>
+                        <td style="text-align: center;" class="mono">83,8 Tr</td>
+                        <td style="text-align: center;" class="mono">62,4 Tr</td>
+                        <td style="text-align: center;" class="mono">90,8 Tr</td>
+                        <td style="text-align: right;" class="mono"><b>321,0 Tr</b></td>
+                    </tr>
+                    <tr style="background: rgba(238, 77, 45, 0.08); font-weight: 700;">
+                        <td><b>TỔNG DOANH THU 2 SÀN</b></td>
+                        <td style="text-align: center; color: var(--shopee);" class="mono">185,0 Tr</td>
+                        <td style="text-align: center; color: var(--shopee);" class="mono">223,8 Tr</td>
+                        <td style="text-align: center; color: var(--shopee);" class="mono">166,0 Tr</td>
+                        <td style="text-align: center; color: var(--shopee);" class="mono">231,6 Tr</td>
+                        <td style="text-align: right; color: var(--shopee);" class="mono">806,3 Tr</td>
+                    </tr>
+                    <tr>
+                        <td>Ngân sách ads Shopee</td>
+                        <td style="text-align: center;" class="mono">12,6 Tr</td>
+                        <td style="text-align: center;" class="mono">17,4 Tr</td>
+                        <td style="text-align: center;" class="mono">12,9 Tr</td>
+                        <td style="text-align: center;" class="mono">17,5 Tr</td>
+                        <td style="text-align: right;" class="mono">60,4 Tr</td>
+                    </tr>
+                    <tr>
+                        <td>Ngân sách ads TikTok</td>
+                        <td style="text-align: center;" class="mono">12,1 Tr</td>
+                        <td style="text-align: center;" class="mono">12,0 Tr</td>
+                        <td style="text-align: center;" class="mono">9,0 Tr</td>
+                        <td style="text-align: center;" class="mono">13,1 Tr</td>
+                        <td style="text-align: right;" class="mono">46,1 Tr</td>
+                    </tr>
+                    <tr style="font-weight: 700;">
+                        <td><b>TỔNG NGÂN SÁCH ADS</b></td>
+                        <td style="text-align: center;" class="mono">24,6 Tr</td>
+                        <td style="text-align: center;" class="mono">29,5 Tr</td>
+                        <td style="text-align: center;" class="mono">21,9 Tr</td>
+                        <td style="text-align: center;" class="mono">30,6 Tr</td>
+                        <td style="text-align: right;" class="mono"><b>106,5 Tr</b></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3 style="font-size: 14px; margin-top: 24px; margin-bottom: 12px; color: var(--text-secondary); text-transform: uppercase;">Dự Án & Nhiệm Vụ Trọng Tâm (5 Dự Án)</h3>
+
+        <div class="task-card">
+            <div class="task-header">
+                <div class="task-num-title">
+                    <div class="task-badge-num">1</div>
+                    <div class="task-title">Siêu Sale Mega 10.10 (Mục Tiêu 75 Triệu GMV)</div>
+                </div>
+                <div class="task-deadline"><i class="fa-regular fa-clock"></i> 20/10/2026</div>
+            </div>
+            <div class="task-body">
+                • <b>GMV ngày 10.10 = 75 triệu</b> (250 đơn, AOV 300k).<br>
+                • <b>Cơ cấu đóng góp:</b> Shopee Ads 36 tr (120 đơn) + TikTok GMV Max 21 tr (65 đơn) + Livestream 12 tr (40 đơn) + CRM khách cũ 6 tr (25 đơn).<br>
+                • Ngân sách Ads: <b>8,55 triệu</b> (CIR Ads 11,40%), lợi nhuận đóng góp ≥ 26,7 triệu.<br>
+                • Xuất bán 270 sản phẩm, hoàn tất giao hàng 100% đúng hạn.
+            </div>
+        </div>
+
+        <div class="task-card">
+            <div class="task-header">
+                <div class="task-num-title">
+                    <div class="task-badge-num">2</div>
+                    <div class="task-title">Quản Trị Phễu Ads Đa Kênh & Kiểm Soát Pacing 15/10 (11 Chỉ Số Phễu)</div>
+                </div>
+                <div class="task-deadline"><i class="fa-regular fa-clock"></i> 31/10/2026</div>
+            </div>
+            <div class="task-body">
+                <b>Theo dõi chuẩn 11 chỉ số phễu Ads:</b><br>
+                • <b>Imp:</b> ~1.440.000 (≥ 45.000/ngày) · <b>CTR:</b> ≥ 1,95–2,05% · <b>Clicks:</b> ~28.100 (≥ 900/ngày) · <b>CPC:</b> ≤ 6.140–6.500đ.<br>
+                • <b>Click CR:</b> ≥ 11,25–14,2% · <b>Imp CR:</b> ≥ 0,22–0,28%.<br>
+                • <b>Đơn Ads:</b> 3.161 đơn (~102/ngày; Mega 250–400/ngày) · <b>AOV:</b> ≥ 305.700–335.000đ · <b>CPA:</b> ≤ 36.800–49.700đ (trần 60.300đ).<br>
+                • <b>CIR chuẩn:</b> ≤ 12,04% (116,3 tr); trần 15–16% (155 tr) khi kích hoạt Plan B ngày 15/10.<br>
+                • <b>ROAS:</b> ≥ 8,30x (chuẩn) / ≥ 6,25–6,67x (khi scale). Shopee Ads ROAS ≥ 7,5x; TikTok scale Product Card PSA ≥ 35% traffic (ROAS ≥ 6,17x).
+            </div>
+        </div>
+
+        <div class="task-card">
+            <div class="task-header">
+                <div class="task-num-title">
+                    <div class="task-badge-num">3</div>
+                    <div class="task-title">Chuẩn Hóa Trang Sản Phẩm (PDP Revamp) Shopee & TikTok</div>
+                </div>
+                <div class="task-deadline"><i class="fa-regular fa-clock"></i> 08/10/2026</div>
+            </div>
+            <div class="task-body">
+                • Sản xuất <b>20 bộ ảnh bìa chuẩn khung Mega/20.10</b> & <b>10 video unboxing</b> cho Top 10 SKU.<br>
+                • Thiết kế bảng so sánh công dụng cho dòng Sáp & Combo Glanzen, Dr.FORSKIN.<br>
+                • Mục tiêu CR gian hàng tăng từ 11,1% lên <b>≥ 14,5%</b>, AOV kéo lên <b>≥ 305.000đ</b>.
+            </div>
+        </div>
+
+        <div class="task-card">
+            <div class="task-header">
+                <div class="task-num-title">
+                    <div class="task-badge-num">4</div>
+                    <div class="task-title">Chuẩn Hóa SOP Livestream 3 Nhân Sự & Tăng Trưởng GMV Live</div>
+                </div>
+                <div class="task-deadline"><i class="fa-regular fa-clock"></i> 31/10/2026</div>
+            </div>
+            <div class="task-body">
+                • <b>0 lỗi vi phạm sàn</b> (xóa dứt điểm lỗi Unattended LIVE bằng nhân sự trực ghim deal).<br>
+                • Tần suất <b>≥ 60 giờ live/tháng</b> (20 phiên, Host chính + Trợ live hỗ trợ kỹ thuật).<br>
+                • GMV Live mang về <b>≥ 180 triệu</b> (chiếm ~18–20% tổng GMV toàn sàn).
+            </div>
+        </div>
+
+        <div class="task-card">
+            <div class="task-header">
+                <div class="task-num-title">
+                    <div class="task-badge-num">5</div>
+                    <div class="task-title">Tái Kích Hoạt Khách Hàng Cũ (CRM Retargeting Tệp 6.799 Khách Q3)</div>
+                </div>
+                <div class="task-deadline"><i class="fa-regular fa-clock"></i> 22/10/2026</div>
+            </div>
+            <div class="task-body">
+                • <b>≥ 350 đơn hàng 0đ chi phí Ads</b> từ tệp khách hàng thân thiết.<br>
+                • Tỷ lệ mở Chat Broadcast Shopee <b>≥ 35%</b> · Tỷ lệ sử dụng voucher CRM <b>≥ 18%</b>.<br>
+                • Doanh thu mang về từ tệp khách cũ đạt <b>≥ 105 triệu đ</b>.
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <i class="fa-solid fa-quote-left" style="opacity: 0.5;"></i>
+        Bản kế hoạch này là của từng bạn — viết để rõ đường đi, không phải để ai chấm điểm.
+        <i class="fa-solid fa-quote-right" style="opacity: 0.5;"></i>
+    </div>
+</div>
+
+<script>
+    function toggleTheme() {
+        const body = document.body;
+        const btn = document.getElementById('themeBtn');
+        if (body.classList.contains('light-theme')) {
+            body.classList.remove('light-theme');
+            btn.innerHTML = '<i class="fa-solid fa-sun"></i> Giao Diện Sáng';
+            localStorage.setItem('ecom_plan_theme', 'dark');
+        } else {
+            body.classList.add('light-theme');
+            btn.innerHTML = '<i class="fa-solid fa-moon"></i> Giao Diện Tối';
+            localStorage.setItem('ecom_plan_theme', 'light');
+        }
+    }
+
+    // Load saved theme
+    if (localStorage.getItem('ecom_plan_theme') === 'light') {
+        document.body.classList.add('light-theme');
+        document.getElementById('themeBtn').innerHTML = '<i class="fa-solid fa-moon"></i> Giao Diện Tối';
+    }
+
+    function switchTab(tabId, el) {
+        // Tab buttons
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        el.classList.add('active');
+
+        // Content
+        if (tabId === 'all') {
+            document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'block');
+        } else {
+            document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
+            const target = document.getElementById(tabId);
+            if (target) {
+                target.style.display = 'block';
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
