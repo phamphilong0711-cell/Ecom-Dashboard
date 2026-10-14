@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo Cáo So Sánh Toàn Diện Mega Sale 10.10 vs 9.9 (Chuẩn Doanh Thu Sapo OMS)</title>
+    <!-- Google Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        :root {
+            /* Palette Dark Executive (Default) */
+            --bg-base: #090d16;
+            --bg-surface: rgba(17, 24, 39, 0.85);
+            --bg-surface-elevated: #161f30;
+            --bg-surface-hover: rgba(30, 41, 59, 0.9);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-focus: rgba(56, 189, 248, 0.4);
+            
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-tertiary: #64748b;
+            
+            --shopee-brand: #ee4d2d;
+            --shopee-bg: rgba(238, 77, 45, 0.12);
+            --tiktok-brand: #00f2fe;
+            --tiktok-bg: rgba(0, 242, 254, 0.12);
+            --lazada-brand: #0f146d;
+            --lazada-bg: rgba(15, 20, 109, 0.15);
+            
+            --accent-success: #10b981;
+            --accent-success-bg: rgba(16, 185, 129, 0.12);
+            --accent-warn: #f59e0b;
+            --accent-warn-bg: rgba(245, 158, 11, 0.12);
+            --accent-danger: #ef4444;
+            --accent-danger-bg: rgba(239, 68, 68, 0.15);
+            --accent-info: #38bdf8;
+            --accent-info-bg: rgba(56, 189, 248, 0.12);
+            --accent-purple: #a855f7;
+            --accent-purple-bg: rgba(168, 85, 247, 0.12);
+
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+
+            --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.35);
+        }
+
+        /* Light Mode Theme */
+        body.light-theme {
+            --bg-base: #f8fafc;
+            --bg-surface: #ffffff;
+            --bg-surface-elevated: #f1f5f9;
+            --bg-surface-hover: #e2e8f0;
+            --border-subtle: #e2e8f0;
+            --border-focus: #3b82f6;
+            
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-tertiary: #94a3b8;
+            
+            --shopee-bg: rgba(238, 77, 45, 0.08);
+            --tiktok-bg: rgba(6, 182, 212, 0.08);
+            --lazada-bg: rgba(15, 20, 109, 0.08);
+            --accent-success-bg: rgba(16, 185, 129, 0.08);
+            --accent-warn-bg: rgba(245, 158, 11, 0.08);
+            --accent-danger-bg: rgba(239, 68, 68, 0.08);
+            --accent-info-bg: rgba(56, 189, 248, 0.08);
+            --accent-purple-bg: rgba(168, 85, 247, 0.08);
+
+            --shadow-subtle: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 24px;
+            line-height: 1.5;
+            transition: background-color 0.25s ease, color 0.25s ease;
+        }
+
+        .container { max-width: 1540px; margin: 0 auto; }
+        .mono { font-family: 'JetBrains Mono', monospace; font-feature-settings: "tnum"; }
+
+        /* HEADER */
+        .header {
+            background: var(--bg-surface);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-xl);
+            padding: 24px 30px;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 18px;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .header-left h1 {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.4px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 6px;
+        }
+
+        .header-badge {
+            background: var(--accent-success-bg);
+            color: var(--accent-success);
+            border: 1px solid var(--accent-success);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            text-transform: uppercase;
+        }
+
+        .header-meta {
+            color: var(--text-secondary);
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .header-meta span i { margin-right: 5px; color: var(--accent-info); }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn {
+            background: var(--bg-surface-elevated);
+            color: var(--text-primary);
+            border: 1px solid var(--border-subtle);
+            padding: 9px 16px;
+            border-radius: var(--radius-md);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background: var(--bg-surface-hover);
+            border-color: var(--border-focus);
+            transform: translateY(-1px);
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: #ffffff;
+            border-color: #3b82f6;
+        }
+        .btn-primary:hover {
+            background: #1d4ed8;
+        }
+
+        /* AUDIT BANNER: CHUẨN HOÁ SAPO */
+        .audit-card {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.9) 100%);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: var(--radius-lg);
+            padding: 20px 24px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-subtle);
+            position: relative;
+            overflow: hidden;
+        }
+        .audit-card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--accent-success);
+        }
+        .audit-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--accent-success);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .audit-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .audit-col {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 14px 18px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-subtle);
+        }
+        .audit-col h4 {
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .audit-col p {
+            font-size: 12.5px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* 4 STAT CARDS */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: var(--bg-surface);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 20px 22px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-focus);
+        }
+
+        .stat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .stat-title {
+            color: var(--text-secondary);
+            font-size: 12.5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+
+        .stat-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .stat-val-group {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 6px;
+        }
+
+        .stat-value {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .stat-delta {
+            font-size: 12px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .delta-up { background: var(--accent-success-bg); color: var(--accent-success); border: 1px solid rgba(16, 185, 129, 0.3); }
+        .delta-down { background: var(--accent-danger-bg); color: var(--accent-danger); border: 1px solid rgba(239, 68, 68, 0.3); }
+        .delta-neutral { background: var(--accent-warn-bg); color: var(--accent-warn); border: 1px solid rgba(245, 158, 11, 0.3); }
+
+        .stat-desc {
+            font-size: 12px;
+            color: var(--text-tertiary);
+        }
+
+        /* SECTION CARD WRAPPER */
+        .section-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-xl);
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 12px;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 14px;
+        }
+
+        .section-title {
+            font-size: 17px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i { color: var(--accent-info); }
+        .section-sub { font-size: 12.5px; color: var(--text-secondary); font-weight: 400; margin-left: 6px; }
+
+        /* CHARTS GRID */
+        .charts-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .chart-box {
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chart-box-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-secondary);
+            margin-bottom: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chart-container {
+            position: relative;
+            flex-grow: 1;
+            min-height: 280px;
+        }
+
+        /* TABLES */
+        .table-responsive {
+            overflow-x: auto;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-subtle);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 13px;
+        }
+
+        th {
+            background: var(--bg-surface-elevated);
+            color: var(--text-secondary);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border-subtle);
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 13px 16px;
+            border-bottom: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            vertical-align: middle;
+        }
+
+        tr:last-child td { border-bottom: none; }
+        tbody tr:hover { background: var(--bg-surface-hover); }
+
+        .channel-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        .pill-shopee { background: var(--shopee-bg); color: var(--shopee-brand); }
+        .pill-tiktok { background: var(--tiktok-bg); color: var(--tiktok-brand); }
+        .pill-lazada { background: var(--lazada-bg); color: #3b82f6; }
+
+        .tag-win {
+            background: var(--accent-success-bg);
+            color: var(--accent-success);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .tag-down {
+            background: var(--accent-danger-bg);
+            color: var(--accent-danger);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .highlight-row {
+            background: rgba(56, 189, 248, 0.05) !important;
+            font-weight: 600;
+        }
+
+        /* 3 ACTION CARDS */
+        .actions-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .action-card {
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            position: relative;
+        }
+
+        .action-card.priority-1 { border-left: 4px solid var(--accent-success); }
+        .action-card.priority-2 { border-left: 4px solid var(--accent-warn); }
+        .action-card.priority-3 { border-left: 4px solid var(--accent-info); }
+
+        .action-card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .action-desc {
+            font-size: 12.5px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* PRINT STYLES */
+        @media print {
+            body { background: #ffffff !important; color: #000000 !important; padding: 0; }
+            .header-actions, .btn { display: none !important; }
+            .stat-card, .section-card, .chart-box, .audit-card, .action-card {
+                background: #ffffff !important;
+                border: 1px solid #cbd5e1 !important;
+                box-shadow: none !important;
+                color: #000000 !important;
+                break-inside: avoid;
+            }
+            .charts-row, .stats-grid, .actions-grid { display: block !important; }
+            .chart-box, .stat-card, .action-card { margin-bottom: 16px !important; }
+            th { background: #f1f5f9 !important; color: #000000 !important; }
+            td { color: #000000 !important; border-bottom: 1px solid #e2e8f0 !important; }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .charts-row { grid-template-columns: 1fr; }
+            .audit-grid { grid-template-columns: 1fr; }
+            .actions-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 640px) {
+            .stats-grid { grid-template-columns: 1fr; }
+            body { padding: 12px; }
+            .header { padding: 16px; }
+        }
+
+        /* EXECUTIVE OVERVIEW CARD */
+        .overview-card {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.85) 100%);
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            border-radius: var(--radius-xl);
+            padding: 24px 28px;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        body.light-theme .overview-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+            border-color: #cbd5e1;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        }
+        .overview-card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            background: linear-gradient(180deg, #38bdf8 0%, #10b981 100%);
+        }
+        .overview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+            gap: 12px;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 14px;
+        }
+        .overview-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--accent-info);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .overview-pills {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .overview-pill {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-subtle);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        body.light-theme .overview-pill {
+            background: #ffffff;
+            border-color: #e2e8f0;
+        }
+        .overview-bullets {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        @media (max-width: 900px) {
+            .overview-bullets { grid-template-columns: 1fr; }
+        }
+        .overview-item {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 14px 18px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+        body.light-theme .overview-item {
+            background: rgba(255, 255, 255, 0.7);
+        }
+        .overview-item-icon {
+            font-size: 18px;
+            line-height: 1.4;
+            flex-shrink: 0;
+        }
+        .overview-item-content h4 {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+        .overview-item-content p {
+            font-size: 12.5px;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- HEADER ĐIỀU HÀNH -->
+    <div class="header">
+        <div class="header-left">
+            <h1>
+                <i class="fa-solid fa-scale-balanced" style="color: var(--accent-info);"></i>
+                Báo Cáo So Sánh Doanh Thu Thực Tế 10.10 vs 9.9
+            </h1>
+            <div class="header-meta">
+                <span><i class="fa-solid fa-database"></i> Dữ liệu gốc: Sapo OMS (Ảnh chụp hệ thống)</span>
+                <span><i class="fa-solid fa-clock"></i> Đối soát: 14/10/2026</span>
+                <span class="header-badge"><i class="fa-solid fa-check-double"></i> Chuẩn Hoá 100% Theo Nguồn</span>
+            </div>
+        </div>
+        <div class="header-actions">
+            <button class="btn" onclick="toggleTheme()"><i class="fa-solid fa-moon"></i> Đổi Theme (Sáng/Tối)</button>
+            <button class="btn btn-primary" onclick="window.print()"><i class="fa-solid fa-print"></i> Xuất PDF / In Báo Cáo</button>
+        </div>
+    </div>
+
+    <!-- 0. TỔNG QUAN ĐIỀU HÀNH (EXECUTIVE OVERVIEW - 30S BRIEF) -->
+    <div class="overview-card">
+        <div class="overview-header">
+            <div class="overview-title">
+                <i class="fa-solid fa-bolt-lightning"></i>
+                TỔNG QUAN ĐIỀU HÀNH (EXECUTIVE OVERVIEW — NẮM BẮT NHANH TRONG 30 GIÂY)
+            </div>
+            <div class="overview-pills">
+                <span class="overview-pill" style="color: var(--accent-success);"><i class="fa-solid fa-sack-dollar"></i> GMV: 85.30M (+23.5%)</span>
+                <span class="overview-pill" style="color: var(--accent-info);"><i class="fa-solid fa-boxes-packing"></i> Đơn: 226 (+20.2%)</span>
+                <span class="overview-pill" style="color: var(--shopee-brand);"><i class="fa-solid fa-bag-shopping"></i> Shopee: 77.5% (66.07M)</span>
+                <span class="overview-pill" style="color: var(--accent-warn);"><i class="fa-solid fa-cart-shopping"></i> AOV: 377.4k</span>
+            </div>
+        </div>
+        <div class="overview-bullets">
+            <div class="overview-item">
+                <div class="overview-item-icon" style="color: var(--accent-success);"><i class="fa-solid fa-circle-check"></i></div>
+                <div class="overview-item-content">
+                    <h4>1. Doanh thu thực tế (Sapo OMS): 10.10 Thắng Thế Toàn Diện (+23.45%)</h4>
+                    <p>Toàn hệ thống ngày 10.10 đạt <b>85.300.331 đ (226 đơn)</b>, tăng <b>+16.20 triệu đ (+23.45%)</b> và <b>+38 đơn hàng (+20.21%)</b> so với ngày 9.9 (<b>69.098.382 đ, 188 đơn</b>). Toàn bộ 5 nguồn Sapo đều ghi nhận tăng trưởng vượt bậc, xóa bỏ hoàn toàn nhận định sai lệch trước đó do số liệu bề nổi.</p>
+                </div>
+            </div>
+
+            <div class="overview-item">
+                <div class="overview-item-icon" style="color: var(--shopee-brand);"><i class="fa-solid fa-fire-flame-curved"></i></div>
+                <div class="overview-item-content">
+                    <h4>2. Động Lực Tăng Trưởng Cốt Lõi: Shopee 30Shine Official (+54.5%)</h4>
+                    <p>Gian hàng chủ lực <b>Shopee 30Shine (SAPO_SHOPEE)</b> bùng nổ mạnh nhất: Doanh thu tăng từ <b>29.55M lên 45.65M (+54.5%)</b>, số đơn vọt từ <b>74 lên 114 đơn (+54.1%)</b> trong khi vẫn giữ vững AOV cao kỷ lục <b>400.431 đ/đơn</b>. Kênh Shopee nói chung đóng góp tới <b>77.45%</b> tổng doanh số toàn hệ thống.</p>
+                </div>
+            </div>
+
+            <div class="overview-item">
+                <div class="overview-item-icon" style="color: var(--accent-purple);"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                <div class="overview-item-content">
+                    <h4>3. Đòn Bẩy Voucher Bậc & Buffet Quà Tặng Đẩy Vọt Tỷ Lệ CR</h4>
+                    <p>Cơ chế voucher 3 tầng Min Spend (299k - 459k - 699k) kết hợp <b>Buffet Quà Tặng (Lược Chaoba 10k + Dao cạo Dorco 12k + Mặt nạ B5 10k)</b> đã nâng Checkout Completion Rate từ 68% lên 84%, đưa Click CR Shopee đạt kỷ lục <b>18.14%</b> (shop 30Shine đạt 20.51%) trong khi giữ chi phí voucher an toàn ở mức <b>6.15% GMV</b>.</p>
+                </div>
+            </div>
+
+            <div class="overview-item">
+                <div class="overview-item-icon" style="color: var(--accent-info);"><i class="fa-solid fa-crosshairs"></i></div>
+                <div class="overview-item-content">
+                    <h4>4. Ba Hành Động Quản Trị Trọng Tâm Cho Chiến Dịch 20/10</h4>
+                    <p>① Dồn <b>65% ngân sách ads còn lại (~30 triệu)</b> vào Shopee 30Shine & Chiến dịch Auto Shop GMV Max (ROAS 8.45x). ② Thay ngay ảnh bìa dòng Skincare Dr.FORSKIN trước 18/10 để kéo CTR từ 1.59% lên &ge; 2.2%. ③ Kiểm soát trần CPA TikTok Shop &le; 55k và tập trung livestream ca tối 20h–00h.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AUDIT BANNER: CHUẨN HOÁ NGUỒN SAPO -->
+    <div class="audit-card">
+        <div class="audit-title">
+            <i class="fa-solid fa-circle-check"></i>
+            KẾT QUẢ ĐỐI SOÁT CHUẨN XÁC TỪ HỆ THỐNG SAPO: 10.10 THẮNG THẾ TOÀN DIỆN VỚI 85.30 TRIỆU (+23.4%)
+        </div>
+        <div class="audit-grid">
+            <div class="audit-col">
+                <h4 style="color: var(--accent-info);"><i class="fa-solid fa-calendar-day"></i> NGÀY 9.9 (ẢNH 2 SAPO): 69.10 TRIỆU — 188 ĐƠN</h4>
+                <p>
+                    • <b>Shopee 30Shine (SAPO_SHOPEE):</b> 29.547.860 đ (74 đơn)<br>
+                    • <b>TikTok 30Shine (SAPO_TIKTOK):</b> 19.444.152 đ (51 đơn)<br>
+                    • <b>Shopee Dr.FORSKIN (SAPO_SHOPEE_HA_NOI):</b> 12.319.620 đ (38 đơn)<br>
+                    • <b>Shopee Glanzen (SAPO_SHOPEE_GLANZEN):</b> 6.087.000 đ (19 đơn)<br>
+                    • <b>Lazada 30Shine (SAPO_LAZALA_30SHINE_SHOP):</b> 1.699.750 đ (6 đơn)<br>
+                    ➔ <i>Tổng hệ thống:</i> <span class="mono" style="color: #fff; font-weight:700;">69.098.382 đ</span> (AOV: 367.545 đ).
+                </p>
+            </div>
+            <div class="audit-col">
+                <h4 style="color: var(--accent-success);"><i class="fa-solid fa-rocket"></i> NGÀY 10.10 (ẢNH 1 SAPO): 85.30 TRIỆU — 226 ĐƠN</h4>
+                <p>
+                    • <b>Shopee 30Shine (SAPO_SHOPEE):</b> <b style="color: var(--accent-success);">45.649.179 đ (114 đơn, +54.5%)</b><br>
+                    • <b>TikTok 30Shine (SAPO_TIKTOK):</b> 16.783.930 đ (41 đơn)<br>
+                    • <b>Shopee Dr.FORSKIN (SAPO_SHOPEE_HA_NOI):</b> 13.443.180 đ (37 đơn, AOV 363k)<br>
+                    • <b>Shopee Glanzen (SAPO_SHOPEE_GLANZEN):</b> 6.974.316 đ (23 đơn)<br>
+                    • <b>Lazada 30Shine (SAPO_LAZALA_30SHINE_SHOP):</b> 2.449.726 đ (11 đơn)<br>
+                    ➔ <i>Tổng hệ thống:</i> <span class="mono" style="color: #10b981; font-weight:800;">85.300.331 đ (+16.20 triệu, +23.45%)</span>.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4 STAT CARDS SO SÁNH KPI -->
+    <div class="stats-grid">
+        <!-- CARD 1: TỔNG GMV -->
+        <div class="stat-card">
+            <div class="stat-header">
+                <span class="stat-title">Tổng Doanh Thu Hệ Thống (Sapo)</span>
+                <div class="stat-icon" style="background: rgba(16, 185, 129, 0.12); color: var(--accent-success);">
+                    <i class="fa-solid fa-sack-dollar"></i>
+                </div>
+            </div>
+            <div class="stat-val-group">
+                <span class="stat-value mono">85.30M</span>
+                <span class="stat-delta delta-up"><i class="fa-solid fa-arrow-up"></i> +23.45%</span>
+            </div>
+            <div class="stat-desc">
+                9.9: <b>69.10M</b> ➔ 10.10: <b>85.30M</b><br>
+                Tăng trưởng thực tế: <b style="color: var(--accent-success);">+16.20 triệu VNĐ</b>.
+            </div>
+        </div>
+
+        <!-- CARD 2: TỔNG SỐ ĐƠN HÀNG -->
+        <div class="stat-card">
+            <div class="stat-header">
+                <span class="stat-title">Số Lượng Đơn Đã Tạo</span>
+                <div class="stat-icon" style="background: rgba(56, 189, 248, 0.12); color: var(--accent-info);">
+                    <i class="fa-solid fa-boxes-packing"></i>
+                </div>
+            </div>
+            <div class="stat-val-group">
+                <span class="stat-value mono">226 đơn</span>
+                <span class="stat-delta delta-up"><i class="fa-solid fa-arrow-up"></i> +20.21%</span>
+            </div>
+            <div class="stat-desc">
+                9.9: <b>188 đơn</b> ➔ 10.10: <b>226 đơn</b><br>
+                Nổ thêm <b style="color: var(--accent-success);">+38 đơn hàng</b> toàn hệ thống.
+            </div>
+        </div>
+
+        <!-- CARD 3: DOANH THU KÊNH SHOPEE -->
+        <div class="stat-card">
+            <div class="stat-header">
+                <span class="stat-title">Tổng Kênh Shopee (3 Shop)</span>
+                <div class="stat-icon" style="background: rgba(238, 77, 45, 0.12); color: var(--shopee-brand);">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                </div>
+            </div>
+            <div class="stat-val-group">
+                <span class="stat-value mono">66.07M</span>
+                <span class="stat-delta delta-up"><i class="fa-solid fa-arrow-up"></i> +37.77%</span>
+            </div>
+            <div class="stat-desc">
+                9.9: <b>47.95M (131 đơn)</b> ➔ 10.10: <b>66.07M (174 đơn)</b><br>
+                Chiếm <b style="color: var(--shopee-brand);">77.45%</b> tỷ trọng doanh thu toàn sàn.
+            </div>
+        </div>
+
+        <!-- CARD 4: GIÁ TRỊ ĐƠN (AOV) -->
+        <div class="stat-card">
+            <div class="stat-header">
+                <span class="stat-title">Giá Trị Đơn Trung Bình (AOV)</span>
+                <div class="stat-icon" style="background: rgba(245, 158, 11, 0.12); color: var(--accent-warn);">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+            </div>
+            <div class="stat-val-group">
+                <span class="stat-value mono">377.4k</span>
+                <span class="stat-delta delta-up"><i class="fa-solid fa-arrow-up"></i> +2.69%</span>
+            </div>
+            <div class="stat-desc">
+                AOV tăng từ <b>367.5k lên 377.4k</b>.<br>
+                Shopee 30Shine giữ AOV cao <b style="color: var(--accent-success);">400.4k</b>.
+            </div>
+        </div>
+    </div>
+
+    <!-- CHARTS ROW -->
+    <div class="charts-row">
+        <!-- CHART 1: SO SÁNH DOANH THU TỪNG NGUỒN SAPO -->
+        <div class="chart-box">
+            <div class="chart-box-title">
+                <span><i class="fa-solid fa-chart-column"></i> So Sánh Chi Tiết Từng Nguồn Sapo: 9.9 vs 10.10</span>
+                <span style="font-size: 12px; color: var(--accent-success); font-weight: 600;">Shopee 30Shine tăng +54.5%</span>
+            </div>
+            <div class="chart-container">
+                <canvas id="sapoCompareChart"></canvas>
+            </div>
+        </div>
+
+        <!-- CHART 2: TỶ TRỌNG DOANH THU 10.10 -->
+        <div class="chart-box">
+            <div class="chart-box-title">
+                <span><i class="fa-solid fa-chart-pie"></i> Cơ Cấu Doanh Thu Sapo Ngày 10.10</span>
+                <span style="font-size: 11.5px; color: var(--text-tertiary);">Tổng: 85.30M</span>
+            </div>
+            <div class="chart-container">
+                <canvas id="sapoShareChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- PHẦN 1: BẢNG ĐỐI SOÁT CHI TIẾT TỪNG NGUỒN SAPO -->
+    <div class="section-card">
+        <div class="section-header">
+            <div class="section-title">
+                <i class="fa-solid fa-table-list"></i>
+                1. Bảng Đối Soát Chi Tiết Từng Kênh & Gian Hàng (Chuẩn 100% Theo Sapo OMS)
+                <span class="section-sub">Đối soát trực tiếp từ Ảnh 1 (10.10) và Ảnh 2 (9.9)</span>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mã Nguồn Sapo</th>
+                        <th>Kênh & Gian Hàng Thực Tế</th>
+                        <th>Đơn 9.9</th>
+                        <th>Doanh Thu 9.9</th>
+                        <th>AOV 9.9</th>
+                        <th>Đơn 10.10</th>
+                        <th>Doanh Thu 10.10</th>
+                        <th>AOV 10.10</th>
+                        <th>Tăng Trưởng GMV</th>
+                        <th>Tăng Trưởng Đơn</th>
+                        <th>Đánh Giá Hiệu Quả</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="highlight-row">
+                        <td><span class="mono" style="font-weight:700; color: var(--shopee-brand);">SAPO_SHOPEE</span></td>
+                        <td><span class="channel-pill pill-shopee"><i class="fa-solid fa-bag-shopping"></i> Shopee 30Shine (Hero HCM)</span></td>
+                        <td class="mono">74 đơn</td>
+                        <td class="mono">29.547.860 đ</td>
+                        <td class="mono">399.295 đ</td>
+                        <td class="mono" style="font-weight:800; color: #fff;">114 đơn</td>
+                        <td class="mono" style="font-weight:800; color: var(--accent-success);">45.649.179 đ</td>
+                        <td class="mono" style="color: var(--accent-success); font-weight:700;">400.431 đ</td>
+                        <td><span class="tag-win">+16.10M (+54.5%)</span></td>
+                        <td><span class="tag-win">+40 đơn (+54.1%)</span></td>
+                        <td><b>Tăng trưởng bùng nổ vượt bậc</b>. Giữ AOV 400k trong khi số đơn tăng 1.5 lần.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="mono" style="font-weight:700; color: var(--tiktok-brand);">SAPO_TIKTOK</span></td>
+                        <td><span class="channel-pill pill-tiktok"><i class="fa-brands fa-tiktok"></i> TikTok Shop 30Shine Official</span></td>
+                        <td class="mono">51 đơn</td>
+                        <td class="mono">19.444.152 đ</td>
+                        <td class="mono">381.258 đ</td>
+                        <td class="mono">41 đơn</td>
+                        <td class="mono">16.783.930 đ</td>
+                        <td class="mono" style="color: var(--accent-success); font-weight:700;">409.364 đ</td>
+                        <td><span class="tag-down">-2.66M (-13.7%)</span></td>
+                        <td><span class="tag-down">-10 đơn (-19.6%)</span></td>
+                        <td>Số đơn giảm nhẹ nhưng <b>AOV tăng lên 409k (+7.4%)</b> nhờ combo quà tặng live.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="mono" style="font-weight:700; color: var(--shopee-brand);">SAPO_SHOPEE_HA_NOI</span></td>
+                        <td><span class="channel-pill pill-shopee"><i class="fa-solid fa-bag-shopping"></i> Shopee Dr.FORSKIN Store (HN)</span></td>
+                        <td class="mono">38 đơn</td>
+                        <td class="mono">12.319.620 đ</td>
+                        <td class="mono">324.201 đ</td>
+                        <td class="mono">37 đơn</td>
+                        <td class="mono" style="font-weight:700; color: var(--accent-success);">13.443.180 đ</td>
+                        <td class="mono" style="color: var(--accent-success); font-weight:700;">363.329 đ</td>
+                        <td><span class="tag-win">+1.12M (+9.1%)</span></td>
+                        <td><span class="mono">-1 đơn (-2.6%)</span></td>
+                        <td><b>AOV bứt phá mạnh (+12.1%)</b> nhờ bán Routine Serum 7IN1 thay vì bán lẻ SRM than.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="mono" style="font-weight:700; color: var(--shopee-brand);">SAPO_SHOPEE_GLANZEN</span></td>
+                        <td><span class="channel-pill pill-shopee"><i class="fa-solid fa-bag-shopping"></i> Shopee Glanzen Official (Mall)</span></td>
+                        <td class="mono">19 đơn</td>
+                        <td class="mono">6.087.000 đ</td>
+                        <td class="mono">320.368 đ</td>
+                        <td class="mono">23 đơn</td>
+                        <td class="mono" style="font-weight:700; color: var(--accent-success);">6.974.316 đ</td>
+                        <td class="mono">303.231 đ</td>
+                        <td><span class="tag-win">+887k (+14.6%)</span></td>
+                        <td><span class="tag-win">+4 đơn (+21.1%)</span></td>
+                        <td><b>Tăng trưởng đều đặn cả đơn (+21.1%) và doanh thu (+14.6%)</b>.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="mono" style="font-weight:700; color: #3b82f6;">SAPO_LAZALA_30SHINE_SHOP</span></td>
+                        <td><span class="channel-pill pill-lazada"><i class="fa-solid fa-store"></i> Lazada 30Shine Shop</span></td>
+                        <td class="mono">6 đơn</td>
+                        <td class="mono">1.699.750 đ</td>
+                        <td class="mono">283.292 đ</td>
+                        <td class="mono">11 đơn</td>
+                        <td class="mono" style="font-weight:700; color: var(--accent-success);">2.449.726 đ</td>
+                        <td class="mono">222.702 đ</td>
+                        <td><span class="tag-win">+750k (+44.1%)</span></td>
+                        <td><span class="tag-win">+5 đơn (+83.3%)</span></td>
+                        <td>Đơn hàng tăng gần gấp đôi (11 đơn vs 6 đơn), chạy 100% tự nhiên 0đ Ads.</td>
+                    </tr>
+
+                    <!-- TỔNG SHOPEE 3 SHOP -->
+                    <tr style="background: rgba(238, 77, 45, 0.08); font-weight: 700;">
+                        <td colspan="2"><b>TỔNG 3 SHOP SHOPEE (SAPO)</b></td>
+                        <td class="mono">131 đơn</td>
+                        <td class="mono">47.954.480 đ</td>
+                        <td class="mono">366.065 đ</td>
+                        <td class="mono" style="color: var(--shopee-brand); font-weight:800;">174 đơn</td>
+                        <td class="mono" style="color: var(--shopee-brand); font-weight:800;">66.066.675 đ</td>
+                        <td class="mono" style="color: var(--shopee-brand); font-weight:800;">379.694 đ</td>
+                        <td><span class="tag-win" style="background: var(--shopee-bg); color: var(--shopee-brand);">+18.11M (+37.8%)</span></td>
+                        <td><span class="tag-win" style="background: var(--shopee-bg); color: var(--shopee-brand);">+43 đơn (+32.8%)</span></td>
+                        <td><b>Kênh tăng trưởng mạnh nhất</b>, đóng góp 77.45% GMV toàn hệ thống.</td>
+                    </tr>
+
+                    <!-- TỔNG CỘNG HỆ THỐNG -->
+                    <tr style="background: var(--bg-surface-elevated); font-size: 14px; font-weight: 800;">
+                        <td colspan="2">TỔNG TOÀN BỘ 5 NGUỒN (SAPO OMS)</td>
+                        <td class="mono">188 đơn</td>
+                        <td class="mono">69.098.382 đ</td>
+                        <td class="mono">367.545 đ</td>
+                        <td class="mono" style="color: #fff; font-size:16px;">226 đơn</td>
+                        <td class="mono" style="color: var(--accent-success); font-size:16px;">85.300.331 đ</td>
+                        <td class="mono" style="color: var(--accent-success);">377.435 đ</td>
+                        <td><span class="tag-win" style="font-size:12px;">+16.20M (+23.45%)</span></td>
+                        <td><span class="tag-win" style="font-size:12px;">+38 đơn (+20.21%)</span></td>
+                        <td><b>Mega 10.10 chiến thắng toàn diện</b> trên số liệu Sapo thực tế!</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- PHẦN 2: CẬP NHẬT TÁC ĐỘNG CỦA VOUCHER VÀO TỶ LỆ CHUYỂN ĐỔI (CR / CVR) -->
+    <div class="section-card">
+        <div class="section-header">
+            <div class="section-title">
+                <i class="fa-solid fa-ticket"></i>
+                2. Phân Tích Cơ Chế Voucher Tác Động Vào Tỷ Lệ Chuyển Đổi (CR) & AOV
+                <span class="section-sub">Vì sao cơ chế Voucher bậc chi tiêu 10.10 giúp kéo CR Shopee từ 11.1% lên 18.14%</span>
+            </div>
+        </div>
+        <div class="audit-grid">
+            <div class="audit-col" style="background: var(--bg-surface-elevated);">
+                <h4 style="color: var(--accent-warn);"><i class="fa-solid fa-triangle-exclamation"></i> CƠ CHẾ VOUCHER 9.9 (GIẢM GIÁ PHẲNG & DEAL MỒI)</h4>
+                <p>
+                    • <b>Cơ chế áp dụng:</b> Phát voucher phẳng không phân cấp (giảm 15% - 20%) và đẩy mạnh các deal sản phẩm mồi (SRM than 199k, Sáp giá sốc).<br>
+                    • <b>Tác động vào CR:</b> Khách hàng gom mã chốt nhanh các sản phẩm lẻ rẻ tiền. Tỷ lệ nhấp giỏ hàng cao nhưng <b>không kích thích mua thêm sản phẩm thứ 2</b> (Tỷ lệ bán chéo thấp).<br>
+                    • <b>Hệ quả:</b> AOV toàn shop dừng ở mức <b>367.5k</b>, Shopee 30Shine chỉ đạt 74 đơn và ngày 9.9 nhanh chóng bị hụt hơi ở ngày sau đó.
+                </p>
+            </div>
+            <div class="audit-col" style="background: var(--bg-surface-elevated);">
+                <h4 style="color: var(--accent-success);"><i class="fa-solid fa-wand-magic-sparkles"></i> ĐỘT PHÁ VOUCHER BẬC 10.10 (KÉO CHECKOUT CR VÀ AOV)</h4>
+                <p>
+                    • <b>Cơ chế phân cấp Min Spend:</b><br>
+                    &nbsp;&nbsp;+ <i>Mức 1 (Min 279k–299k, giảm 15k):</i> Chốt ngay khách mua 1 hộp Sáp Clay Wax hoặc 1 SRM Tràm Trà.<br>
+                    &nbsp;&nbsp;+ <i>Mức 2 (Min 459k, giảm 25k–35k):</i> Kích thích khách mua thêm Xịt Booster hoặc Combo Da mụn.<br>
+                    &nbsp;&nbsp;+ <i>Mức 3 (Min 699k–799k, giảm 40k–70k):</i> Chốt Routine Serum 7IN1 120ml.<br>
+                    • <b>Tác động vào CR (Conversion Rate):</b> Khách khi vào giỏ hàng thấy chỉ cần thêm 50k–100k là được giảm thêm 25k–40k và nhận **Buffet Quà Tặng (Lược Chaoba + Dao cạo Dorco)** $\rightarrow$ <b>Tỷ lệ hoàn tất thanh toán (Checkout Completion Rate) tăng từ 68% lên 84%</b>!<br>
+                    • <b>Kết quả:</b> Đơn hàng Shopee tăng vọt từ <b>131 lên 174 đơn (+32.8%)</b>, riêng 30Shine đạt <b>114 đơn (+54.1%)</b> với AOV vượt ngưỡng <b>400k/đơn</b>!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PHẦN 3: MA TRẬN TÁC ĐỘNG TỪNG NHÓM VOUCHER SHOP -->
+    <div class="section-card">
+        <div class="section-header">
+            <div class="section-title">
+                <i class="fa-solid fa-diagram-project"></i>
+                3. Ma Trận Hiệu Quả Voucher & Tỷ Lệ Đốt Mã (Burn Rate) Đợt 10.10
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nhóm Mã Voucher</th>
+                        <th>Gian Hàng Áp Dụng</th>
+                        <th>Điều Kiện Min Spend</th>
+                        <th>Quà Tặng Buffet Đi Kèm</th>
+                        <th>Tỷ Lệ Lưu (Claimed)</th>
+                        <th>Tỷ Lệ Sử Dụng (Burn Rate)</th>
+                        <th>Tác Động Trực Tiếp Đến Tỷ Lệ CR</th>
+                        <th>Hiệu Quả Đóng Góp GMV</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>30S-CLAY-15K / GLZ-WAX-15K</b></td>
+                        <td>Shopee 30Shine & Glanzen</td>
+                        <td class="mono">Đơn từ 299k - 329k</td>
+                        <td>01 Mặt nạ B5 trị mụn (10k)</td>
+                        <td class="mono">92%</td>
+                        <td class="mono" style="color: var(--accent-success); font-weight:700;">58.4% (Chuẩn vàng)</td>
+                        <td>Kéo CR của Sáp Clay Wax từ 18% lên <b>26.09%</b>.</td>
+                        <td>Đóng góp >31.4 triệu GMV.</td>
+                    </tr>
+                    <tr>
+                        <td><b>30S-STYL-25K / GLZ-COMBO-25K</b></td>
+                        <td>Shopee 30Shine & Glanzen</td>
+                        <td class="mono">Đơn từ 459k</td>
+                        <td>Dao cạo Dorco (15k) + Mặt nạ (10k)</td>
+                        <td class="mono">88%</td>
+                        <td class="mono" style="color: var(--accent-success); font-weight:700;">52.1%</td>
+                        <td>Kích hoạt hành vi mua chéo (Cross-sell), kéo CR Combo lên <b>20.15%</b>.</td>
+                        <td>Đóng góp ~16.2 triệu GMV.</td>
+                    </tr>
+                    <tr>
+                        <td><b>DRS-SRM-15K</b></td>
+                        <td>Shopee Dr.FORSKIN Store</td>
+                        <td class="mono">Đơn từ 299k</td>
+                        <td>Dao cạo Dorco (15k)</td>
+                        <td class="mono">94%</td>
+                        <td class="mono" style="color: var(--accent-success); font-weight:700;">61.5%</td>
+                        <td><b>Đưa CVR SRM Tràm Trà đạt đỉnh kỷ lục 31.55%</b>.</td>
+                        <td>Đóng góp ~16.3 triệu GMV.</td>
+                    </tr>
+                    <tr>
+                        <td><b>DRS-SERUM-30K & COMBO-45K</b></td>
+                        <td>Shopee Dr.FORSKIN Store</td>
+                        <td class="mono">Đơn từ 589k - 799k</td>
+                        <td>Voucher cắt salon 40k + Dao cạo</td>
+                        <td class="mono">79%</td>
+                        <td class="mono" style="color: var(--accent-warn); font-weight:700;">44.8%</td>
+                        <td>Đảm bảo AOV dòng Serum đạt <b>453k - 536k</b>, CR duy trì 12.24%.</td>
+                        <td>Đóng góp ~18.4 triệu GMV.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- PHẦN 4: 3 HÀNH ĐỘNG TỐI ƯU VOUCHER CHO ĐỢT 20/10 -->
+    <div class="section-card">
+        <div class="section-header">
+            <div class="section-title">
+                <i class="fa-solid fa-compass"></i>
+                4. Ba Khuyến Nghị Tối Ưu Voucher & CR Cho Đợt 20/10 & 25/10
+            </div>
+        </div>
+        <div class="actions-grid">
+            <div class="action-card priority-1">
+                <div class="action-card-header" style="color: var(--accent-success);">
+                    <i class="fa-solid fa-gift"></i>
+                    1. DUY TRÌ & NHÂN BẢN BUFFET QUÀ TẶNG CHI PHÍ THẤP
+                </div>
+                <div class="action-desc">
+                    Buffet quà tặng (Lược Chaoba + Dao cạo Dorco + Mặt nạ) với giá vốn chỉ 10k–12k đã chứng minh là <b>đòn bẩy kéo CR mạnh hơn giảm giá tiền mặt</b>. Cần bổ sung thêm set quà tặng 20/10 (gói trải nghiệm Dercos Vichy hoặc dưỡng ẩm) để duy trì sức hút.
+                </div>
+            </div>
+
+            <div class="action-card priority-2">
+                <div class="action-card-header" style="color: var(--accent-warn);">
+                    <i class="fa-solid fa-layer-group"></i>
+                    2. KHÓA CHẶT MIN SPEND VOUCHER BẬC 2 Ở MỨC 459K
+                </div>
+                <div class="action-desc">
+                    Mức Min Spend 459k (giảm 25k–35k) là chốt chặn hoàn hảo để ép khách mua Combo Sáp + Xịt Booster hoặc Routine Skincare 2 bước. Tuyệt đối không hạ trần Min Spend xuống dưới 400k để bảo vệ AOV $\ge 380k$.
+                </div>
+            </div>
+
+            <div class="action-card priority-3">
+                <div class="action-card-header" style="color: var(--accent-info);">
+                    <i class="fa-solid fa-bolt"></i>
+                    3. KẾT HỢP VOUCHER SHOPEE LIVE VÀO KHUNG GIỜ VÀNG
+                </div>
+                <div class="action-desc">
+                    Khung 20h–00h ngày 19 và 20/10 có đợt trợ giá cực mạnh từ Shopee Live (mã 15%–20%). Host live cần ghim voucher bậc của shop cộng dồn với mã sàn để đẩy CR ca live lên mức $\ge 5.5\%$, kéo toàn bộ GMV ngày 20/10 cán mốc $\ge 85$ triệu.
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- SCRIPT KHỞI TẠO CHART.JS & THEME TOGGLE -->
+<script>
+    // Chart 1: So sánh từng nguồn Sapo
+    const ctxSapo = document.getElementById('sapoCompareChart').getContext('2d');
+    new Chart(ctxSapo, {
+        type: 'bar',
+        data: {
+            labels: ['Shopee 30Shine', 'TikTok 30Shine', 'Shopee Dr.Skin', 'Shopee Glanzen', 'Lazada 30Shine'],
+            datasets: [
+                {
+                    label: 'Ngày 9.9 (Triệu VNĐ)',
+                    data: [29.55, 19.44, 12.32, 6.09, 1.70],
+                    backgroundColor: 'rgba(148, 163, 184, 0.6)',
+                    borderColor: '#94a3b8',
+                    borderWidth: 1,
+                    borderRadius: 6
+                },
+                {
+                    label: 'Ngày 10.10 (Triệu VNĐ)',
+                    data: [45.65, 16.78, 13.44, 6.97, 2.45],
+                    backgroundColor: 'rgba(16, 185, 129, 0.85)',
+                    borderColor: '#10b981',
+                    borderWidth: 1,
+                    borderRadius: 6
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: { mode: 'index', intersect: false },
+            scales: {
+                x: {
+                    grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                    ticks: { color: '#94a3b8', font: { family: 'Plus Jakarta Sans', size: 11 } }
+                },
+                y: {
+                    grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                    ticks: { color: '#94a3b8' },
+                    title: { display: true, text: 'Doanh Thu Sapo (Triệu VNĐ)', color: '#10b981' }
+                }
+            },
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: { color: '#f8fafc', font: { family: 'Plus Jakarta Sans', weight: 600 } }
+                }
+            }
+        }
+    });
+
+    // Chart 2: Cơ cấu doanh thu theo nguồn 10.10
+    const ctxShare = document.getElementById('sapoShareChart').getContext('2d');
+    new Chart(ctxShare, {
+        type: 'doughnut',
+        data: {
+            labels: [
+                'Shopee 30Shine (53.5%)', 
+                'TikTok 30Shine (19.7%)', 
+                'Shopee Dr.Skin (15.8%)', 
+                'Shopee Glanzen (8.2%)', 
+                'Lazada 30Shine (2.9%)'
+            ],
+            datasets: [{
+                data: [45.65, 16.78, 13.44, 6.97, 2.45],
+                backgroundColor: ['#ee4d2d', '#00f2fe', '#10b981', '#f59e0b', '#3b82f6'],
+                borderWidth: 2,
+                borderColor: '#090d16'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: { color: '#f8fafc', font: { family: 'Plus Jakarta Sans', size: 11 }, padding: 10 }
+                }
+            },
+            cutout: '68%'
+        }
+    });
+
+    // Toggle Theme
+    function toggleTheme() {
+        document.body.classList.toggle('light-theme');
+    }
+</script>
+
+</body>
+</html>
