@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo Cáo Đánh Giá Hoàn Thành Nhiệm Vụ H2 — Quản Trị Phễu Ads CIR Tháng 10/2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg-base: #090d16;
+            --bg-card: rgba(17, 24, 39, 0.82);
+            --bg-card-hover: rgba(30, 41, 59, 0.9);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(56, 189, 248, 0.35);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-sub: #64748b;
+            --shopee: #ee4d2d;
+            --tiktok: #00f2fe;
+            --success: #10b981;
+            --warn: #f59e0b;
+            --danger: #ef4444;
+            --purple: #a855f7;
+            --blue: #3b82f6;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-base);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.12) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(238, 77, 45, 0.1) 0px, transparent 50%),
+                radial-gradient(at 50% 100%, rgba(16, 185, 129, 0.08) 0px, transparent 50%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 24px;
+            line-height: 1.55;
+        }
+        .container { max-width: 1480px; margin: 0 auto; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        /* HEADER */
+        .header {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 28px 32px;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+        .header-title h1 {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 13.5px;
+            color: var(--text-muted);
+            flex-wrap: wrap;
+        }
+        .badge-kpi {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 12px;
+        }
+        .badge-tag {
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+
+        /* KPI VERDICT BANNER */
+        .verdict-box {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(6, 78, 59, 0.25) 100%);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .verdict-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .verdict-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(16, 185, 129, 0.2);
+            color: #34d399;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        .verdict-title {
+            font-size: 17px;
+            font-weight: 800;
+            color: #34d399;
+            margin-bottom: 3px;
+        }
+        .verdict-desc {
+            font-size: 13.5px;
+            color: #cbd5e1;
+        }
+
+        /* STATS GRID */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        @media (max-width: 1024px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 640px) { .stats-grid { grid-template-columns: 1fr; } }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 20px 22px;
+            position: relative;
+            transition: all 0.25s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-highlight);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+        }
+        .stat-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .stat-val {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 6px;
+        }
+        .stat-sub {
+            font-size: 12px;
+            color: var(--text-sub);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* SECTION CARD */
+        .section-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+        .section-title {
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-main);
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 12px;
+        }
+
+        /* TABLES */
+        .table-wrap {
+            overflow-x: auto;
+            border-radius: 10px;
+            border: 1px solid var(--border-subtle);
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        th {
+            background: #141c2c;
+            color: var(--text-muted);
+            font-weight: 700;
+            padding: 12px 14px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-subtle);
+            white-space: nowrap;
+            font-size: 11.5px;
+            text-transform: uppercase;
+        }
+        td {
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--border-subtle);
+            color: var(--text-main);
+            vertical-align: middle;
+        }
+        tr:hover td { background: var(--bg-card-hover); }
+        .text-right { text-align: right; }
+        .text-center { text-align: center; }
+        .font-bold { font-weight: 700; }
+        .color-shopee { color: #ee4d2d; }
+        .color-tiktok { color: #00f2fe; }
+
+        .badge-pill {
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 11.5px;
+            font-weight: 700;
+            display: inline-block;
+        }
+        .badge-pill-success { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+        .badge-pill-warn { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+        .badge-mega { background: rgba(238, 77, 45, 0.2); color: #ff6b4a; border-radius: 4px; padding: 2px 6px; font-size: 10px; font-weight: 700; }
+        .badge-spike { background: rgba(168, 85, 247, 0.2); color: #c084fc; border-radius: 4px; padding: 2px 6px; font-size: 10px; font-weight: 700; }
+        .badge-payday { background: rgba(16, 185, 129, 0.2); color: #34d399; border-radius: 4px; padding: 2px 6px; font-size: 10px; font-weight: 700; }
+
+        /* CHART CONTAINER */
+        .chart-box {
+            height: 320px;
+            margin-top: 15px;
+        }
+
+        /* BUTTONS */
+        .btn {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-main);
+            border: 1px solid var(--border-subtle);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 12.5px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+            border: 1px solid #38bdf8;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="header-title">
+            <h1><i class="fa-solid fa-chart-line-up" style="color: #38bdf8;"></i> BÁO CÁO ĐÁNH GIÁ HOÀN THÀNH NHIỆM VỤ H2 — THÁNG 10/2026</h1>
+            <div class="header-meta">
+                <span class="badge-tag">Nhiệm vụ ngoài danh sách</span>
+                <span>•</span>
+                <span><b>Phạm Phi Long</b> (Sale Online / E-commerce Lead)</span>
+                <span>•</span>
+                <span>Khối Thương Mại & Sale Online</span>
+                <span>•</span>
+                <span>Deadline: <b>31/10/2026</b></span>
+                <span>•</span>
+                <span class="badge-kpi"><i class="fa-solid fa-circle-check"></i> ĐÃ HOÀN THÀNH</span>
+            </div>
+        </div>
+        <div>
+            <button class="btn" onclick="window.print()"><i class="fa-solid fa-print"></i> In Báo Cáo</button>
+            <a href="https://github.com/phamphilong0711-cell/Ecom-Dashboard" target="_blank" class="btn btn-primary"><i class="fa-brands fa-github"></i> GitHub Repo</a>
+        </div>
+    </div>
+
+    <!-- VERDICT BANNER -->
+    <div class="verdict-box">
+        <div class="verdict-left">
+            <div class="verdict-icon"><i class="fa-solid fa-trophy"></i></div>
+            <div>
+                <div class="verdict-title">KẾT LUẬN: HOÀN THÀNH ĐẠT MỤC TIÊU QUẢN TRỊ CIR 2 KÊNH</div>
+                <div class="verdict-desc">
+                    Tiêu chí hoàn thành: <b>CIR Shopee &lt; 13%</b> và <b>CIR TikTok &lt; 18%</b>.<br>
+                    Kết quả thực tế chốt sổ 31 ngày tháng 10: <b>Shopee đạt 12.37%</b> (Đạt) · <b>TikTok đạt 16.81%</b> (Đạt) · <b>Blended toàn sàn đạt 13.88%</b> (Dưới trần 16%).
+                </div>
+            </div>
+        </div>
+        <div>
+            <span style="font-size: 24px; font-weight: 800; color: #34d399;" class="mono">100% KPI</span>
+        </div>
+    </div>
+
+    <!-- STATS OVERVIEW -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-label">CIR Shopee (Mục tiêu &lt;13%) <i class="fa-solid fa-bag-shopping color-shopee"></i></div>
+            <div class="stat-val mono" style="color: #34d399;">12.37%</div>
+            <div class="stat-sub"><i class="fa-solid fa-check"></i> Đạt chỉ tiêu (Vượt -0.63%)</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">CIR TikTok (Mục tiêu &lt;18%) <i class="fa-brands fa-tiktok color-tiktok"></i></div>
+            <div class="stat-val mono" style="color: #34d399;">16.81%</div>
+            <div class="stat-sub"><i class="fa-solid fa-check"></i> Đạt chỉ tiêu (Vượt -1.19%)</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Blended CIR Toàn Sàn <i class="fa-solid fa-shield-check" style="color: var(--purple);"></i></div>
+            <div class="stat-val mono" style="color: #c084fc;">13.88%</div>
+            <div class="stat-sub"><i class="fa-solid fa-arrow-down"></i> Tiết kiệm so với trần 16.0%</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Blended ROAS Ads <i class="fa-solid fa-bullseye" style="color: #38bdf8;"></i></div>
+            <div class="stat-val mono" style="color: #38bdf8;">5.54x</div>
+            <div class="stat-sub">GMV Ads: <b>741.8M</b> (2.311 đơn)</div>
+        </div>
+    </div>
+
+    <!-- TABLE 1: KPI COMPARISON -->
+    <div class="section-card">
+        <div class="section-title">
+            <i class="fa-solid fa-clipboard-check" style="color: #34d399;"></i>
+            1. BẢNG ĐỐI SOÁT CHỈ TIÊU KPI VỚI KẾT QUẢ THỰC TẾ (API THÁNG 10/2026)
+        </div>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Chỉ số / Nhiệm vụ KPI</th>
+                        <th class="text-center">Mục tiêu (Target)</th>
+                        <th class="text-right">Chi phí Ads Net</th>
+                        <th class="text-right">Doanh thu Sàn</th>
+                        <th class="text-center">Thực tế CIR Net</th>
+                        <th class="text-center">CIR Gross (+8%)</th>
+                        <th class="text-center">Đánh giá hoàn thành</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>Quản trị CIR Kênh Shopee (3 Gian Hàng)</b></td>
+                        <td class="text-center mono font-bold">&lt; 13.0%</td>
+                        <td class="text-right mono">78.549.265 đ</td>
+                        <td class="text-right mono">~635.000.000 đ</td>
+                        <td class="text-center mono font-bold" style="color: #34d399;">12.37%</td>
+                        <td class="text-center mono">13.36%</td>
+                        <td class="text-center"><span class="badge-pill badge-pill-success"><i class="fa-solid fa-check"></i> HOÀN THÀNH</span></td>
+                    </tr>
+                    <tr>
+                        <td><b>Quản trị CIR Kênh TikTok Shop</b></td>
+                        <td class="text-center mono font-bold">&lt; 18.0%</td>
+                        <td class="text-right mono">55.308.818 đ</td>
+                        <td class="text-right mono">329.101.047 đ</td>
+                        <td class="text-center mono font-bold" style="color: #34d399;">16.81%</td>
+                        <td class="text-center mono">18.15%</td>
+                        <td class="text-center"><span class="badge-pill badge-pill-success"><i class="fa-solid fa-check"></i> HOÀN THÀNH</span></td>
+                    </tr>
+                    <tr style="background: rgba(56, 189, 248, 0.06); font-weight: 700;">
+                        <td><b>TOÀN SÀN E-COMMERCE (BLENDED)</b></td>
+                        <td class="text-center mono font-bold">≤ 16.0%</td>
+                        <td class="text-right mono">133.858.083 đ</td>
+                        <td class="text-right mono">964.101.047 đ</td>
+                        <td class="text-center mono font-bold" style="color: #38bdf8;">13.88%</td>
+                        <td class="text-center mono">14.99%</td>
+                        <td class="text-center"><span class="badge-pill badge-pill-success"><i class="fa-solid fa-star"></i> XUẤT SẮC</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- TABLE 2: SHOPEE 3 SHOPS DETAIL -->
+    <div class="section-card">
+        <div class="section-title">
+            <i class="fa-solid fa-store" style="color: #ee4d2d;"></i>
+            2. CHI TIẾT HIỆU SUẤT ADS 3 GIAN HÀNG SHOPEE THÁNG 10/2026
+        </div>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tên Gian Hàng</th>
+                        <th>Shop ID</th>
+                        <th class="text-right">Chi Phí Net</th>
+                        <th class="text-right">Doanh Thu Ads (Broad)</th>
+                        <th class="text-center">Đơn Ads</th>
+                        <th class="text-center">ROAS Net</th>
+                        <th class="text-center">CIR Ads</th>
+                        <th class="text-right">CPA Gross</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>Shopee 30Shine Official</b></td>
+                        <td class="mono">21080428</td>
+                        <td class="text-right mono">53.024.908 đ</td>
+                        <td class="text-right mono font-bold">340.587.879 đ</td>
+                        <td class="text-center mono">1.070</td>
+                        <td class="text-center mono"><span class="badge-pill badge-pill-success">6.42x</span></td>
+                        <td class="text-center mono">15.57%</td>
+                        <td class="text-right mono">53.520 đ</td>
+                    </tr>
+                    <tr>
+                        <td><b>Shopee Dr.FORSKIN Store</b></td>
+                        <td class="mono">278080971</td>
+                        <td class="text-right mono">14.362.963 đ</td>
+                        <td class="text-right mono font-bold">90.104.821 đ</td>
+                        <td class="text-center mono">278</td>
+                        <td class="text-center mono"><span class="badge-pill badge-pill-success">6.27x</span></td>
+                        <td class="text-center mono">15.94%</td>
+                        <td class="text-right mono">55.799 đ</td>
+                    </tr>
+                    <tr>
+                        <td><b>Shopee Glanzen Official</b></td>
+                        <td class="mono">945974027</td>
+                        <td class="text-right mono">11.161.394 đ</td>
+                        <td class="text-right mono font-bold">50.325.098 đ</td>
+                        <td class="text-center mono">186</td>
+                        <td class="text-center mono"><span class="badge-pill badge-pill-warn">4.51x</span></td>
+                        <td class="text-center mono">22.18%</td>
+                        <td class="text-right mono">64.808 đ</td>
+                    </tr>
+                    <tr style="background: rgba(238, 77, 45, 0.08); font-weight: 700;">
+                        <td colspan="2"><b>TỔNG SHOPEE ADS</b></td>
+                        <td class="text-right mono color-shopee">78.549.265 đ</td>
+                        <td class="text-right mono color-shopee">481.017.798 đ</td>
+                        <td class="text-center mono">1.534</td>
+                        <td class="text-center mono"><span class="badge-pill badge-pill-success">6.12x</span></td>
+                        <td class="text-center mono">16.33%</td>
+                        <td class="text-right mono">55.302 đ</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- CHART PACING -->
+    <div class="section-card">
+        <div class="section-title">
+            <i class="fa-solid fa-chart-area" style="color: #38bdf8;"></i>
+            3. BIỂU ĐỒ PACING CHI PHÍ ADS & DOANH THU 31 NGÀY THÁNG 10/2026
+        </div>
+        <div class="chart-box">
+            <canvas id="dailyChart"></canvas>
+        </div>
+    </div>
+
+    <!-- TABLE 3: FULL DAILY -->
+    <div class="section-card">
+        <div class="section-title">
+            <i class="fa-solid fa-calendar-days" style="color: #c084fc;"></i>
+            4. BẢNG THEO DÕI PACING CHI TIẾT 31 NGÀY THÁNG 10/2026
+        </div>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ngày</th>
+                        <th class="text-right">Tổng Chi Phí</th>
+                        <th class="text-right">Tổng GMV Ads</th>
+                        <th class="text-center">Đơn Ads</th>
+                        <th class="text-center">Blended ROAS</th>
+                        <th class="text-right">Spend Shopee</th>
+                        <th class="text-right">GMV Shopee</th>
+                        <th class="text-center">ROAS Shopee</th>
+                        <th class="text-right">Spend TikTok</th>
+                        <th class="text-right">GMV TikTok</th>
+                        <th class="text-center">ROAS TikTok</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+    <tr>
+        <td><b>01/10</b></td>
+        <td class="text-right">3,955,537 đ</td>
+        <td class="text-right font-bold">19,958,021 đ</td>
+        <td class="text-center">57</td>
+        <td class="text-center"><span class="badge-pill badge-pill-warn">5.05x</span></td>
+        <td class="text-right color-shopee">2,211,517 đ</td>
+        <td class="text-right color-shopee">13,265,960 đ</td>
+        <td class="text-center">6.00x</td>
+        <td class="text-right color-tiktok">1,744,020 đ</td>
+        <td class="text-right color-tiktok">6,692,061 đ</td>
+        <td class="text-center">3.84x</td>
+    </tr>
+    
+    <tr>
+        <td><b>02/10</b></td>
+        <td class="text-right">3,531,918 đ</td>
+        <td class="text-right font-bold">14,897,007 đ</td>
+        <td class="text-center">48</td>
+        <td class="text-center"><span class="badge-pill badge-pill-warn">4.22x</span></td>
+        <td class="text-right color-shopee">2,070,019 đ</td>
+        <td class="text-right color-shopee">10,833,000 đ</td>
+        <td class="text-center">5.23x</td>
+        <td class="text-right color-tiktok">1,461,899 đ</td>
+        <td class="text-right color-tiktok">4,064,007 đ</td>
+        <td class="text-center">2.78x</td>
+    </tr>
+    
+    <tr>
+        <td><b>03/10</b></td>
+        <td class="text-right">4,280,071 đ</td>
+        <td class="text-right font-bold">21,037,630 đ</td>
+        <td class="text-center">61</td>
+        <td class="text-center"><span class="badge-pill badge-pill-warn">4.92x</span></td>
+        <td class="text-right color-shopee">2,158,895 đ</td>
+        <td class="text-right color-shopee">11,225,000 đ</td>
+        <td class="text-center">5.20x</td>
+        <td class="text-right color-tiktok">2,121,176 đ</td>
+        <td class="text-right color-tiktok">9,812,630 đ</td>
+        <td class="text-center">4.63x</td>
+    </tr>
+    
+    <tr>
+        <td><b>04/10</b></td>
+        <td class="text-right">4,138,486 đ</td>
+        <td class="text-right font-bold">22,296,433 đ</td>
+        <td class="text-center">67</td>
+        <td class="text-center"><span class="badge-pill badge-pill-warn">5.39x</span></td>
+        <td class="text-right color-shopee">2,263,874 đ</td>
+        <td class="text-right color-shopee">15,174,000 đ</td>
+        <td class="text-center">6.70x</td>
+        <td class="text-right color-tiktok">1,874,612 đ</td>
+        <td class="text-right color-tiktok">7,122,433 đ</td>
+        <td class="text-center">3.80x</td>
+    </tr>
+    
+    <tr>
+        <td><b>05/10</b></td>
+        <td class="text-right">4,196,119 đ</td>
+        <td class="text-right font-bold">21,059,990 đ</td>
+        <td class="text-center">61</td>
+        <td class="text-center"><span class="badge-pill badge-pill-warn">5.02x</span></td>
+        <td class="text-right color-shopee">2,409,849 đ</td>
+        <td class="text-right color-shopee">13,635,000 đ</td>
+        <td class="text-center">5.66x</td>
+        <td class="text-right color-tiktok">1,786,270 đ</td>
+        <td class="text-right color-tiktok">7,424,990 đ</td>
+        <td class="text-center">4.16x</td>
+    </tr>
+    
+    <tr>
+        <td><b>06/10</b></td>
+        <td class="text-right">5,532,847 đ</td>
+        <td class="text-right font-bold">27,358,488 đ</td>
+        <td class="text-center">67</td>
+        <td class="text-center"><span class="badge-pill badge-pill-warn">4.94x</span></td>
+        <td class="text-right color-shopee">2,589,594 đ</td>
+        <td class="text-right color-shopee">13,545,000 đ</td>
+        <td class="text-center">5.23x</td>
+        <td class="text-right color-tiktok">2,943,253 đ</td>
+        <td class="text-right color-tiktok">13,813,488 đ</td>
+        <td class="text-center">4.69x</td>
+    </tr>
+    
+    <tr>
+        <td><b>07/10</b></td>
+        <td class="text-right">5,413,897 đ</td>
+        <td class="text-right font-bold">27,492,365 đ</td>
+        <td class="text-center">76</td>
+        <td class="text-center"><span class="badge-pill badge-pill-warn">5.08x</span></td>
+        <td class="text-right color-shopee">2,363,593 đ</td>
+        <td class="text-right color-shopee">14,361,752 đ</td>
+        <td class="text-center">6.08x</td>
+        <td class="text-right color-tiktok">3,050,304 đ</td>
+        <td class="text-right color-tiktok">13,130,613 đ</td>
+        <td class="text-center">4.30x</td>
+    </tr>
+    
+    <tr>
+        <td><b>08/10</b></td>
+        <td class="text-right">4,850,884 đ</td>
+        <td class="text-right font-bold">27,364,029 đ</td>
+        <td class="text-center">68</td>
+        <td class="text-center"><span class="badge-pill badge-pill-success">5.64x</span></td>
+        <td class="text-right color-shopee">2,279,006 đ</td>
+        <td class="text-right color-shopee">15,164,200 đ</td>
+        <td class="text-center">6.65x</td>
+        <td class="text-right color-tiktok">2,571,878 đ</td>
+        <td class="text-right color-tiktok">12,199,829 đ</td>
+        <td class="text-center">4.74x</td>
+    </tr>
+    
+    <tr>
+        <td><b>09/10</b></td>
+        <td class="text-right">6,138,846 đ</td>
+        <td class="text-right font-bold">35,133,799 đ</td>
+        <td class="text-center">124</td>
+        <td class="text-center"><span class="badge-pill badge-pill-success">5.72x</span></td>
+        <td class="text-right color-shopee">3,014,388 đ</td>
+        <td class="text-right color-shopee">19,288,140 đ</td>
+        <td class="text-center">6.40x</td>
+        <td class="text-right color-tiktok">3,124,458 đ</td>
+        <td class="text-right color-tiktok">15,845,659 đ</td>
+        <td class="text-center">5.07x</td>
+    </tr>
+    
+    <tr>
+        <td><b>10/10</b> <span class="badge badge-mega">Mega 10.10</span></td>
+        <td class="text-right">8,362,125 đ</td>
+        <td class="text-right font-bold">51,233,452 đ</td>
+        <td class="text-center">275</td>
+        <td class="text-center"><span class="badge-pill badge-pill-success">6.13x</span></td>
+        <td class="text-right color-shopee">5,278,653 đ</td>
+        <td class="text-right color-shopee">35,281,693 đ</td>
+        <td class="text-center">6.68x</td>
+        <td class="text-right color-tiktok">3,083,472 đ</td>
+        <td class="text-right color-tiktok">15,951,759 đ</td>
+        <td class="text-center">5.17x</td>
+    </tr>
+    
+    <tr>
+        <td><b>11/10</b></td>
+        <td class="text-right">3,811,406 đ</td>
+        <td class="text-right font-bold">18,787,505 đ</td>
+        <td class="text-center">98</td>
+        <td class="text-center"><span class="badge-pill badge-pill-warn">4.93x</span></td>
+        <td class="text-right color-shopee">2,496,844 đ</td>
+        <td class="text-right color-shopee">14,856,376 đ</td>
+        <td class="text-center">5.95x</td>
+        <td class="text-right color-tiktok">1,314,562 đ</td>
+        <td class="text-right color-tiktok">3,931,129 đ</td>
+        <td class="text-center">2.99x</td>
+    </tr>
+    
+    <tr>
+        <td><b>12/10</b></td>
+        <td class="text-right">4,914,956 đ</td>
+        <td class="text-right font-bold">23,401,010 đ</td>
+        <td class="text-center">71</td>
+        <td class="text-center"><span class="badge-pill badge-pill-warn">4.76x</span></td>
+        <td class="text-right color-shopee">2,255,350 đ</td>
+        <td class="text-right color-shopee">12,706,000 đ</td>
+        <td class="text-center">5.63x</td>
+        <td class="text-right color-tiktok">2,659,606 đ</td>
+        <td class="text-right color-tiktok">10,695,010 đ</td>
+        <td class="text-center">4.02x</td>
+    </tr>
+    
+    <tr>
+        <td><b>13/10</b></td>
+        <td class="text-right">4,379,590 đ</td>
+        <td class="text-right font-bold">22,898,295 đ</td>
+        <td class="text-center">76</td>
+        <td class="text-center"><span class="badge-pill badge-pill-warn">5.23x</span></td>
+        <td class="text-right color-shopee">2,264,503 đ</td>
+        <td class="text-right color-shopee">15,772,180 đ</td>
+        <td class="text-center">6.96x</td>
+        <td class="text-right color-tiktok">2,115,087 đ</td>
+        <td class="text-right color-tiktok">7,126,115 đ</td>
+        <td class="text-center">3.37x</td>
+    </tr>
+    
+    <tr>
+        <td><b>14/10</b></td>
+        <td class="text-right">4,623,704 đ</td>
+        <td class="text-right font-bold">32,140,069 đ</td>
+        <td class="text-center">92</td>
+        <td class="text-center"><span class="badge-pill badge-pill-success">6.95x</span></td>
+        <td class="text-right color-shopee">2,624,471 đ</td>
+        <td class="text-right color-shopee">19,952,360 đ</td>
+        <td class="text-center">7.60x</td>
+        <td class="text-right color-tiktok">1,999,233 đ</td>
+        <td class="text-right color-tiktok">12,187,709 đ</td>
+        <td class="text-center">6.10x</td>
+    </tr>
+    
+    <tr>
+        <td><b>15/10</b></td>
+        <td class="text-right">3,760,004 đ</td>
+        <td class="text-right font-bold">28,659,815 đ</td>
+        <td class="text-center">72</td>
+        <td class="text-center"><span class="badge-pill badge-pill-success">7.62x</span></td>
+        <td class="text-right color-shopee">3,007,761 đ</td>
+        <td class="text-right color-shopee">21,118,920 đ</td>
+        <td class="text-center">7.02x</td>
+        <td class="text-right color-tiktok">752,243 đ</td>
+        <td class="text-right color-tiktok">7,540,895 đ</td>
+        <td class="text-center">10.02x</td>
+    </tr>
+    
+    <tr>
+        <td><b>16/10</b></td>
+        <td class="text-right">3,669,662 đ</td>
+        <td class="text-right font-bold">17,544,021 đ</td>
+        <td class="text-center">51</td>
+        <td class="text-center"><span class="badge-pill badge-pill-warn">4.78x</span></td>
+        <td class="text-right color-shopee">2,387,359 đ</td>
+        <td class="text-right color-shopee">11,370,000 đ</td>
+        <td class="text-center">4.76x</td>
+        <td class="text-right color-tiktok">1,282,303 đ</td>
+        <td class="text-right color-tiktok">6,174,021 đ</td>
+        <td class="text-center">4.81x</td>
+    </tr>
+    
+    <tr>
+        <td><b>17/10</b></td>
+        <td class="text-right">3,637,963 đ</td>
+        <td class="text-right font-bold">20,620,494 đ</td>
+        <td class="text-center">57</td>
+        <td class="text-center"><span class="badge-pill badge-pill-success">5.67x</span></td>
+        <td class="text-right color-shopee">2,055,318 đ</td>
+        <td class="text-right color-shopee">10,031,120 đ</td>
+        <td class="text-center">4.88x</td>
+        <td class="text-right color-tiktok">1,582,645 đ</td>
+        <td class="text-right color-tiktok">10,589,374 đ</td>
+        <td class="text-center">6.69x</td>
+    </tr>
+    
+    <tr>
+        <td><b>18/10</b></td>
+        <td class="text-right">3,509,779 đ</td>
+        <td class="text-right font-bold">19,998,668 đ</td>
+        <td class="text-center">59</td>
+        <td class="text-center"><span class="badge-pill badge-pill-success">5.70x</span></td>
+        <td class="text-right color-shopee">2,261,385 đ</td>
+        <td class="text-right color-shopee">12,570,382 đ</td>
+        <td class="text-center">5.56x</td>
+        <td class="text-right color-tiktok">1,248,394 đ</td>
+        <td class="text-right color-tiktok">7,428,286 đ</td>
+        <td class="text-center">5.95x</td>
+    </tr>
+    
+    <tr>
+        <td><b>19/10</b></td>
+        <td class="text-right">3,725,244 đ</td>
+        <td class="text-right font-bold">20,413,929 đ</td>
+        <td class="text-center">69</td>
+        <td class="text-center"><span class="badge-pill badge-pill-warn">5.48x</span></td>
+        <td class="text-right color-shopee">2,505,179 đ</td>
+        <td class="text-right color-shopee">15,657,436 đ</td>
+        <td class="text-center">6.25x</td>
+        <td class="text-right color-tiktok">1,220,065 đ</td>
+        <td class="text-right color-tiktok">4,756,493 đ</td>
+        <td class="text-center">3.90x</td>
+    </tr>
+    
+    <tr>
+        <td><b>20/10</b> <span class="badge badge-spike">20.10</span></td>
+        <td class="text-right">4,079,536 đ</td>
+        <td class="text-right font-bold">28,753,163 đ</td>
+        <td class="text-center">65</td>
+        <td class="text-center"><span class="badge-pill badge-pill-success">7.05x</span></td>
+        <td class="text-right color-shopee">2,883,744 đ</td>
+        <td class="text-right color-shopee">23,641,620 đ</td>
+        <td class="text-center">8.20x</td>
+        <td class="text-right color-tiktok">1,195,792 đ</td>
+        <td class="text-right color-tiktok">5,111,543 đ</td>
+        <td class="text-center">4.27x</td>
+    </tr>
+    
+    <tr>
+        <td><b>21/10</b></td>
+        <td class="text-right">3,542,831 đ</td>
+        <td class="text-right font-bold">24,191,542 đ</td>
+        <td class="text-center">70</td>
+        <td class="text-center"><span class="badge-pill badge-pill-success">6.83x</span></td>
+        <td class="text-right color-shopee">2,217,016 đ</td>
+        <td class="text-right color-shopee">16,300,000 đ</td>
+        <td class="text-center">7.35x</td>
+        <td class="text-right color-tiktok">1,325,815 đ</td>
+        <td class="text-right color-tiktok">7,891,542 đ</td>
+        <td class="text-center">5.95x</td>
+    </tr>
+    
+    <tr>
+        <td><b>22/10</b></td>
+        <td class="text-right">3,522,438 đ</td>
+        <td class="text-right font-bold">15,960,728 đ</td>
+        <td class="text-center">47</td>
+        <td class="text-center"><span class="badge-pill badge-pill-warn">4.53x</span></td>
+        <td class="text-right color-shopee">2,599,506 đ</td>
+        <td class="text-right color-shopee">11,830,060 đ</td>
+        <td class="text-center">4.55x</td>
+        <td class="text-right color-tiktok">922,932 đ</td>
+        <td class="text-right color-tiktok">4,130,668 đ</td>
+        <td class="text-center">4.48x</td>
+    </tr>
+    
+    <tr>
+        <td><b>23/10</b></td>
+        <td class="text-right">3,434,864 đ</td>
+        <td class="text-right font-bold">20,128,286 đ</td>
+        <td class="text-center">61</td>
+        <td class="text-center"><span class="badge-pill badge-pill-success">5.86x</span></td>
+        <td class="text-right color-shopee">2,384,880 đ</td>
+        <td class="text-right color-shopee">15,353,120 đ</td>
+        <td class="text-center">6.44x</td>
+        <td class="text-right color-tiktok">1,049,984 đ</td>
+        <td class="text-right color-tiktok">4,775,166 đ</td>
+        <td class="text-center">4.55x</td>
+    </tr>
+    
+    <tr>
+        <td><b>24/10</b></td>
+        <td class="text-right">3,916,455 đ</td>
+        <td class="text-right font-bold">19,288,060 đ</td>
+        <td class="text-center">54</td>
+        <td class="text-center"><span class="badge-pill badge-pill-warn">4.92x</span></td>
+        <td class="text-right color-shopee">2,191,464 đ</td>
+        <td class="text-right color-shopee">11,947,120 đ</td>
+        <td class="text-center">5.45x</td>
+        <td class="text-right color-tiktok">1,724,991 đ</td>
+        <td class="text-right color-tiktok">7,340,940 đ</td>
+        <td class="text-center">4.26x</td>
+    </tr>
+    
+    <tr>
+        <td><b>25/10</b> <span class="badge badge-payday">Payday</span></td>
+        <td class="text-right">5,831,656 đ</td>
+        <td class="text-right font-bold">36,134,436 đ</td>
+        <td class="text-center">90</td>
+        <td class="text-center"><span class="badge-pill badge-pill-success">6.20x</span></td>
+        <td class="text-right color-shopee">3,709,039 đ</td>
+        <td class="text-right color-shopee">25,377,979 đ</td>
+        <td class="text-center">6.84x</td>
+        <td class="text-right color-tiktok">2,122,617 đ</td>
+        <td class="text-right color-tiktok">10,756,457 đ</td>
+        <td class="text-center">5.07x</td>
+    </tr>
+    
+    <tr>
+        <td><b>26/10</b></td>
+        <td class="text-right">4,255,302 đ</td>
+        <td class="text-right font-bold">16,845,994 đ</td>
+        <td class="text-center">54</td>
+        <td class="text-center"><span class="badge-pill badge-pill-warn">3.96x</span></td>
+        <td class="text-right color-shopee">2,400,950 đ</td>
+        <td class="text-right color-shopee">9,673,000 đ</td>
+        <td class="text-center">4.03x</td>
+        <td class="text-right color-tiktok">1,854,352 đ</td>
+        <td class="text-right color-tiktok">7,172,994 đ</td>
+        <td class="text-center">3.87x</td>
+    </tr>
+    
+    <tr>
+        <td><b>27/10</b></td>
+        <td class="text-right">4,040,191 đ</td>
+        <td class="text-right font-bold">22,563,610 đ</td>
+        <td class="text-center">64</td>
+        <td class="text-center"><span class="badge-pill badge-pill-success">5.58x</span></td>
+        <td class="text-right color-shopee">2,714,527 đ</td>
+        <td class="text-right color-shopee">14,998,120 đ</td>
+        <td class="text-center">5.53x</td>
+        <td class="text-right color-tiktok">1,325,664 đ</td>
+        <td class="text-right color-tiktok">7,565,490 đ</td>
+        <td class="text-center">5.71x</td>
+    </tr>
+    
+    <tr>
+        <td><b>28/10</b> <span class="badge badge-payday">Payday</span></td>
+        <td class="text-right">4,049,593 đ</td>
+        <td class="text-right font-bold">27,207,216 đ</td>
+        <td class="text-center">78</td>
+        <td class="text-center"><span class="badge-pill badge-pill-success">6.72x</span></td>
+        <td class="text-right color-shopee">2,627,793 đ</td>
+        <td class="text-right color-shopee">19,142,140 đ</td>
+        <td class="text-center">7.28x</td>
+        <td class="text-right color-tiktok">1,421,800 đ</td>
+        <td class="text-right color-tiktok">8,065,076 đ</td>
+        <td class="text-center">5.67x</td>
+    </tr>
+    
+    <tr>
+        <td><b>29/10</b> <span class="badge badge-payday">Payday</span></td>
+        <td class="text-right">1,964,539 đ</td>
+        <td class="text-right font-bold">10,886,863 đ</td>
+        <td class="text-center">33</td>
+        <td class="text-center"><span class="badge-pill badge-pill-success">5.54x</span></td>
+        <td class="text-right color-shopee">1,123,195 đ</td>
+        <td class="text-right color-shopee">6,683,000 đ</td>
+        <td class="text-center">5.95x</td>
+        <td class="text-right color-tiktok">841,344 đ</td>
+        <td class="text-right color-tiktok">4,203,863 đ</td>
+        <td class="text-center">5.00x</td>
+    </tr>
+    
+    <tr>
+        <td><b>30/10</b></td>
+        <td class="text-right">4,406,143 đ</td>
+        <td class="text-right font-bold">26,851,509 đ</td>
+        <td class="text-center">80</td>
+        <td class="text-center"><span class="badge-pill badge-pill-success">6.09x</span></td>
+        <td class="text-right color-shopee">2,562,741 đ</td>
+        <td class="text-right color-shopee">15,492,000 đ</td>
+        <td class="text-center">6.05x</td>
+        <td class="text-right color-tiktok">1,843,402 đ</td>
+        <td class="text-right color-tiktok">11,359,509 đ</td>
+        <td class="text-center">6.16x</td>
+    </tr>
+    
+    <tr>
+        <td><b>31/10</b></td>
+        <td class="text-right">4,381,497 đ</td>
+        <td class="text-right font-bold">20,669,648 đ</td>
+        <td class="text-center">66</td>
+        <td class="text-center"><span class="badge-pill badge-pill-warn">4.72x</span></td>
+        <td class="text-right color-shopee">2,636,852 đ</td>
+        <td class="text-right color-shopee">14,771,120 đ</td>
+        <td class="text-center">5.60x</td>
+        <td class="text-right color-tiktok">1,744,645 đ</td>
+        <td class="text-right color-tiktok">5,898,528 đ</td>
+        <td class="text-center">3.38x</td>
+    </tr>
+    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    const ctx = document.getElementById('dailyChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ["01/10", "02/10", "03/10", "04/10", "05/10", "06/10", "07/10", "08/10", "09/10", "10/10", "11/10", "12/10", "13/10", "14/10", "15/10", "16/10", "17/10", "18/10", "19/10", "20/10", "21/10", "22/10", "23/10", "24/10", "25/10", "26/10", "27/10", "28/10", "29/10", "30/10", "31/10"],
+            datasets: [
+                {
+                    label: 'Doanh Thu Ads (Shopee + TikTok)',
+                    data: [19958021.0, 14897007.0, 21037630.0, 22296433.0, 21059990.0, 27358488.0, 27492365.0, 27364029.0, 35133799.0, 51233452.0, 18787505.0, 23401010.0, 22898295.0, 32140069.0, 28659815.0, 17544021.0, 20620494.0, 19998668.0, 20413929.0, 28753163.0, 24191542.0, 15960728.0, 20128286.0, 19288060.0, 36134436.0, 16845994.0, 22563610.0, 27207216.0, 10886863.0, 26851509.0, 20669648.0],
+                    borderColor: '#38bdf8',
+                    backgroundColor: 'rgba(56, 189, 248, 0.12)',
+                    yAxisID: 'y1',
+                    fill: true,
+                    tension: 0.35,
+                    borderWidth: 2
+                },
+                {
+                    label: 'Chi Phí Shopee Ads',
+                    data: [2211517.0, 2070019.0, 2158895.0, 2263874.0, 2409849.0, 2589594.0, 2363593.0, 2279006.0, 3014388.0, 5278653.0, 2496844.0, 2255350.0, 2264503.0, 2624471.0, 3007761.0, 2387359.0, 2055318.0, 2261385.0, 2505179.0, 2883744.0, 2217016.0, 2599506.0, 2384880.0, 2191464.0, 3709039.0, 2400950.0, 2714527.0, 2627793.0, 1123195.0, 2562741.0, 2636852.0],
+                    borderColor: '#ee4d2d',
+                    backgroundColor: 'transparent',
+                    yAxisID: 'y',
+                    borderWidth: 2,
+                    tension: 0.2
+                },
+                {
+                    label: 'Chi Phí TikTok Ads',
+                    data: [1744020.0, 1461899.0, 2121176.0, 1874612.0, 1786270.0, 2943253.0, 3050304.0, 2571878.0, 3124458.0, 3083472.0, 1314562.0, 2659606.0, 2115087.0, 1999233.0, 752243.0, 1282303.0, 1582645.0, 1248394.0, 1220065.0, 1195792.0, 1325815.0, 922932.0, 1049984.0, 1724991.0, 2122617.0, 1854352.0, 1325664.0, 1421800.0, 841344.0, 1843402.0, 1744645.0],
+                    borderColor: '#00f2fe',
+                    backgroundColor: 'transparent',
+                    yAxisID: 'y',
+                    borderWidth: 2,
+                    tension: 0.2
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: { mode: 'index', intersect: false },
+            scales: {
+                x: {
+                    grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                    ticks: { color: '#94a3b8', font: { family: 'JetBrains Mono', size: 11 } }
+                },
+                y: {
+                    type: 'linear',
+                    display: true,
+                    position: 'left',
+                    grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                    ticks: {
+                        color: '#94a3b8',
+                        font: { family: 'JetBrains Mono', size: 11 },
+                        callback: function(value) { return (value/1e6).toFixed(1) + 'M'; }
+                    },
+                    title: { display: true, text: 'Chi Phí Ads (VNĐ)', color: '#94a3b8' }
+                },
+                y1: {
+                    type: 'linear',
+                    display: true,
+                    position: 'right',
+                    grid: { drawOnChartArea: false },
+                    ticks: {
+                        color: '#38bdf8',
+                        font: { family: 'JetBrains Mono', size: 11 },
+                        callback: function(value) { return (value/1e6).toFixed(0) + 'M'; }
+                    },
+                    title: { display: true, text: 'Doanh Thu Ads (VNĐ)', color: '#38bdf8' }
+                }
+            },
+            plugins: {
+                legend: {
+                    labels: { color: '#cbd5e1', font: { family: 'Plus Jakarta Sans', size: 12, weight: 600 } }
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
