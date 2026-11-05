@@ -285,7 +285,7 @@ def build_concept_sheet(ws, raw_rows, is_nov=True):
         # Col L: Chi phí thuê phòng ngoài giờ (Cột L)
         # Dynamic formula based on Column M (Địa điểm) and Column B / E (Ca / Giờ Bắt Đầu)
         cell_l = ws.cell(row=current_row, column=12)
-        cell_l.value = f'=IF(AND(TRIM(M{current_row})="Văn phòng", OR(ISNUMBER(SEARCH("Ca 6", B{current_row})), ISNUMBER(SEARCH("21h", E{current_row})))), 200000, 0)'
+        cell_l.value = f'=IF(AND(OR(ISNUMBER(SEARCH("văn phòng", M{current_row})), ISNUMBER(SEARCH("vp", M{current_row}))), OR(ISNUMBER(SEARCH("Ca 6", B{current_row})), ISNUMBER(SEARCH("21h", E{current_row})))), 200000, 0)'
         cell_l.font = FONT_CALIBRI_10
         cell_l.alignment = ALIGN_CENTER
         cell_l.border = CELL_BORDER
